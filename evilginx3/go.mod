@@ -1,8 +1,9 @@
 module github.com/kgretzky/evilginx2
 
-go 1.18
+go 1.22
 
 require (
+	evilgophish/shared v0.0.0
 	github.com/caddyserver/certmagic v0.20.0
 	github.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e
 	github.com/elazarl/goproxy v0.0.0-20220529153421-8ea89ba92021
@@ -10,6 +11,7 @@ require (
 	github.com/go-acme/lego/v3 v3.1.0
 	github.com/gorilla/mux v1.7.3
 	github.com/inconshreveable/go-vhost v0.0.0-20160627193104-06d84117953b
+	github.com/mattn/go-sqlite3 v2.0.3+incompatible
 	github.com/miekg/dns v1.1.58
 	github.com/mwitkow/go-http-dialer v0.0.0-20161116154839-378f744fb2b8
 	github.com/spf13/viper v1.10.1
@@ -22,6 +24,7 @@ require (
 	github.com/cenkalti/backoff/v3 v3.0.0 // indirect
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
+	github.com/jinzhu/gorm v1.9.12 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.7 // indirect
 	github.com/libdns/libdns v0.2.1 // indirect
 	github.com/magiconair/properties v1.8.6 // indirect
@@ -55,3 +58,5 @@ require (
 )
 
 replace github.com/elazarl/goproxy => github.com/kgretzky/goproxy v0.0.0-20220622134552-7d0e0c658440
+
+replace evilgophish/shared => ../shared

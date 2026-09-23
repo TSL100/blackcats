@@ -1,0 +1,17 @@
+{
+  "linkedin": {
+    "display": "LinkedIn",
+    "color": "#0A66C2",
+    "logo": "https://www.google.com/s2/favicons?domain=linkedin.com&sz=64"
+  },
+  "banquemisr": {
+    "display": "Banque Misr",
+    "color": "#C8102E",
+    "logo": "https://www.google.com/s2/favicons?domain=banquemisr.com&sz=64"
+  },
+  "tryhackme": {
+    "display": "TryHackMe",
+    "color": "#212C42",
+    "logo": "https://login.example.com/assets/logos/tryhackme.png"
+  }
+}

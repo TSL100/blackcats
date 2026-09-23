@@ -32,21 +32,46 @@ function launch() {
                         name: group.text
                     });
                 })
+                // Validate before POST so the API never sees garbage dates.
+                var templateData = $("#template").select2("data")
+                if (!templateData || !templateData.length) {
+                    modalError("Please select a message template.")
+                    Swal.close()
+                    return
+                }
+                var profileData = $("#profile").select2("data")
+                if (!profileData || !profileData.length) {
+                    modalError("Please select a sending profile.")
+                    Swal.close()
+                    return
+                }
+                var launchMoment = moment($("#launch_date").val(), "MMMM Do YYYY, h:mm a")
+                if (!launchMoment.isValid()) {
+                    modalError("Please set a valid launch date.")
+                    Swal.close()
+                    return
+                }
                 // Validate our fields
                 var send_by_date = $("#send_by_date").val()
                 if (send_by_date != "") {
-                    send_by_date = moment(send_by_date, "MMMM Do YYYY, h:mm a").utc().format()
+                    var sendMoment = moment(send_by_date, "MMMM Do YYYY, h:mm a")
+                    if (!sendMoment.isValid()) {
+                        modalError("Please set a valid \"send messages by\" date, or leave it empty.")
+                        Swal.close()
+                        return
+                    }
+                    send_by_date = sendMoment.utc().format()
                 }
                 campaign = {
                     name: $("#name").val(),
                     template: {
-                        name: $("#template").select2("data")[0].text
+                        name: templateData[0].text
                     },
                     url: $("#url").val(),
                     sms: {
-                        name: $("#profile").select2("data")[0].text
+                        name: profileData[0].text
                     },
-                    launch_date: moment($("#launch_date").val(), "MMMM Do YYYY, h:mm a").utc().format(),
+                    launch_date: launchMoment.utc().format(),
                     send_by_date: send_by_date || null,
                     groups: groups,
                 }
@@ -193,6 +218,7 @@ function edit(campaign) {
 
 function copy(idx) {
     setupOptions();
+    $("#modal\\.flashes").empty();
     // Set our initial values
     api.campaignId.get(campaigns[idx].id)
         .success(function (campaign) {
@@ -214,6 +240,9 @@ function copy(idx) {
                 $("#profile").trigger("change.select2")
             }
             $("#url").val(campaign.url)
+            if (!$("#launch_date").val()) {
+                $("#launch_date").val(moment().format("MMMM Do YYYY, h:mm a"))
+            }
         })
         .error(function (data) {
             $("#modal\\.flashes").empty().append("<div style=\"text-align:center\" class=\"alert alert-danger\">\

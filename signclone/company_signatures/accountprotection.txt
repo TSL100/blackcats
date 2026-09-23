@@ -1,0 +1,12 @@
+Account Index: #3
+Sender: "فريق حساب Microsoft" <account-security-noreply@accountprotection.microsoft.com>
+Clean Brand Name: accountprotection
+Full Domain: accountprotection.microsoft.com
+========================================
+
+لإنهاء إعداد حساب Microsoft لديك، كل ما نحتاج إليه هو التأكد من أنك تملك عنوان البريد الإلكتروني هذا.
+للتحقق من صحة عنوان بريدك الإلكتروني استخدم رمز الأمان هذا:
+0743
+إذا لم تطلب هذا الرمز، فيمكنك تجاهل هذا البريد الإلكتروني بأمان. قد يكون هناك شخص آخر قد كتب عنوان بريدك الإلكتروني عن طريق الخطأ.
+شكرًا،
+فريق حساب Microsoft

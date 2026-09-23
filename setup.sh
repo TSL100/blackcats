@@ -97,7 +97,7 @@ function setup_gophish () {
         print_good "Live feed configured! cd into evilfeed then launch binary with ./evilfeed to start!"
     fi
     # Replace rid with user input
-    find . -type f -exec sed -i "s|client_id|${rid_replacement}|g" {} \;
+    find . -type f -exec sed -i "s|user_id|${rid_replacement}|g" {} \;
     cd gophish || exit 1
     go build
     cd ..

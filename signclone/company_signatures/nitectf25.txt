@@ -1,0 +1,10 @@
+Account Index: #3
+Sender: niteCTF 2025 <noreply@nitectf25.live>
+Clean Brand Name: nitectf25
+Full Domain: nitectf25.live
+========================================
+
+Welcome to niteCTF 2025!
+Click the following link to confirm and activate your account:
+https://play.nitectf25.live/confirm/aafecb6f626b4fd6cac36303a9530954e695e28c708288f0351f48da504c4b08
+If the link is not clickable, try copying and pasting it into your browser.

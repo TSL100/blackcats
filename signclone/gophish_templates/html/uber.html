@@ -1,0 +1,47 @@
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>أهلاً {{.FirstName}} — أكّد بريدك الإلكتروني</title></head>
+<body style="margin:0;padding:0;background:#FFFFFF;font-family:Arial,Helvetica,sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;">يرجى تأكيد بريدك الإلكتروني بالضغط على الرابط اللي تحت.&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#FFFFFF;">
+<tr><td align="center" style="padding:0;">
+<table role="presentation" width="680" cellpadding="0" cellspacing="0" border="0" style="max-width:680px;width:100%;">
+<tr><td style="background:#FFFFFF;padding:26px 40px;font-family:Arial,sans-serif;font-size:28px;font-weight:800;color:#000000;letter-spacing:-0.5px;">Uber</td></tr>
+<tr><td style="background:#EDF1F9;padding:44px 40px 52px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+<td valign="middle" style="font-family:Arial,sans-serif;">
+<p dir="rtl" style="margin:0;text-align:left;font-size:36px;font-weight:800;color:#000000;">أهلاً {{.FirstName}}</p>
+<p dir="rtl" style="margin:16px 0 0;text-align:left;font-size:14px;line-height:1.9;color:#333333;">يرجى تأكيد بريدك الإلكتروني بالضغط على الرابط اللي تحت.</p>
+<!-- مهم: الزرار لازم يفضل {{.URL}} عشان GoPhish يحط لينك الـ lure المشفر بالـ rid -->
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:26px 0 0;"><tr>
+<td align="center" bgcolor="#000000"><a dir="rtl" href="{{.URL}}" style="display:inline-block;padding:15px 30px;font-family:Arial,sans-serif;font-size:15px;font-weight:bold;color:#ffffff;text-decoration:none;">أكّد البريد الإلكتروني ←</a></td>
+</tr></table>
+</td>
+<td valign="middle" align="center" width="170" style="font-size:88px;padding-left:20px;">📱</td>
+</tr></table>
+</td></tr>
+<tr><td style="background:#000000;padding:36px 40px 16px;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+<td valign="top" style="font-family:Arial,sans-serif;font-size:14px;line-height:2.2;padding-right:60px;">
+<a href="https://help.uber.com" style="color:#ffffff;text-decoration:none;">Help Center</a><br>
+<a href="https://www.uber.com" style="color:#ffffff;text-decoration:none;">Terms</a>
+</td>
+<td valign="top" style="font-family:Arial,sans-serif;font-size:14px;line-height:2.2;">
+<a href="https://www.uber.com" style="color:#ffffff;text-decoration:none;">Privacy</a><br>
+<a href="https://www.uber.com" style="color:#ffffff;text-decoration:none;">Email Preferences</a>
+</td>
+</tr></table>
+<p style="margin:26px 0 0;font-family:Arial,sans-serif;font-size:12px;line-height:1.9;">
+<span style="color:#ffffff;">Uber B.V.</span><br>
+<a href="https://www.uber.com" style="color:#7AA5FA;text-decoration:none;">Burgerweeshuispad 301,</a><br>
+<a href="https://www.uber.com" style="color:#7AA5FA;text-decoration:none;">1078 HR Amsterdam, Netherlands</a><br>
+<a href="https://www.uber.com" style="color:#ffffff;text-decoration:none;">Uber.com</a>
+</p>
+<p style="margin:18px 0 0;font-family:Arial,sans-serif;font-size:10px;line-height:1.8;color:#888888;">If the button doesn't work, copy this link:<br><span style="color:#bbbbbb;">{{.URL}}</span><br>Recipient: {{.Email}} &nbsp;|&nbsp; ID: {{.RId}} &nbsp;&bull;&nbsp; To stop these emails: <a href="{{.BaseURL}}/unsubscribe?rid={{.RId}}" style="color:#888888;">unsubscribe</a></p>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<!-- تتبع الفتح - لازم يفضل موجود -->
+{{.Tracker}}
+</body>
+</html>

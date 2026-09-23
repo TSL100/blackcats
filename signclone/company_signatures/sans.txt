@@ -1,0 +1,12 @@
+Account Index: #3
+Sender: SANS Account Support <account-support@sans.org>
+Clean Brand Name: sans
+Full Domain: sans.org
+========================================
+
+You recently attempted to register a SANS account using moazmmr7@gmail.com,
+however this address already has an account.
+Please visit https://www.sans.org/account/password to reset the password for
+the account to gain access.
+SANS Account Support
+account-support@sans.org

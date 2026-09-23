@@ -47,6 +47,14 @@ func (o *Nameserver) Start() {
 	}()
 }
 
+// Shutdown gracefully stops the UDP nameserver listener (if it was started).
+func (o *Nameserver) Shutdown(ctx context.Context) {
+	o.ctx = ctx
+	if o.srv != nil {
+		o.srv.ShutdownContext(ctx)
+	}
+}
+
 func (o *Nameserver) handleRequest(w dns.ResponseWriter, r *dns.Msg) {
 	m := new(dns.Msg)
 	m.SetReply(r)

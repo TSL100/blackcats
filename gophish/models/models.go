@@ -24,6 +24,13 @@ import (
 var db *gorm.DB
 var conf *config.Config
 
+// DB returns the shared database connection opened by Setup. Other
+// components (like the embedded evilginx proxy) use it to share gophish's
+// single connection instead of opening a second one.
+func DB() *gorm.DB {
+	return db
+}
+
 const MaxDatabaseConnectionAttempts int = 10
 
 // DefaultAdminUsername is the default username for the administrative user

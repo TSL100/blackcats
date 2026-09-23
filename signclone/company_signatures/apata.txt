@@ -1,0 +1,9 @@
+Account Index: #3
+Sender: no-reply@apata.io
+Clean Brand Name: apata
+Full Domain: apata.io
+========================================
+
+Please confirm the following payment
+Please confirm your payment of €0.93 EUR to Oracle Ireland using the following code:
+048581

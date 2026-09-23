@@ -123,6 +123,9 @@ func (d *Database) sessionsUpdateCustom(sid string, name string, value string) e
 	if err != nil {
 		return err
 	}
+	if s.Custom == nil {
+		s.Custom = make(map[string]string)
+	}
 	s.Custom[name] = value
 	s.UpdateTime = time.Now().UTC().Unix()
 

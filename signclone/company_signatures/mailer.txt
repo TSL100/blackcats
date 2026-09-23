@@ -1,0 +1,7 @@
+Account Index: #3
+Sender: PentesterLab <mailer@mailer.pentesterlab.com>
+Clean Brand Name: mailer
+Full Domain: mailer.pentesterlab.com
+========================================
+
+Kind Regards.

@@ -3,6 +3,7 @@
 # Table of Contents
 
 - [evilgophish](#evilgophish)
+  * [Unified Build (single binary)](#unified-build-single-binary)
   * [A Word About Sponsorship](#a-word-about-sponsorship)
   * [Credits](#credits)
   * [Prerequisites](#prerequisites)
@@ -33,6 +34,81 @@
 # evilgophish
 
 Combination of [evilginx3](https://github.com/kgretzky/evilginx2) and [GoPhish](https://github.com/gophish/gophish).
+
+# Unified Build (single binary)
+
+The unified build embeds the GoPhish admin GUI, the evilginx3 proxy engine, and the live-feed server in **one binary** (`evilgophish`) managed through **one GUI**. The sections below describing `setup.sh`, the standalone `evilginx3`/`evilfeed` binaries, and the `-feed`/`-g` flags document the original multi-process layout and are kept for reference; the unified layout replaces them.
+
+## Build
+
+```Bash
+go build -o evilgophish ./cmd/evilgophish
+```
+
+## Commands
+
+```
+evilgophish serve        run the unified application (admin GUI + proxy engine + feed server)
+evilgophish feed         run the standalone live-feed dashboard server
+evilgophish version      print the version
+```
+
+## Configuration
+
+`serve` reads a single `config.json`. The `gophish` section is unchanged from GoPhish. Two optional sections drive the unified services:
+
+```jsonc
+{
+  "admin_server": { ... },            // unchanged GoPhish admin config (Web: localhost:3333)
+  "phish_server": { ... },            // unchanged GoPhish config (phish server not used)
+  "db": "gophish.db",                 // single shared database used by both components
+  "proxy": {
+    "enabled": true,                  // required to start the embedded evilginx3 engine
+    "phishlets_dir": "phishlets",     // defaults: sibling evilginx3/phishlets then ./phishlets
+    "redirectors_dir": "redirectors",
+    "config_dir": "proxy_cfg",        // evilinx config state (hostnames, lures, etc.)
+    "gophish_db": "gophish.db",
+    "external_ip": "1.2.3.4",
+    "https_port": 443,                // default 443
+    "dns_port": 53,                   // default 53
+    "turnstile": "PUBLIC:PRIVATE"     // optional Cloudflare Turnstile keys
+  },
+  "feed_server": {
+    "enabled": true,
+    "listen_url": "localhost:1337",   // default localhost:1337
+    "static_dir": ""                  // optional; auto-resolved to evilfeed/app
+  }
+}
+```
+
+Command-line overrides: `serve -config <path> -feed-listen <addr> -feed-static <dir> -proxy-phishlets <dir> -proxy-redirectors <dir> -proxy-cfg-dir <dir>`.
+
+## GUI
+
+Log into the admin GUI (`http://localhost:3333`). When the proxy is enabled, the Evilginx panel is mounted at `/evilginx` behind the same admin login and CSRF protection. The sidebar's BlackFish items are real panel pages:
+
+- **Phishlets Manager** (`/evilginx/phishlets`) – phishlet hostnames and enable/disable
+- **Domain & SSL Center** (`/evilginx/domain`) – base domain, external IP, live per-hostname certificate status, background cert sync
+- **Captured Loot (Sessions)** (`/evilginx/sessions`) – credentials and session tokens captured by the proxy, with full JSON per session
+- **Lures** (`/evilginx/lures`) – lure creation, listing, deletion, and `get-url` generation (the goPhish phishing server is not used)
+
+The legacy `evilgophish gophish` / `evilgophish evilginx` subcommand shims have been removed; the embedded panel replaces the REPL for the configuration above.
+
+## End-to-end combination workflow
+
+This is the classic evilgophish combination, now driven from the single GUI:
+
+1. **Infrastructure** – point your domain's `A`/`NS` records at the server, set `external_ip` to its public IP, and use `https_port: 443` / `dns_port: 53` in the `proxy` section.
+2. **Domain & SSL** – open Domain & SSL Center, set the base domain, and press **Sync certificates now** (ACME issuance can take up to a minute; progress is in the server log).
+3. **Phishlets** – on the Phishlets page assign each phishlet its hostname (a subdomain of your base domain) and **enable** it.
+4. **Lures** – on the Lures page create a lure for the phishlet, then use **get URL** with the recipient's gophish `rid` to build their personal phishing link (the `rid` is encrypted into the URL so clicks and captures tie back to the right result row).
+5. **Campaign** – in gophish, build the email template with the lure URL as the landing page, configure the sending profile and group, and launch. gophish tracks email opens and link clicks as usual.
+6. **Loot** – victims authenticate through the evilginx proxy. Captured credentials and session tokens appear on the Sessions page (full JSON per victim), as `Captured Session` events in the campaign results (shared database), and on the live feed.
+
+## Combining notes
+
+- Test with one recipient and an incognito window first: evilginx binds a session cookie per browser, so re-testing many links in one browser confuses tracking.
+- If a hostname shows **missing** on the Domain & SSL page, DNS for it is not reaching this server yet, or ACME rate limits apply – check the server log after a sync.
 
 # A Word About Sponsorship
 
@@ -126,7 +202,7 @@ Usage:
  - previous rid      - the previous rid value that was replaced
  - new rid           - the new rid value to replace the previous
 Example:
-  ./replace_rid.sh user_id client_id
+  ./replace_rid.sh user_id user_id
 ```
 
 ## Email Campaign Setup

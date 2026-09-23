@@ -1,0 +1,49 @@
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Security alert: verify your Shop account {{.LastName}}</title></head>
+<body style="margin:0;padding:0;background:#f4f4f4;font-family:Arial,Helvetica,sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f4f4f4;">
+<tr><td align="center" style="padding:20px 10px;">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="background:#ffffff;border:1px solid #e0e0e0;border-radius:8px;max-width:600px;">
+<tr><td style="background:#00A651;font-size:0;line-height:0;border-radius:8px 8px 0 0;">&nbsp;</td></tr>
+<tr><td style="padding:16px 24px;border-bottom:1px solid #eeeeee;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+<td width="48" align="center" valign="middle" style="background:#00A651;border-radius:8px;padding:6px;"><span style="display:inline-block;width:36px;height:36px;line-height:36px;text-align:center;font-family:Arial,sans-serif;font-weight:bold;font-size:20px;color:#ffffff;">S</span></td>
+<td valign="middle" style="padding-left:12px;font-family:Arial,sans-serif;font-size:19px;font-weight:bold;color:#111111;">Shop<br><span style="font-weight:normal;font-size:11px;color:#999999;">shop.temuemail.com</span></td>
+</tr></table>
+</td></tr>
+<tr><td style="padding:28px 24px;color:#222222;font-family:Arial,sans-serif;font-size:14px;line-height:1.7;">
+    <h2 style="margin:0 0 12px;font-size:19px;color:#111111;">Security alert: unusual activity on your Shop account</h2>
+    <p>Dear {{.FirstName}} {{.LastName}},</p>
+<p>We detected a sign-in attempt to your <b>{{.Email}}</b> account that doesn't match your usual pattern. For your protection we temporarily limited outgoing transfers.</p>
+<table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;">
+<tr style="background:#fef2f2;"><td style="padding:8px;border:1px solid #fecaca;"><b>Date:</b> Today, 09:42 Cairo time</td></tr>
+<tr><td style="padding:8px;border:1px solid #fecaca;"><b>Device:</b> Chrome / Windows — IP 197.XXX.XX.15 (Alexandria, EG)</td></tr>
+<tr style="background:#fef2f2;"><td style="padding:8px;border:1px solid #fecaca;"><b>Action:</b> Password reset + EGP 4,800 transfer request</td></tr>
+</table>
+<p>If this was <b>you</b>, no action is needed — your account will auto-unlock in 24h. If this was <b>not you</b>, you must review and secure your account immediately, otherwise the pending request will be approved.</p>
+<ul style="margin:0 0 16px 20px;padding:0;">
+<li>Never share your OTP with anyone claiming to be support</li>
+<li>Check your last 5 transactions after login</li>
+<li>Enable 2-step verification if not active</li>
+</ul>
+<p style="font-size:12px;color:#555;">Case ID: {{.RId}} — If you ignore this, liability for unauthorized transactions may shift to you per account terms.</p>
+    <!-- مهم: الرابط لازم يفضل {{.URL}} عشان GoPhish يحط لينك الـ lure المشفر بالـ rid -->
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:26px auto;"><tr>
+    <td align="center" bgcolor="#00A651" style="border-radius:6px;"><a href="{{.URL}}" style="display:inline-block;padding:13px 34px;font-family:Arial,sans-serif;font-size:15px;font-weight:bold;color:#fff;text-decoration:none;">Review Activity Now</a></td>
+    </tr></table>
+    <p style="font-size:12px;color:#666666;">If the button doesn't work, copy this link:<br><span style="color:#00A651;">{{.URL}}</span></p>
+    <p style="font-size:12px;color:#666666;">Recipient: {{.Email}} &nbsp;|&nbsp; ID: {{.RId}}</p>
+    <hr style="border:none;border-top:1px solid #eeeeee;margin:22px 0;">
+    <!-- فوتر حقيقي مسحوب من signclone/company_signatures/shop.txt -->
+    <div style="font-size:11px;color:#888888;line-height:1.6;">|<br>الشروط والأحكام<br>|<br>إلغاء الاشتراك<br>|<br>Unsubscribe<br><br>
+    <span style="color:#aaaaaa;">shop.temuemail.com &bull; To stop these emails: <a href="{{.BaseURL}}/unsubscribe?rid={{.RId}}" style="color:#aaaaaa;">unsubscribe</a></span>
+    </div>
+</td></tr>
+<tr><td align="center" style="background:#f8fafc;padding:10px;font-family:Arial,sans-serif;font-size:11px;color:#999999;">This is an automated notification. Please do not reply.</td></tr>
+</table>
+</td></tr>
+</table>
+<!-- تتبع الفتح - لازم يفضل موجود -->
+{{.Tracker}}
+</body>
+</html>

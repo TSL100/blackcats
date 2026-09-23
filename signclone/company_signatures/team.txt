@@ -1,0 +1,7 @@
+Account Index: #1
+Sender: "Kim @ Resume Worded" <team@team.resumeworded.com>
+Clean Brand Name: team
+Full Domain: team.resumeworded.com
+========================================
+
+Does your internship at DEPI really show the attacker techniques you learned in action, or could we tie it more to your alert triage experience? With your BTL1 cert, are the projects coming across as advanced enough for junior roles?

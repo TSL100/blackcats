@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="/images/blackcat.svg" type="image/svg+xml">
+<link rel="icon" href="/images/blackcat.svg" type="image/svg+xml">
+<title>Black Cat &middot; API Documentation</title>
+<style>
+  :root {
+    --bc-bg-0: #0b132b; --bc-bg-1: #1c2541;
+    --bc-surface: #16213f; --bc-border: rgba(76, 201, 240, 0.16);
+    --bc-accent: #4cc9f0; --bc-violet: #7209b7; --bc-violet-soft: #9d4edd;
+    --bc-text: #f1f5f9; --bc-muted: #94a3b8;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; color: var(--bc-text);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: radial-gradient(1200px 500px at 85% -5%, rgba(114, 9, 183, 0.28), transparent 60%),
+      radial-gradient(1000px 480px at 10% 0%, rgba(76, 201, 240, 0.14), transparent 55%),
+      linear-gradient(160deg, var(--bc-bg-0) 0%, var(--bc-bg-1) 100%);
+    background-attachment: fixed; min-height: 100vh;
+  }
+  a { color: var(--bc-accent); text-decoration: none; }
+  a:hover { color: #8fdcf7; }
+  .bc-brandbar {
+    position: sticky; top: 0; z-index: 50;
+    background: linear-gradient(90deg, #070d20 0%, #141d3a 55%, #1c0f33 100%);
+    border-bottom: 1px solid var(--bc-border);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+  }
+  .bc-brandbar-inner {
+    max-width: 1180px; margin: 0 auto; padding: 10px 24px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .bc-cat-logo {
+    width: 34px; height: 34px; border-radius: 50%; background: #05070f;
+    border: 1px solid rgba(76, 201, 240, 0.45);
+    box-shadow: 0 0 12px rgba(76, 201, 240, 0.55); padding: 2px;
+  }
+  .bc-brand-name { font-weight: 800; font-size: 18px; }
+  .bc-brand-name strong {
+    background: linear-gradient(90deg, var(--bc-accent), var(--bc-violet-soft));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .bc-brand-sub { color: var(--bc-muted); font-size: 13px; }
+  .bc-back {
+    margin-left: auto; color: var(--bc-muted); font-size: 13px; font-weight: 700;
+    border: 1px solid var(--bc-border); padding: 8px 14px; border-radius: 12px;
+    white-space: nowrap;
+  }
+  .bc-back:hover { color: #fff; border-color: var(--bc-accent); box-shadow: 0 0 12px rgba(76, 201, 240, 0.55); }
+  .bc-layout { max-width: 1180px; margin: 0 auto; padding: 28px 24px 72px; display: flex; gap: 24px; align-items: flex-start; }
+  .bc-side {
+    flex: 0 0 240px; position: sticky; top: 76px;
+    background: linear-gradient(180deg, var(--bc-surface) 0%, #121b36 100%);
+    border: 1px solid var(--bc-border); border-radius: 16px; padding: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    max-height: calc(100vh - 100px); overflow-y: auto;
+  }
+  .bc-side a {
+    display: block; color: var(--bc-muted); font-size: 13.5px; font-weight: 600;
+    padding: 8px 12px; border-radius: 12px; border: 1px solid transparent;
+  }
+  .bc-side a:hover { color: #fff; background: rgba(76, 201, 240, 0.1); }
+  .bc-side a.active {
+    color: #06121f; background: linear-gradient(90deg, var(--bc-accent), #7bdff5);
+    box-shadow: 0 0 12px rgba(76, 201, 240, 0.55);
+  }
+  .bc-content { flex: 1 1 auto; min-width: 0; }
+  .bc-hero {
+    background: linear-gradient(180deg, rgba(28, 37, 65, 0.96), rgba(11, 19, 43, 0.98));
+    border: 1px solid rgba(76, 201, 240, 0.28); border-radius: 16px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.6), 0 0 14px rgba(114, 9, 183, 0.65);
+    padding: 30px 30px 26px; margin-bottom: 22px; position: relative; overflow: hidden;
+  }
+  .bc-hero::before {
+    content: ""; position: absolute; inset: 0 0 auto 0; height: 3px;
+    background: linear-gradient(90deg, var(--bc-accent), var(--bc-violet), var(--bc-accent));
+  }
+  .bc-hero h1 { margin: 0 0 6px; font-size: 30px; }
+  .bc-hero h1 span {
+    background: linear-gradient(90deg, #fff, var(--bc-accent));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .bc-hero p { margin: 0; color: var(--bc-muted); font-size: 15px; }
+  section.bc-card {
+    background: linear-gradient(180deg, var(--bc-surface) 0%, #121b36 100%);
+    border: 1px solid var(--bc-border); border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    padding: 22px 24px; margin-bottom: 18px; scroll-margin-top: 76px;
+  }
+  section.bc-card h2 { margin: 0 0 10px; font-size: 20px; color: var(--bc-accent); }
+  section.bc-card h3 { margin: 18px 0 6px; font-size: 16px; color: #fff; }
+  section.bc-card p, section.bc-card li { color: #c6cfe0; font-size: 14.5px; line-height: 1.65; }
+  section.bc-card ol, section.bc-card ul { padding-left: 20px; margin: 8px 0; }
+  section.bc-card li { margin-bottom: 6px; }
+  section.bc-card b, section.bc-card strong { color: #fff; }
+  code {
+    background: rgba(76, 201, 240, 0.12); color: #aee7ff;
+    padding: 1px 7px; border-radius: 8px; font-size: 13px;
+    font-family: Consolas, Menlo, monospace;
+  }
+  pre {
+    background: #0f1419; border: 1px solid rgba(76, 201, 240, 0.25);
+    border-radius: 12px; padding: 14px 16px; overflow-x: auto;
+    color: #c9d1d9; font-size: 13px; line-height: 1.6;
+  }
+  pre .k { color: #7ee787; }
+  .bc-tip {
+    border-radius: 12px; padding: 10px 14px; margin: 12px 0 4px; font-size: 14px;
+    background: rgba(76, 201, 240, 0.1); border: 1px solid rgba(76, 201, 240, 0.35); color: #d9f4ff;
+  }
+  .bc-warn {
+    border-radius: 12px; padding: 10px 14px; margin: 12px 0 4px; font-size: 14px;
+    background: rgba(243, 156, 18, 0.12); border: 1px solid rgba(243, 156, 18, 0.4); color: #ffe3ae;
+  }
+  table.bc-table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin-top: 8px; }
+  table.bc-table th {
+    text-align: left; color: var(--bc-accent); font-size: 12px; text-transform: uppercase;
+    letter-spacing: 0.04em; padding: 8px 10px; border-bottom: 2px solid rgba(76, 201, 240, 0.35);
+    white-space: nowrap;
+  }
+  table.bc-table td { padding: 8px 10px; border-bottom: 1px solid rgba(148, 163, 184, 0.14); color: var(--bc-text); vertical-align: top; }
+  table.bc-table td.m { white-space: nowrap; font-weight: 700; }
+  .m-get { color: #7ee787; } .m-post { color: #aee7ff; } .m-put { color: #ffd166; } .m-del { color: #ff9d94; }
+  @media (max-width: 860px) {
+    .bc-layout { flex-direction: column; }
+    .bc-side {
+      position: fixed; top: 0; left: 0; bottom: 0; z-index: 100;
+      width: min(300px, 85vw); margin: 0; border-radius: 0 16px 16px 0;
+      max-height: none; transform: translateX(-105%);
+      transition: transform 0.25s ease;
+    }
+    body.side-open .bc-side { transform: none; }
+    body.side-open .bc-backdrop {
+      display: block; position: fixed; inset: 0; z-index: 90;
+      background: rgba(3, 6, 16, 0.6);
+    }
+    body.side-open { overflow: hidden; }
+  }
+  .bc-menu-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; flex: 0 0 auto;
+    border-radius: 12px; border: 1px solid var(--bc-border);
+    background: rgba(76, 201, 240, 0.08); color: var(--bc-text); cursor: pointer;
+  }
+  .bc-menu-btn:hover { border-color: var(--bc-accent); box-shadow: 0 0 12px rgba(76, 201, 240, 0.55); }
+  .bc-menu-btn svg { width: 18px; height: 18px; }
+  body.side-collapsed .bc-side { display: none; }
+  .bc-backdrop { display: none; }
+</style>
+</head>
+<body>
+<header class="bc-brandbar">
+  <div class="bc-brandbar-inner">
+    <button class="bc-menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="true">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="2" y1="4.5" x2="18" y2="4.5"/><line x1="2" y1="10" x2="18" y2="10"/><line x1="2" y1="15.5" x2="18" y2="15.5"/></svg>
+    </button>
+    <img class="bc-cat-logo" src="/images/blackcat.svg" alt="Black Cat logo">
+    <span class="bc-brand-name"><strong>Black Cat</strong></span>
+    <span class="bc-brand-sub">API Documentation</span>
+    <a class="bc-back" href="/">&larr; Back to Dashboard</a>
+  </div>
+</header>
+<div class="bc-backdrop" id="sideBackdrop"></div>
+<div class="bc-layout">
+  <nav class="bc-side" id="apiNav">
+    <a href="#introduction" class="active">Introduction</a>
+    <a href="#use-cases">Use Cases</a>
+    <a href="#authorization">Authorization</a>
+    <a href="#responses">Responses</a>
+    <a href="#status-codes">Status Codes</a>
+    <a href="#campaigns">Campaigns</a>
+    <a href="#groups">Users &amp; Groups</a>
+    <a href="#templates">Templates</a>
+    <a href="#profiles">Sending Profiles</a>
+    <a href="#users-admin">Users &amp; Webhooks</a>
+    <a href="#utils">Utilities &amp; Import</a>
+    <a href="#examples">Examples</a>
+    <a href="#blackcat-notes">Black Cat Notes</a>
+  </nav>
+  <div class="bc-content">
+    <div class="bc-hero">
+      <h1><span>Black Cat</span> API Documentation</h1>
+      <p>Automate this tool over its JSON API: pull reports, launch campaigns and manage every object without opening the GUI.</p>
+    </div>
+
+    <section class="bc-card" id="introduction">
+      <h2>Introduction</h2>
+      <p>Black Cat exposes the full management API under <code>/api</code> on the admin listener (default <code>https://127.0.0.1:3333/api</code>). Everything the GUI does &mdash; campaigns, groups, templates, profiles, users &mdash; is a JSON call you can script.</p>
+      <div class="bc-tip">Is Python your language of choice? There is a community Python API client that wraps these endpoints and makes automation a piece of cake.</div>
+    </section>
+
+    <section class="bc-card" id="use-cases">
+      <h2>Use Cases</h2>
+      <ul>
+        <li><b>Custom reporting:</b> pull campaign results as JSON and build reports in Excel or any BI tool.</li>
+        <li><b>Full automation:</b> create templates, groups and campaigns from scripts and run phishing simulations on a schedule.</li>
+        <li><b>Continuous testing:</b> rotate targets and pretexts programmatically across the year.</li>
+      </ul>
+    </section>
+
+    <section class="bc-card" id="authorization">
+      <h2>Authorization</h2>
+      <p>Find your key under <b>System &gt; Account Settings</b> in the GUI. Send it with every request, either as a query parameter or as a bearer token:</p>
+      <pre>curl -k "https://127.0.0.1:3333/api/campaigns/?api_key=YOUR_KEY"
+
+curl -k -H "Authorization: Bearer YOUR_KEY" \
+  https://127.0.0.1:3333/api/campaigns/</pre>
+      <div class="bc-warn">Treat the key like a password. Anyone holding it has the same power as your GUI login. Use HTTPS (the default) so it never travels in clear text.</div>
+    </section>
+
+    <section class="bc-card" id="responses">
+      <h2>Responses</h2>
+      <p>Successful calls return JSON objects (or arrays for collections). Timestamps use <code>YYYY-MM-DDTHH:MM:SSZ</code> format. Failures return an error payload with the matching HTTP status code.</p>
+    </section>
+
+    <section class="bc-card" id="status-codes">
+      <h2>Status Codes</h2>
+      <table class="bc-table">
+        <tr><th>Code</th><th>Meaning</th></tr>
+        <tr><td><code>200 OK</code></td><td>Request succeeded (GET, PUT, DELETE, actions).</td></tr>
+        <tr><td><code>201 Created</code></td><td>Object created (POST).</td></tr>
+        <tr><td><code>400 Bad Request</code></td><td>Malformed JSON or missing required fields.</td></tr>
+        <tr><td><code>401 Unauthorized</code></td><td>Missing or invalid API key.</td></tr>
+        <tr><td><code>403 Forbidden</code></td><td>Valid key, but the account lacks permission (admin-only routes).</td></tr>
+        <tr><td><code>404 Not Found</code></td><td>No object with that id.</td></tr>
+      </table>
+    </section>
+
+    <section class="bc-card" id="campaigns">
+      <h2>Campaigns</h2>
+      <table class="bc-table">
+        <tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+        <tr><td class="m m-get">GET</td><td><code>/api/campaigns/</code></td><td>List campaigns.</td></tr>
+        <tr><td class="m m-post">POST</td><td><code>/api/campaigns/</code></td><td>Create (and launch) a campaign.</td></tr>
+        <tr><td class="m m-get">GET</td><td><code>/api/campaigns/summary</code></td><td>Aggregate stats.</td></tr>
+        <tr><td class="m m-get">GET</td><td><code>/api/campaigns/{id}</code></td><td>Get one campaign.</td></tr>
+        <tr><td class="m m-put">PUT</td><td><code>/api/campaigns/{id}</code></td><td>Update a campaign.</td></tr>
+        <tr><td class="m m-del">DELETE</td><td><code>/api/campaigns/{id}</code></td><td>Delete a campaign.</td></tr>
+        <tr><td class="m m-get">GET</td><td><code>/api/campaigns/{id}/results</code></td><td>Per-target events timeline &mdash; opens, clicks, submissions, captured sessions.</td></tr>
+        <tr><td class="m m-get">GET</td><td><code>/api/campaigns/{id}/summary</code></td><td>Counts per status.</td></tr>
+        <tr><td class="m m-get">GET</td><td><code>/api/campaigns/{id}/complete</code></td><td>Mark a campaign complete.</td></tr>
+        <tr><td class="m m-get">GET</td><td><code>/api/sms_campaigns/</code></td><td>List SMS campaigns (same sub-actions as email campaigns).</td></tr>
+      </table>
+    </section>
+
+    <section class="bc-card" id="groups">
+      <h2>Users &amp; Groups</h2>
+      <table class="bc-table">
+        <tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+        <tr><td class="m m-get">GET</td><td><code>/api/groups/</code></td><td>List target groups.</td></tr>
+        <tr><td class="m m-post">POST</td><td><code>/api/groups/</code></td><td>Create a group with <code>targets</code> (first/last name, email, position).</td></tr>
+        <tr><td class="m m-get">GET</td><td><code>/api/groups/summary</code></td><td>Group stats.</td></tr>
+        <tr><td class="m m-get">GET</td><td><code>/api/groups/{id}</code></td><td>Get one group.</td></tr>
+        <tr><td class="m m-put">PUT</td><td><code>/api/groups/{id}</code></td><td>Update a group.</td></tr>
+        <tr><td class="m m-del">DELETE</td><td><code>/api/groups/{id}</code></td><td>Delete a group.</td></tr>
+        <tr><td class="m m-get">GET</td><td><code>/api/groups/{id}/summary</code></td><td>Stats for one group.</td></tr>
+      </table>
+      <div class="bc-tip">For SMS targets, put the phone number in the <b>email</b> field of each target in an accepted Twilio format.</div>
+    </section>
+
+    <section class="bc-card" id="templates">
+      <h2>Templates</h2>
+      <table class="bc-table">
+        <tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+        <tr><td class="m m-get">GET</td><td><code>/api/templates/</code></td><td>List email/SMS templates.</td></tr>
+        <tr><td class="m m-post">POST</td><td><code>/api/templates/</code></td><td>Create a template (<code>text</code> for SMS, <code>html</code> for mail).</td></tr>
+        <tr><td class="m m-get">GET</td><td><code>/api/templates/{id}</code></td><td>Get one template.</td></tr>
+        <tr><td class="m m-put">PUT</td><td><code>/api/templates/{id}</code></td><td>Update a template.</td></tr>
+        <tr><td class="m m-del">DELETE</td><td><code>/api/templates/{id}</code></td><td>Delete a template.</td></tr>
+      </table>
+    </section>
+
+    <section class="bc-card" id="profiles">
+      <h2>Sending Profiles</h2>
+      <table class="bc-table">
+        <tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+        <tr><td class="m m-get">GET</td><td><code>/api/smtp/</code></td><td>List email sending profiles.</td></tr>
+        <tr><td class="m m-post">POST</td><td><code>/api/smtp/</code></td><td>Create an SMTP profile (host, user, pass, headers).</td></tr>
+        <tr><td class="m m-get">GET</td><td><code>/api/smtp/{id}</code></td><td>Get / update / delete one profile (GET, PUT, DELETE).</td></tr>
+        <tr><td class="m m-get">GET</td><td><code>/api/sms/</code></td><td>List Twilio SMS profiles.</td></tr>
+        <tr><td class="m m-post">POST</td><td><code>/api/sms/</code></td><td>Create an SMS profile (Twilio SID, token, number).</td></tr>
+        <tr><td class="m m-get">GET</td><td><code>/api/sms/{id}</code></td><td>Get / update / delete one SMS profile (GET, PUT, DELETE).</td></tr>
+      </table>
+    </section>
+
+    <section class="bc-card" id="users-admin">
+      <h2>Users &amp; Webhooks (admin)</h2>
+      <p>These routes need an administrator API key:</p>
+      <table class="bc-table">
+        <tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+        <tr><td class="m m-get">GET</td><td><code>/api/users/</code></td><td>List users (POST creates).</td></tr>
+        <tr><td class="m m-get">GET</td><td><code>/api/users/{id}</code></td><td>Get / update / delete one user.</td></tr>
+        <tr><td class="m m-get">GET</td><td><code>/api/webhooks/</code></td><td>List event webhooks.</td></tr>
+        <tr><td class="m m-get">GET</td><td><code>/api/webhooks/{id}/validate</code></td><td>Test-fire a webhook.</td></tr>
+      </table>
+    </section>
+
+    <section class="bc-card" id="utils">
+      <h2>Utilities &amp; Import</h2>
+      <table class="bc-table">
+        <tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+        <tr><td class="m m-post">POST</td><td><code>/api/util/send_test_email</code></td><td>Send a test mail through a profile.</td></tr>
+        <tr><td class="m m-post">POST</td><td><code>/api/import/group</code></td><td>Bulk-import targets (CSV).</td></tr>
+        <tr><td class="m m-post">POST</td><td><code>/api/import/email</code></td><td>Import a raw email as a template.</td></tr>
+        <tr><td class="m m-post">POST</td><td><code>/api/import/site</code></td><td>Import a site as a template.</td></tr>
+        <tr><td class="m m-get">GET</td><td><code>/api/reset</code></td><td>Reset test data (use with care).</td></tr>
+      </table>
+    </section>
+
+    <section class="bc-card" id="examples">
+      <h2>Examples</h2>
+      <h3>List campaigns</h3>
+      <pre>curl -k -H "Authorization: Bearer YOUR_KEY" \
+  https://127.0.0.1:3333/api/campaigns/</pre>
+      <h3>Create a campaign</h3>
+      <pre>{
+  <span class="k">"name"</span>: "Q3 Finance Pretext",
+  <span class="k">"template"</span>: {<span class="k">"name"</span>: "Invoice Lure"},
+  <span class="k">"url"</span>: "https://login.example.com/Ab3x9Q21",
+  <span class="k">"smtp"</span>: {<span class="k">"name"</span>: "Relay"},
+  <span class="k">"groups"</span>: [{<span class="k">"name"</span>: "Finance"}],
+  <span class="k">"launch_date"</span>: "2026-09-20T09:00:00Z"
+}</pre>
+      <h3>Pull results for reporting</h3>
+      <pre>curl -k -H "Authorization: Bearer YOUR_KEY" \
+  https://127.0.0.1:3333/api/campaigns/1/results</pre>
+    </section>
+
+    <section class="bc-card" id="blackcat-notes">
+      <h2>Black Cat Notes</h2>
+      <ul>
+        <li>Set the campaign <code>url</code> to your <b>lure URL</b> (Infrastructure &gt; Lures &gt; get URL), not to the GoPhish landing server &mdash; the phishing server on port 8080 is unused.</li>
+        <li>Proxy captures surface inside <code>/results</code> as <b>Captured Session</b> events with credentials and token counts.</li>
+        <li>The Infrastructure panel (phishlets, domain/SSL, lures, loot) is GUI-only and has no API &mdash; manage it from the dashboard.</li>
+      </ul>
+    </section>
+  </div>
+</div>
+<script>
+(function () {
+    var body = document.body;
+    var btn = document.getElementById('menuBtn');
+    var backdrop = document.getElementById('sideBackdrop');
+    var nav = document.querySelector('.bc-side');
+    var mq = window.matchMedia ? window.matchMedia('(max-width: 860px)') : { matches: false };
+    function isMobile() { return mq.matches; }
+    function setOpen(open) {
+        if (isMobile()) {
+            if (open) body.classList.add('side-open');
+            else body.classList.remove('side-open');
+        } else {
+            if (open) body.classList.remove('side-collapsed');
+            else body.classList.add('side-collapsed');
+            try { localStorage.setItem('bc-api-side', open ? 'open' : 'closed'); } catch (e) {}
+        }
+        if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    function isOpen() {
+        return isMobile() ? body.classList.contains('side-open') : !body.classList.contains('side-collapsed');
+    }
+    if (btn) btn.addEventListener('click', function () { setOpen(!isOpen()); });
+    if (backdrop) backdrop.addEventListener('click', function () { setOpen(false); });
+    document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') setOpen(false); });
+    try {
+        if (!isMobile() && localStorage.getItem('bc-api-side') === 'closed') body.classList.add('side-collapsed');
+    } catch (e) {}
+    var links = nav ? nav.querySelectorAll('a[href^="#"]') : [];
+    function activate(hash) {
+        for (var i = 0; i < links.length; i++) {
+            if (links[i].getAttribute('href') === hash) links[i].classList.add('active');
+            else links[i].classList.remove('active');
+        }
+    }
+    for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener('click', function () {
+            activate(this.getAttribute('href'));
+            if (isMobile()) setOpen(false);
+        });
+    }
+    if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function (entries) {
+            for (var j = 0; j < entries.length; j++) {
+                if (entries[j].isIntersecting) activate('#' + entries[j].target.id);
+            }
+        }, { rootMargin: '-30% 0px -60% 0px' });
+        var secs = document.querySelectorAll('section.bc-card[id]');
+        for (var k = 0; k < secs.length; k++) obs.observe(secs[k]);
+    }
+    activate(window.location.hash || (links[0] && links[0].getAttribute('href')));
+})();
+</script>
+</body>
+</html>

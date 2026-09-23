@@ -1,0 +1,12 @@
+Account Index: #3
+Sender: "Splunk, Inc" <no-reply@idp.login.splunk.com>
+Clean Brand Name: idp
+Full Domain: idp.login.splunk.com
+========================================
+
+click here
+. You are receiving this email because the content is providing you with important information on Splunk services or products that you have engaged with.
+To view our Privacy Policy,
+click here
+.
+Splunk Inc. | 270 Brannan St. | San Francisco, CA 94107

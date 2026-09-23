@@ -1,0 +1,7 @@
+Account Index: #3
+Sender: CodeRed <learn@coderedpro.com>
+Clean Brand Name: coderedpro
+Full Domain: coderedpro.com
+========================================
+
+While strong on endpoints, they cannot cover every attack vector, and skilled attackers can bypass defenses or target other areas.

@@ -1,0 +1,7 @@
+Account Index: #3
+Sender: SANS AtRisk <consensussecurityvulnerabilityalert@email.sans.org>
+Clean Brand Name: email
+Full Domain: email.sans.org
+========================================
+
+CVE-2024-4393 - The Social Connect plugin for WordPress up to version 1.2 is vulnerable to authentication bypass due to insufficient verification on the OpenID server during social login, allowing unauthenticated attackers to login as any existing user on the site, including administrators, if they have the email access.

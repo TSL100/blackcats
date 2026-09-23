@@ -1,0 +1,7 @@
+Account Index: #3
+Sender: Medium Daily Digest <noreply@medium.com>
+Clean Brand Name: medium
+Full Domain: medium.com
+========================================
+
+The Solarwinds attack showed that threat actors are increasingly moving to software supply chain attacks on…

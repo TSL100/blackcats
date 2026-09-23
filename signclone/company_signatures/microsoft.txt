@@ -1,0 +1,7 @@
+Account Index: #3
+Sender: Azure DevOps <azuredevops@microsoft.com>
+Clean Brand Name: microsoft
+Full Domain: microsoft.com
+========================================
+
+Thanks for joining us. Here are a couple of great ways to get started:

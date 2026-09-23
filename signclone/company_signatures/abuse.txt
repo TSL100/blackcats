@@ -1,0 +1,12 @@
+Account Index: #3
+Sender: "abuse.ch Login" <auth@abuse.ch>
+Clean Brand Name: abuse
+Full Domain: abuse.ch
+========================================
+
+Linked OAuth Provider
+Dear moaz, you linked the
+Google
+account
+103086686736622377525
+to your abuse.ch account.

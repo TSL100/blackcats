@@ -35,12 +35,21 @@ type AdminServerOption func(*AdminServer)
 
 // AdminServer is an HTTP server that implements the administrative Gophish
 // handlers, including the dashboard and REST API.
+// mount is a sub-application registered under the admin web server.
+type mount struct {
+	prefix  string
+	handler http.Handler
+}
+
+// AdminServer is an HTTP server that implements the administrative Gophish
+// handlers, including the dashboard and REST API.
 type AdminServer struct {
 	server    *http.Server
 	worker    worker.Worker
 	smsworker smsworker.Worker
 	config    config.AdminServer
 	limiter   *ratelimit.PostLimiter
+	mounts    []mount
 }
 
 var defaultTLSConfig = &tls.Config{
@@ -132,6 +141,17 @@ func (as *AdminServer) Shutdown() error {
 	return as.server.Shutdown(ctx)
 }
 
+// WithMount registers an optional sub-application (an http.Handler) under the
+// admin web server at the given prefix (e.g. "/evilginx"). It is used by the
+// unified evilgophish binary to embed additional tooling, like the evilinx
+// panel, behind the same admin login. The route is registered before the
+// static-file catch-all, so it takes precedence over it.
+func WithMount(prefix string, h http.Handler) AdminServerOption {
+	return func(as *AdminServer) {
+		as.mounts = append(as.mounts, mount{prefix: prefix, handler: h})
+	}
+}
+
 // SetupAdminRoutes creates the routes for handling requests to the web interface.
 // This function returns an http.Handler to be used in http.ListenAndServe().
 func (as *AdminServer) registerRoutes() {
@@ -160,6 +180,12 @@ func (as *AdminServer) registerRoutes() {
 		api.WithLimiter(as.limiter),
 	)
 	router.PathPrefix("/api/").Handler(api)
+
+	// Register optional sub-applications (mounted via WithMount) before the
+	// static-file catch-all so their prefixes take precedence.
+	for _, m := range as.mounts {
+		router.PathPrefix(m.prefix).Handler(http.StripPrefix(m.prefix, m.handler))
+	}
 
 	// Setup static file serving
 	router.PathPrefix("/").Handler(http.FileServer(unindexed.Dir("./static/")))

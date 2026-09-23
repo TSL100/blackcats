@@ -1,0 +1,12 @@
+Account Index: #3
+Sender: iCIMS <no-reply@icims.com>
+Clean Brand Name: icims
+Full Domain: icims.com
+========================================
+
+One-time login code from iCIMS
+Please use the following code to verify your identity:
+534422
+Please use the most recent code received when verifying your identity.
+You received this email because you have an account with iCIMS.
+If you did not make this request, please change your password immediately.

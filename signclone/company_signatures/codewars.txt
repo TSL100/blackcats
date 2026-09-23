@@ -1,0 +1,12 @@
+Account Index: #3
+Sender: Codewars <info@codewars.com>
+Clean Brand Name: codewars
+Full Domain: codewars.com
+========================================
+
+Codewars
+Hi moaz1011,
+Welcome to Codewars! We’re so excited to be a part of your coding journey. To begin mastering your chosen programming language(s), please take a moment to confirm your new Codewars account.
+Confirm your account
+Click the button above to confirm your account and start training with your first Kata challenge.
+The Codewars Team

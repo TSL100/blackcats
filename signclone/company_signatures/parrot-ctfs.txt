@@ -1,0 +1,10 @@
+Account Index: #3
+Sender: Parrot CTFs <no-reply@parrot-ctfs.com>
+Clean Brand Name: parrot-ctfs
+Full Domain: parrot-ctfs.com
+========================================
+
+Login Link
+Hello TSL901,
+You requested a login link please click below to login:
+https://parrot-ctfs.com/api/validate-login?token=1gP7MzTKVukO3C20N9RiGWnvrpsx5dFUmjQlDHB8ycwea6AE4f

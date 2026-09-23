@@ -1,51 +1,119 @@
 {{define "nav"}}
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
-                <li>
-                    <a href="/">Dashboard</a>
-                </li>
-                </li>
-                <li>
-                    <a href="/campaigns">Launch Email Campaign</a>
-                </li>
-                <li>
-                    <a href="/sms_campaigns">Launch SMS Campaign</a>
-                </li>
-                <li>
-                    <a href="/groups">Users &amp; Groups</a>
-                </li>
-                <li> <a href="/templates">Email/SMS Templates</a>
-                </li>
-                <li>
-                    <a href="/sending_profiles">Email Sending Profiles</a>
-                </li>
-                <li>
-                    <a href="/sms_sending_profiles">SMS Sending Profiles</a>
-                </li>
-                <li>
-                    <a href="/settings">Account Settings</span></a>
-                </li>
-                {{if .ModifySystem}}
-                <li>
-                    <a href="/users">User Management<span class="nav-badge badge pull-right">Admin</span></a>
-                </li>
-                <li>
-                    <a href="/webhooks">Webhooks<span class="nav-badge badge pull-right">Admin</span></a>
-                </li>
-                {{end}}
-                <li>
-                    <hr>
-                </li>
-                <li>
-                    <a href="https://docs.getgophish.com/user-guide/">User Guide</a>
-                </li>
-                <li>
-                    <a href="https://docs.getgophish.com/api-documentation/">API Documentation</a>
-                </li>
+<!-- Black Cat unified menu: one top-level pill per area, each opening a
+     dropdown, so every destination is one click away with no horizontal
+     scrolling. The sub-panel pages reuse this same structure (see the panel
+     topbar), so there are no duplicate nav buttons anywhere. Dropdowns are
+     vanilla-JS (toggle .open) and never use data-toggle, so Bootstrap's own
+     dropdown plugin can't double-handle them. -->
+<nav class="bc-topnav" aria-label="Primary">
+    <div class="bc-topnav-inner">
+        <a class="bc-nav-link" href="/"><i class="fa fa-dashboard"></i>Dashboard</a>
+        <div class="dropdown bc-drop">
+            <a href="#" class="bc-nav-link bc-drop-toggle" aria-haspopup="true" aria-expanded="false"><i class="fa fa-rocket"></i>Campaigns <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="/campaigns"><i class="fa fa-envelope"></i>Email Campaign</a></li>
+                <li><a href="/sms_campaigns"><i class="fa fa-mobile"></i>SMS Campaign</a></li>
+                <li><a href="/evilginx/spear"><i class="fa fa-crosshairs"></i>Spear Phishing</a></li>
             </ul>
         </div>
+        <div class="dropdown bc-drop">
+            <a href="#" class="bc-nav-link bc-drop-toggle" aria-haspopup="true" aria-expanded="false"><i class="fa fa-archive"></i>Assets <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="/groups"><i class="fa fa-users"></i>Users &amp; Groups</a></li>
+                <li><a href="/templates"><i class="fa fa-file-text-o"></i>Email/SMS Templates</a></li>
+                <li><a href="/sending_profiles"><i class="fa fa-paper-plane-o"></i>Email Sending Profiles</a></li>
+                <li><a href="/sms_sending_profiles"><i class="fa fa-commenting-o"></i>SMS Sending Profiles</a></li>
+            </ul>
+        </div>
+        <div class="dropdown bc-drop">
+            <a href="#" class="bc-nav-link bc-drop-toggle" aria-haspopup="true" aria-expanded="false"><i class="fa fa-server"></i>Infrastructure <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="/evilginx/"><i class="fa fa-home"></i>Overview</a></li>
+                <li><a href="/evilginx/phishlets"><i class="fa fa-th-large"></i>Phishlets</a></li>
+                <li><a href="/evilginx/domain"><i class="fa fa-globe"></i>Domain &amp; SSL</a></li>
+                <li><a href="/evilginx/sessions"><i class="fa fa-trophy"></i>Sessions</a></li>
+                <li><a href="/evilginx/lures"><i class="fa fa-magnet"></i>Lures</a></li>
+            </ul>
+        </div>
+        <div class="dropdown bc-drop">
+            <a href="#" class="bc-nav-link bc-drop-toggle" aria-haspopup="true" aria-expanded="false"><i class="fa fa-gear"></i>System <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="/settings"><i class="fa fa-gear"></i>Account Settings</a></li>
+                {{if .ModifySystem}}
+                <li><a href="/users"><i class="fa fa-user-plus"></i>User Management<span class="bc-nav-badge">Admin</span></a></li>
+                <li><a href="/webhooks"><i class="fa fa-plug"></i>Webhooks<span class="bc-nav-badge">Admin</span></a></li>
+                {{end}}
+            </ul>
+        </div>
+        <a class="bc-nav-link" href="/guide.html"><i class="fa fa-book"></i>User Guide</a>
+        <a class="bc-nav-link" href="/api-docs.html"><i class="fa fa-code"></i>API Docs</a>
     </div>
-</div>
+</nav>
+<script>
+(function () {
+    function norm(p) {
+        if (!p) return '/';
+        if (p.length > 1) p = p.replace(/\/+$/, '');
+        return p || '/';
+    }
+    var inner = document.querySelector('.bc-topnav-inner');
+    if (!inner) return;
+    var path = norm(window.location.pathname);
+    var links = inner.querySelectorAll('a[href]');
+    var best = null, bestLen = -1;
+    for (var i = 0; i < links.length; i++) {
+        var href = norm(links[i].getAttribute('href'));
+        if (!href || href.charAt(0) !== '/') continue;
+        if (href === '/') {
+            if (path === '/' && bestLen < 0) { best = links[i]; bestLen = 0; }
+            continue;
+        }
+        if ((path === href || path.indexOf(href + '/') === 0) && href.length > bestLen) {
+            best = links[i];
+            bestLen = href.length;
+        }
+    }
+    if (best) {
+        best.classList.add('active');
+        var drop = best.closest ? best.closest('.dropdown') : null;
+        if (drop) {
+            var t = drop.querySelector('.bc-drop-toggle');
+            if (t) t.classList.add('active');
+        }
+    }
+    function closeAll(except) {
+        var open = inner.querySelectorAll('.dropdown.open');
+        for (var j = 0; j < open.length; j++) {
+            if (open[j] !== except) {
+                open[j].classList.remove('open');
+                var tg = open[j].querySelector('.bc-drop-toggle');
+                if (tg) tg.setAttribute('aria-expanded', 'false');
+            }
+        }
+    }
+    var toggles = inner.querySelectorAll('.bc-drop-toggle');
+    for (var k = 0; k < toggles.length; k++) {
+        (function (tgl) {
+            tgl.addEventListener('click', function (ev) {
+                ev.preventDefault();
+                var d = tgl.parentElement;
+                var willOpen = !d.classList.contains('open');
+                closeAll(d);
+                if (willOpen) {
+                    d.classList.add('open');
+                    tgl.setAttribute('aria-expanded', 'true');
+                } else {
+                    tgl.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })(toggles[k]);
+    }
+    document.addEventListener('click', function (ev) {
+        if (!ev.target.closest || !ev.target.closest('.bc-drop')) closeAll(null);
+    });
+    document.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Escape') closeAll(null);
+    });
+})();
+</script>
 {{end}}

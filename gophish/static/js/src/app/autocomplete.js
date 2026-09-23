@@ -42,6 +42,16 @@ var TEMPLATE_TAGS = [{
         id: 9,
         name: 'BaseURL',
         description: 'The base URL with the path and rid parameter stripped. Useful for making links to static files.'
+    },
+    {
+        id: 10,
+        name: 'Email',
+        description: 'The recipient\'s email address.'
+    },
+    {
+        id: 11,
+        name: 'QR',
+        description: 'A QR code image linking to the phishing URL.'
     }
 ];
 

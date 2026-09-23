@@ -1,0 +1,17 @@
+# OS
+Thumbs.db
+.DS_Store
+
+# Build artifacts
+*.exe
+gophish/gophish
+evilginx3/evilginx3
+evilfeed/evilfeed
+evilgophish
+
+# Database and logs
+gophish/gophish.db
+*.log
+
+# Local spear enrichment cache (target PII — never commit)
+tools/.spear_cache/

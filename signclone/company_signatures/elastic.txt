@@ -1,0 +1,7 @@
+Account Index: #3
+Sender: The Elastic Team <ecloud@elastic.co>
+Clean Brand Name: elastic
+Full Domain: elastic.co
+========================================
+
+Follow these steps to begin tackling threats:

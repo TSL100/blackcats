@@ -1,0 +1,7 @@
+Account Index: #3
+Sender: Team Splunk <teamsplunk@splunk.com>
+Clean Brand Name: splunk
+Full Domain: splunk.com
+========================================
+
+Thanks again for downloading the Splunk Enterprise trial!

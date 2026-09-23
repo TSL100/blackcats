@@ -1,0 +1,7 @@
+Account Index: #3
+Sender: Hack The Box <noreply@m.hackthebox.eu>
+Clean Brand Name: hackthebox
+Full Domain: m.hackthebox.eu
+========================================
+
+Regards,

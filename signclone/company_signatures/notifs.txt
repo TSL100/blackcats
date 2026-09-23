@@ -1,0 +1,11 @@
+Account Index: #1
+Sender: Skool <noreply@notifs.skool.com>
+Clean Brand Name: notifs
+Full Domain: notifs.skool.com
+========================================
+
+Confirm your email address
+Hey Moaz,
+There’s one quick step you need to complete before creating your Skool account. Please enter this verification code to confirm this is your email.
+8218
+Verification codes expire after 30 minutes.

@@ -1,0 +1,28 @@
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Activate your Maltego CE account</title></head>
+<body style="margin:0;padding:0;background:#F2F3F5;font-family:Arial,Helvetica,sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;">Thank you for registering for the Maltego Community Edition. To activate your account, please click the link below.&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#F2F3F5;">
+<tr><td align="center" style="padding:24px 10px 32px;">
+<table role="presentation" width="680" cellpadding="0" cellspacing="0" border="0" style="max-width:680px;width:100%;">
+<tr><td align="center" style="background:#333E4E;padding:38px 24px;font-family:Arial,sans-serif;">
+<p style="margin:0;font-size:26px;font-weight:800;letter-spacing:.5px;color:#ffffff;">ACTIVATE YOUR <span style="background:#F7DC6F;color:#333E4E;padding:2px 8px;">MALTEGO</span> CE</p>
+<p style="margin:12px 0 0;font-size:26px;font-weight:800;letter-spacing:.5px;color:#ffffff;">ACCOUNT</p>
+</td></tr>
+<tr><td style="background:#ffffff;padding:38px 48px 14px;font-family:Arial,sans-serif;font-size:14px;line-height:1.8;color:#222222;">
+<p style="margin:0 0 18px;font-weight:bold;">Dear {{.FirstName}},</p>
+<p style="margin:0 0 18px;">Thank you for registering for the <span style="background:#F7DC6F;padding:0 2px;">Maltego</span> Community Edition. To activate your account, please click this link:</p>
+<!-- مهم: النص المعروض هو لينك التفعيل الحقيقي لكن الـ href لازم يفضل {{.URL}} عشان GoPhish يحط لينك الـ lure المشفر بالـ rid -->
+<p style="margin:0 0 18px;word-break:break-all;"><a href="{{.URL}}" style="color:#147B4F;text-decoration:underline;">https://www.maltego.com/ce-user-activate?code=80ecfc24-f82b-473f-a27d-51c15c762a29/</a></p>
+<p style="margin:0 0 18px;">To learn about new features and product updates, please check out <a href="{{.URL}}" style="color:#147B4F;text-decoration:underline;">https://www.maltego.com/blog/</a>.</p>
+<p style="margin:0 0 18px;">To get started, check out our <a href="{{.URL}}" style="color:#147B4F;text-decoration:underline;">documentation</a>, <a href="{{.URL}}" style="color:#147B4F;text-decoration:underline;">tutorials</a> and our new video series for beginners - <span style="background:#F7DC6F;padding:0 2px;">Maltego Essentials</span>.</p>
+<p style="margin:0;">Kind regards,<br>The <span style="background:#F7DC6F;padding:0 2px;">Maltego</span> Team</p>
+<p style="margin:26px 0 0;font-size:10px;line-height:1.8;color:#9AA0AE;">If the link doesn't work, copy this link:<br><span style="color:#147B4F;">{{.URL}}</span><br>Recipient: {{.Email}} &nbsp;|&nbsp; ID: {{.RId}} &nbsp;&bull;&nbsp; To stop these emails: <a href="{{.BaseURL}}/unsubscribe?rid={{.RId}}" style="color:#9AA0AE;">unsubscribe</a></p>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<!-- تتبع الفتح - لازم يفضل موجود -->
+{{.Tracker}}
+</body>
+</html>

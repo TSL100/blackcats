@@ -1,0 +1,12 @@
+Account Index: #3
+Sender: Twilio <no-reply@twilio.com>
+Clean Brand Name: twilio
+Full Domain: twilio.com
+========================================
+
+In case you were not trying to access your Twilio Account & are seeing this email, please follow the instructions below:
+Reset your Twilio password.
+Check if any changes were made to your account & user settings. If yes, revert them immediately.
+If you are unable to access your Twilio Account then contact
+Twilio Support
+Twilio, 101 Spear Street, San Francisco, CA 94105.

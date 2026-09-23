@@ -1,0 +1,12 @@
+Account Index: #3
+Sender: "Cisco.com" <no-reply@mail-id.cisco.com>
+Clean Brand Name: mail-id
+Full Domain: mail-id.cisco.com
+========================================
+
+for login, password, and account information.
+Contact support
+for help accessing your account.
+This is an automatically generated message from
+Cisco
+. Replies are not monitored or answered.

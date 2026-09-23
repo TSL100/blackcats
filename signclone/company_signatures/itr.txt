@@ -1,0 +1,7 @@
+Account Index: #3
+Sender: Codecademy <info@itr.info.codecademy.com>
+Clean Brand Name: itr
+Full Domain: itr.info.codecademy.com
+========================================
+
+Thanks for creating an account on Codecademy. Please verify your email address.

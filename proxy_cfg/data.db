@@ -1,0 +1,1904 @@
+*3
+$3
+set
+$13
+sessions:0:id
+$3
+272
+*3
+$3
+set
+$10
+sessions:1
+$377
+{"id":1,"phishlet":"github","landing_url":"https://tsl2.blackyou.dedyn.io/?user_id=FXBNuWJS0rToMghIodjY4eN9","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"c5937d92e9d9282f081d8a533c1ac95fa3771c179582b064eb6a4dc2472da8fd","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789407002,"update_time":1789407002}
+*3
+$3
+set
+$11
+sessions:10
+$498
+{"id":10,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=N4LrjFiz4R9dfPC_GdarYCgv","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"37a8aafc0ca08be817c394ba8d7b7ba91dcf40f1d3eca1e5125908cdc7299da2","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789429830,"update_time":1789429830}
+*3
+$3
+set
+$12
+sessions:100
+$358
+{"id":100,"phishlet":"booking","landing_url":"https://account.bk.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"959171e43cdbb4983c9ec3efe5eaf9db13495ad8cd152dbec0aa5d568bb7805e","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789505128,"update_time":1789505128}
+*3
+$3
+set
+$12
+sessions:101
+$353
+{"id":101,"phishlet":"paypal","landing_url":"https://www.pp.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"ca4cc27bdd2fa7c5b9eda8127ece8b43d357186966ddaf6679c04f4ee8a1ffc4","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789505159,"update_time":1789505159}
+*3
+$3
+set
+$12
+sessions:102
+$500
+{"id":102,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/?user_id=3m97Jole0gSvgXA5QsN4AHsU","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"363179adc2eaa3a25c6a93a38505c8f9b6632f26a3c2277bafcee087a905cc1b","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789506347,"update_time":1789506347}
+*3
+$3
+set
+$12
+sessions:103
+$502
+{"id":103,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/?user_id=WGSojNH40ndi_7YQyk4x7Vd5","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"e1aa5d44be596cea4b1216cbe866fa387183092f48480b8b765f6121801b70f8","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789506442,"update_time":1789506442}
+*3
+$3
+set
+$12
+sessions:104
+$502
+{"id":104,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/?user_id=WGSojNH40ndi_7YQyk4x7Vd5","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"c8bf83309afdcd9036e03bd8a99155e666acca0f2aad92433423a27d9c039243","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789506444,"update_time":1789506444}
+*3
+$3
+set
+$12
+sessions:105
+$502
+{"id":105,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/?user_id=WGSojNH40ndi_7YQyk4x7Vd5","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"cd707aec35e45d40806db57c60392ad7762ccd14a4a4d696cb75b43f00b12b44","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789506444,"update_time":1789506444}
+*3
+$3
+set
+$12
+sessions:106
+$502
+{"id":106,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/?user_id=WGSojNH40ndi_7YQyk4x7Vd5","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"fd4ae3747a9a25c3ae6a53250ef62bd9435e7ddd2893f2728c0c1c8498578d70","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789506444,"update_time":1789506444}
+*3
+$3
+set
+$12
+sessions:107
+$502
+{"id":107,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/?user_id=WGSojNH40ndi_7YQyk4x7Vd5","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"50c08f66b8678a8fb926b095004206a9edeec75693ca536d6949773769198fd2","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789506449,"update_time":1789506449}
+*3
+$3
+set
+$12
+sessions:108
+$502
+{"id":108,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/?user_id=WGSojNH40ndi_7YQyk4x7Vd5","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"aeedb31128829701fa89b0a77a33f262c73dcb7a656054743213fb9890f2728e","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789506476,"update_time":1789506476}
+*3
+$3
+set
+$12
+sessions:109
+$502
+{"id":109,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/?user_id=WGSojNH40ndi_7YQyk4x7Vd5","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"2baa3e403f6e26b08fcb4bcf5e16ca1f57dc0cc8de8cea15abc6764d0d9c4e30","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789506488,"update_time":1789506488}
+*3
+$3
+set
+$11
+sessions:11
+$499
+{"id":11,"phishlet":"instagram","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=TmHT869Z0vKfgIpNfCWCna4a","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"68de86c3bfdd8901c093d68aead143742f2426edb79ea5b0ce8c0185c4287000","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789429947,"update_time":1789429947}
+*3
+$3
+set
+$12
+sessions:110
+$502
+{"id":110,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/?user_id=WGSojNH40ndi_7YQyk4x7Vd5","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"7bb4923458bc6326cd44903ab2e2bbd3c8c738215a63958cf67dec1210ab1e4d","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789506488,"update_time":1789506488}
+*3
+$3
+set
+$12
+sessions:111
+$502
+{"id":111,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/?user_id=WGSojNH40ndi_7YQyk4x7Vd5","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"bfb4a19c86895b9244fd46651946325206d6981598a2c65f40d79191813c3cea","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789506573,"update_time":1789506573}
+*3
+$3
+set
+$12
+sessions:112
+$502
+{"id":112,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/?user_id=qBdwOjIT0sKhJudBzs8th9fO","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"08865628daa334cf04c84af65065ebc7c7fc81278d49fa050961c560ab63d11c","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789506573,"update_time":1789506573}
+*3
+$3
+set
+$12
+sessions:113
+$502
+{"id":113,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/?user_id=qBdwOjIT0sKhJudBzs8th9fO","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"c53a793883944502d9e3e16be2b701c4e7cc0b6fd5f2fe1c7dc4bdd1ca71c06b","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789506586,"update_time":1789506586}
+*3
+$3
+set
+$12
+sessions:114
+$502
+{"id":114,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/?user_id=qBdwOjIT0sKhJudBzs8th9fO","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"f008bbb4d76115db36e0fe9d679d997b0b25366fcc1b30d106d71987d8e5722e","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789506589,"update_time":1789506589}
+*3
+$3
+set
+$12
+sessions:115
+$502
+{"id":115,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/?user_id=qBdwOjIT0sKhJudBzs8th9fO","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"5396c47548d6cee24f8d47c7e146b7790674a5497513d173bf60f00422fe2210","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789506589,"update_time":1789506589}
+*3
+$3
+set
+$12
+sessions:116
+$502
+{"id":116,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/?user_id=qBdwOjIT0sKhJudBzs8th9fO","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"8aa73e0d59af146498bf88c1b7f1b0a3f2706358adea0f5a92638cb71e7a74f0","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789506589,"update_time":1789506589}
+*3
+$3
+set
+$12
+sessions:117
+$502
+{"id":117,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/?user_id=qBdwOjIT0sKhJudBzs8th9fO","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"c3b973e9a1d87820506f1a779dd9cda6c8e9dd0c4b451fd00fec32697a36e72b","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789506592,"update_time":1789506592}
+*3
+$3
+set
+$12
+sessions:118
+$502
+{"id":118,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/?user_id=qBdwOjIT0sKhJudBzs8th9fO","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"983c665f2f3253739eecd52936d11bca21c7ab0967afb86f8afeef3454a8b83a","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789506597,"update_time":1789506597}
+*3
+$3
+set
+$12
+sessions:119
+$656
+{"id":119,"phishlet":"booking","landing_url":"https://account.bk.tsl2.blackyou.dedyn.io/?user_id=4SfhQZvg0qQVonXhvAs8XpjT","username":"ba7aa.mo13579@gmail.com","password":"","custom":{"email":"ba7aa.mo13579@gmail.com","reset_flow":"/__challenge_h78IRKX3kpQxScCExxShBNwRUlb/d8c14d4960ca/48e7ea08c4b0/challenge.js"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"89c85ce0b80b43a8c8ca83663b2c4703fae50ff38019f85f2d21ab89f75a6bd1","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789507368,"update_time":1789507405}
+*3
+$3
+set
+$11
+sessions:12
+$497
+{"id":12,"phishlet":"linkedin","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=SGzyyNVAOBtGVCrJGWSmYdk","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"4f7a71c20f2c3a74490b83bbe7a76b63d4a214514990d618342f437f02ce8019","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789430048,"update_time":1789430048}
+*3
+$3
+set
+$12
+sessions:120
+$505
+{"id":120,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?user_id=CUJYXsRz0lQLjRGgKBHUL8AW","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"1a8301ab7adef63019598c2d89031e876cc7816b415f0231413f854e6d5f1063","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789507474,"update_time":1789507474}
+*3
+$3
+set
+$12
+sessions:121
+$502
+{"id":121,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/?user_id=PbscbDL80sRztlOinRVAJ2Gl","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"20dae3380dbdd976011130f851c3715f2a010c95e3a7665f4acd55352ed50c74","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789507547,"update_time":1789507547}
+*3
+$3
+set
+$12
+sessions:122
+$353
+{"id":122,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"977998df08a3d77a4f0c387c4c1ef2b34f55016df11c796e1c1a59efe153adfa","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789508731,"update_time":1789508731}
+*3
+$3
+set
+$12
+sessions:123
+$353
+{"id":123,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"822831d3a3cdabd7f86f4fb6c58d22954eb61e901cbaaab3b732ee9d7aaf2203","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789508737,"update_time":1789508737}
+*3
+$3
+set
+$12
+sessions:124
+$353
+{"id":124,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"54ab71376037522c5110d1d7470aeaa9aa04f735989ad1bf6210f8dc9061a7d9","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789508942,"update_time":1789508942}
+*3
+$3
+set
+$12
+sessions:125
+$358
+{"id":125,"phishlet":"booking","landing_url":"https://account.bk.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"035c187427515670e6bd266b7fa070309ba490f7e9e0d3ce4ed9ef41345263f7","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789508960,"update_time":1789508960}
+*3
+$3
+set
+$12
+sessions:126
+$358
+{"id":126,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"934b6af42e596faa448fce5bbf9000f3ea7a21db3afa5e03fb3965b197984268","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789509030,"update_time":1789509030}
+*3
+$3
+set
+$12
+sessions:127
+$353
+{"id":127,"phishlet":"paypal","landing_url":"https://www.pp.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"179b193b901faf1b3480042a784510d7d6499c85024e0142480ec94cb4191668","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789509031,"update_time":1789509031}
+*3
+$3
+set
+$12
+sessions:128
+$353
+{"id":128,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"cad0a79fdfe042222e614e0c9eb9f497541a22eb074fef083c070f2d2ca9b432","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789509051,"update_time":1789509051}
+*3
+$3
+set
+$12
+sessions:129
+$362
+{"id":129,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/?auth=2","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"88d15b8dd56cae3359552b1f449b40fce44dfa7084da3f26f4b76a6e56cd85c5","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789509051,"update_time":1789509051}
+*3
+$3
+set
+$11
+sessions:13
+$749
+{"id":13,"phishlet":"linkedin","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=bRUBUjWJ0r6JAJAfbiVDqmGn","username":"","password":"","custom":{"^pin$":"223231"},"body_tokens":{},"http_tokens":{},"tokens":{".www.linkedin.com":{"li_at":{"Name":"li_at","Value":"AQEDAVHSrfIDQEnCAAABoKKiLLAAAAGgxq6wsE4AkdasjGYARBTw6AnD0U2cq4X-XolN6szlviU5hzDGjDuG1lvao-7pnTuhONmtIIzeJgV0VwaDBAQlCCdt-vvBeBSya4e4I4cTXFLGkQL0bBQx_DxM","Path":"","HttpOnly":true}}},"session_id":"8695fbdb5bf4717a49f2d705e878863bc6cf61e62b9e7eb93d60922ef5628b83","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789434623,"update_time":1789434933}
+*3
+$3
+set
+$12
+sessions:130
+$358
+{"id":130,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"809434a967d786302537be941f0a0af8378b427096476638f8621c25e0a298fa","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789509052,"update_time":1789509052}
+*3
+$3
+set
+$12
+sessions:131
+$358
+{"id":131,"phishlet":"booking","landing_url":"https://account.bk.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"1463c8ade7f38de809eb09a959e52a109c7e4b97052ab8103ccd7168abf5b511","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789509053,"update_time":1789509053}
+*3
+$3
+set
+$12
+sessions:132
+$500
+{"id":132,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/?user_id=YbYWOrhT0piHNthUGfgExk4a","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"6b2e0b1cb65acca8dd938860d4f518fb32ed7fe381e479c73e4c3071f5748b3e","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789509338,"update_time":1789509338}
+*3
+$3
+set
+$12
+sessions:133
+$501
+{"id":133,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/?user_id=FnhpUPPKOH_Heft60KjN-Sc","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"62e8276ee9928ac0c9b2cdeab20106e3388d9755b472f42340ef900bbd1245e3","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789509395,"update_time":1789509395}
+*3
+$3
+set
+$12
+sessions:134
+$534
+{"id":134,"phishlet":"facebook","landing_url":"https://www.fb.tsl2.blackyou.dedyn.io/?user_id=wxnbx2YTOE4o4AR_HBKoYxk","username":"","password":"","custom":{"reset_flow":"/recover/initiate/"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"8e9f72d3416be2548325f8c0ca4c56faadc1c0d2370ded5b6da8be5fd54186bf","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789509469,"update_time":1789509645}
+*3
+$3
+set
+$12
+sessions:135
+$504
+{"id":135,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?user_id=y3KbdGhMOF7sdrAKUFYJOCI","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"735d5ac8d785910362ae8a56b2eb2323a2beb0c2343ba0aedbbc225b10fb784c","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789509741,"update_time":1789509741}
+*3
+$3
+set
+$12
+sessions:136
+$502
+{"id":136,"phishlet":"instagram","landing_url":"https://www.ig.tsl2.blackyou.dedyn.io/?user_id=ffNmb5j3OJFacbgPOcyHOvE","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"8fcd4badb86e07742f5c2c2f144ca85f1b8807e6440f2399a5c3cb6c91a88880","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789509751,"update_time":1789509751}
+*3
+$3
+set
+$12
+sessions:137
+$656
+{"id":137,"phishlet":"booking","landing_url":"https://account.bk.tsl2.blackyou.dedyn.io/?user_id=tLoC8BsR0hpni4SF-Qklj3J6","username":"ba7aa.mo13579@gmail.com","password":"","custom":{"email":"ba7aa.mo13579@gmail.com","reset_flow":"/__challenge_h78IRKX3kpQxScCExxShBNwRUlb/d8c14d4960ca/48e7ea08c4b0/challenge.js"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"fa697984df1438b06bbb4bebffdff2987bfb87c24d28d18bab37487dbd4957b0","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789509805,"update_time":1789509809}
+*3
+$3
+set
+$12
+sessions:138
+$500
+{"id":138,"phishlet":"paypal","landing_url":"https://www.pp.tsl2.blackyou.dedyn.io/?user_id=enLahOzX0jQW9Xe7TI01J5v0","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"1fe4f74cb0f68de5fe4336fcbd1d0b3286f7c5c12a48e769ae282fcbb5868dbc","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789509859,"update_time":1789509859}
+*3
+$3
+set
+$12
+sessions:139
+$500
+{"id":139,"phishlet":"reddit","landing_url":"https://www.rd.tsl2.blackyou.dedyn.io/?user_id=GdXfilRS0nj_6wxcGgY7h-nB","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"9aafe0528d0fa6802ef985ee0d282f18041cbea97d077754f7ec62ccb5ad1728","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789509875,"update_time":1789509875}
+*3
+$3
+set
+$11
+sessions:14
+$497
+{"id":14,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=UMdE26HJOIleDJrd2DDvFQc","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"3c3c5dd2d89c470ce136bfdce75854a4d80b559255bb1ebaa9e2772cbf245ccc","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789435010,"update_time":1789435010}
+*3
+$3
+set
+$12
+sessions:140
+$353
+{"id":140,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"630cfa41c6eb09c98460af293a9cf7288139b93126a7d8347d160b82905f6874","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789511226,"update_time":1789511226}
+*3
+$3
+set
+$12
+sessions:141
+$458
+{"id":141,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"f546e837c097ce9e17a06abb035df0a506b807521d964fc3fb46667f5cd309e7","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789512063,"update_time":1789512063}
+*3
+$3
+set
+$12
+sessions:142
+$458
+{"id":142,"phishlet":"booking","landing_url":"https://account.bk.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"7ef39eb5e40d15168bc4dcffc71e6ffc311c1eda5831998639018b0c8e57dccf","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789512066,"update_time":1789512066}
+*3
+$3
+set
+$12
+sessions:143
+$453
+{"id":143,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"70c430e8957c07b4523d0309e9db5188fd75da96f21a94cc099ef78e2079f5f7","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789512142,"update_time":1789512142}
+*3
+$3
+set
+$12
+sessions:144
+$455
+{"id":144,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"5122e5b874b2fe3d34881cb9b9f38daa113ec4435e07475b1492ffe51f7a0ca7","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789512145,"update_time":1789512145}
+*3
+$3
+set
+$12
+sessions:145
+$458
+{"id":145,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"749352d586e30a976baa71bb794817d91ffe976fa5b8fb857e34a86611aec699","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789512147,"update_time":1789512147}
+*3
+$3
+set
+$12
+sessions:146
+$458
+{"id":146,"phishlet":"booking","landing_url":"https://account.bk.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"87ce3e406911bdde9b55a45465f3534363fce2d313fad752d845536eda76fac8","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789512148,"update_time":1789512148}
+*3
+$3
+set
+$12
+sessions:147
+$453
+{"id":147,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"77b358167568b85f9b68902127054f5edb5e837e991d956e45c3a75a694caf4c","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789513086,"update_time":1789513086}
+*3
+$3
+set
+$12
+sessions:148
+$455
+{"id":148,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"635f4193b234b7aed3bb9fd8c885bdb1335890a32736c973d28eb46a38d4ae29","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789513088,"update_time":1789513088}
+*3
+$3
+set
+$12
+sessions:149
+$458
+{"id":149,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"359605dc5156a59e2877a05c2aa3f21bcdeefd66db414ea0b0671c44fe90e14e","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789513091,"update_time":1789513091}
+*3
+$3
+set
+$11
+sessions:15
+$498
+{"id":15,"phishlet":"instagram","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=Xhb8xG3BODm33BkIbNkw2N0","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"6d6c7b93ed6c83b9d3ab2ac42968c54bff8d04a5d82a8ade270ae2c21b592f0b","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789435108,"update_time":1789435108}
+*3
+$3
+set
+$12
+sessions:150
+$458
+{"id":150,"phishlet":"booking","landing_url":"https://account.bk.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"2961c4a2a575579dd834321fe1c94032b3d6224ba9e486346ff167561a68fa8a","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789513092,"update_time":1789513092}
+*3
+$3
+set
+$12
+sessions:151
+$453
+{"id":151,"phishlet":"paypal","landing_url":"https://www.pp.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"ef33239d99dcfde676896d1603ba1d9003e3aab56e4ad4c5aa86cf181eb6551b","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789513287,"update_time":1789513287}
+*3
+$3
+set
+$12
+sessions:152
+$500
+{"id":152,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/?user_id=mEo9hiEM0ljzS3tOj5lubFUb","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"c3325138fc65f4229835dc5ab61531d54ba88519b60442c6d7609a858f9f2406","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789513901,"update_time":1789513901}
+*3
+$3
+set
+$12
+sessions:153
+$470
+{"id":153,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/?user_id=probe123","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"f05125d9b791015ea6b70cb7ef711173f167ebb1fb19f8d6e969081c8ba3c500","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789514801,"update_time":1789514801}
+*3
+$3
+set
+$12
+sessions:154
+$470
+{"id":154,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/?user_id=probe456","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"7ba80cf85e4c6f02c0df2c939436f035589e1f8978ec2a93aaa030292e79441d","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789515224,"update_time":1789515224}
+*3
+$3
+set
+$12
+sessions:155
+$556
+{"id":155,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/?user_id=ZQthMw8W0mFBP62okyFO8a_q","username":"ba7aa.mo13579@gmail.com","password":"","custom":{"email":"ba7aa.mo13579@gmail.com"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"bc0493f1e77c14e35bf04e830c6f65b07d0ea423d0a935c556538f5804e110cc","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789515344,"update_time":1789515357}
+*3
+$3
+set
+$12
+sessions:156
+$353
+{"id":156,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"4b1821732b5a54be8dc0618952a29f02f17a7497a7286dd528dfe8224ea881bf","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789515738,"update_time":1789515738}
+*3
+$3
+set
+$12
+sessions:157
+$499
+{"id":157,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/?user_id=LlD4YDFROHhFBnZM8rqjJRY","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"51b3b6c844925cc56e11f3d24777cd50f0dadfc83daef9e894ab440678574581","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789516088,"update_time":1789516088}
+*3
+$3
+set
+$12
+sessions:158
+$499
+{"id":158,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/?user_id=J3PuamcHOKramFzlk4sGhi4","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"568bb70f774f28ca70b419ea1ba7860e2e1e683f21b548b0fbac7a8f753173b7","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789517018,"update_time":1789517018}
+*3
+$3
+set
+$12
+sessions:159
+$499
+{"id":159,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/?user_id=D2OtmfPwOFvZ9yNlVdI4A_U","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"059ca231bb432cc9f3af7395f3f7e3b961a465275201cdd7965d3ed62d005a90","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789544677,"update_time":1789544677}
+*3
+$3
+set
+$11
+sessions:16
+$498
+{"id":16,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=cPs2kO1B0gTdo5inkekwOjqa","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"0c780ad02673f149d723d2a91f18e26565ca4714ff5eb2269e6142b1b36861a9","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789436263,"update_time":1789436263}
+*3
+$3
+set
+$12
+sessions:160
+$501
+{"id":160,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/?user_id=c24hH2xYOI6t4pPU5mhmQ2Q","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"041c14506e40849654a43891ae32d63e93b4eaf034b55509b47e42e2dbf34143","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789544756,"update_time":1789544756}
+*3
+$3
+set
+$12
+sessions:161
+$1004
+{"id":161,"phishlet":"linkedin","landing_url":"https://www.li.tsl2.blackyou.dedyn.io/?user_id=shmKWbkE0qWQqosKximpbS_d","username":"ba7aa.mo13579@gmail.com","password":"","custom":{"^pin$":"588081","email":"ba7aa.mo13579@gmail.com","new_password":"Open_3320","reset_code":"588081","reset_email":"AgE2TCT7cws0JAAAAaCpOZcE-4QAOyTuOTkQ_5lHZ5L492IS03ga-n2XJDSvcvTVjzqUkmRL18v3","reset_flow":"/checkpoint/rp/password-reset-submit"},"body_tokens":{},"http_tokens":{},"tokens":{".www.linkedin.com":{"li_at":{"Name":"li_at","Value":"AQEDAVHSrfICbITCAAABoKk3dJ8AAAGgzUP4n1YAbUk_7DJrKVa4HS0o9wE9BO-ymLf25lNkyZ6IMBb6E1F1x0AwqDbfKWt4Cdch2qp22oI8LaCzUFEy-0F9gQ6hvSK8lLDt4rj6Fa_36777jQxWLpUj","Path":"","HttpOnly":true}}},"session_id":"d3302b74f943801076758605e06b38ec509070274a205aa13b142ead61c3b89e","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789545301,"update_time":1789545601}
+*3
+$3
+set
+$12
+sessions:162
+$500
+{"id":162,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/?user_id=OaekBRF10s_yJU-0tPzQNhL3","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"472fdad188a9a097a94d3703b401a7ab48f20484d7dce1b7ba35e5dbcb04fc1a","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789548092,"update_time":1789548092}
+*3
+$3
+set
+$12
+sessions:163
+$500
+{"id":163,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/?user_id=yIGF5ejn0rNODzuFZ5J-m-ih","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"d65616e41dbb376077f83b08ae799335af616cb4d02871f4eff4ef4090d6e7a9","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789548801,"update_time":1789548801}
+*3
+$3
+set
+$12
+sessions:164
+$500
+{"id":164,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/?user_id=yIGF5ejn0rNODzuFZ5J-m-ih","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"2128e6ff0e89fb99f254dccb8d4ec232a19ade606841e0f1a4cdfb807c9f2f6a","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789548812,"update_time":1789548812}
+*3
+$3
+set
+$12
+sessions:165
+$500
+{"id":165,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/?user_id=yTizgunt0myuFi_1_kDQvNV_","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"0ed6204744e9adac825247655d490b8d7fab8960365f38aee2c0a76b2da842e6","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789550817,"update_time":1789550817}
+*3
+$3
+set
+$12
+sessions:166
+$500
+{"id":166,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/?user_id=lTFk4fJC0khx3iU76WYxtNf7","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"f376f988331a51492fc4a4d3785f65352aeb3525f6bce8a1fc2e4c00df12fa40","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789551509,"update_time":1789551509}
+*3
+$3
+set
+$12
+sessions:167
+$507
+{"id":167,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=Xp3rW1980pqGuOiMwKgP4AYZ","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"ab4b3ebf2eaa4301ce15b7a1f8a74e98eb6dad80974c4b3ec46a289346e18f3e","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789554774,"update_time":1789554774}
+*3
+$3
+set
+$12
+sessions:168
+$507
+{"id":168,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=Xp3rW1980pqGuOiMwKgP4AYZ","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"34cf4ef3e5647564a590b3a671f7abe47b5eb01d5d6c514f2f6439ce0b44ba54","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789554781,"update_time":1789554781}
+*3
+$3
+set
+$12
+sessions:169
+$360
+{"id":169,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"327015401059e71b98d37d606d28a0d976d5bc121ef20af662a2351dc3776d2b","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789555305,"update_time":1789555305}
+*3
+$3
+set
+$11
+sessions:17
+$498
+{"id":17,"phishlet":"linkedin","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=cPs2kO1B0gTdo5inkekwOjqa","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"95d7e78eb5bad292464c9f5d5c5c18e6c8f56cdd307c4549c733decb5aa43bbc","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789436275,"update_time":1789436275}
+*3
+$3
+set
+$12
+sessions:170
+$360
+{"id":170,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"3efb67ac00ebab6e53b1a4407643e85574194d0cec3a2ece2b72d2c6542b0df3","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789558083,"update_time":1789558083}
+*3
+$3
+set
+$12
+sessions:171
+$360
+{"id":171,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"be4ac9d3a89391842a5728690e1ebbec50b71691dc667a469986b9c9af5728e9","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789558101,"update_time":1789558101}
+*3
+$3
+set
+$12
+sessions:172
+$360
+{"id":172,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"1957f77ffe8d9c239fbc809035afbe516d75445172418062362c670ff5ef16a5","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789558471,"update_time":1789558471}
+*3
+$3
+set
+$12
+sessions:173
+$360
+{"id":173,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"66d1fff89133061d230dad08cfc59a52aec08fd39c98c3018ab816f8962e1799","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789558536,"update_time":1789558536}
+*3
+$3
+set
+$12
+sessions:174
+$360
+{"id":174,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"f6b344f855cfbaa641df94513211c6e2ebc6883f056feac700166d182cc7cfc0","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789559153,"update_time":1789559153}
+*3
+$3
+set
+$12
+sessions:175
+$507
+{"id":175,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=LOklC2Mq0g1f2-I2QnJ6RGwl","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"ebfbb351b9873bf5b9c3f4724b6ad7a11476c1c56b4d1c5a2355619e838c8326","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789559449,"update_time":1789559449}
+*3
+$3
+set
+$12
+sessions:176
+$360
+{"id":176,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"0bfa03ede8798da200d261d9400e50628a2b26d9d6dd56d1c5d7c8dd60631209","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789560008,"update_time":1789560008}
+*3
+$3
+set
+$12
+sessions:177
+$360
+{"id":177,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"785f6e85b45af610a3a0fb49226132df53df220d97d8c1a72d1be9d6abed765c","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789560273,"update_time":1789560273}
+*3
+$3
+set
+$12
+sessions:178
+$360
+{"id":178,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"fd4b77a3e9a7d8793ae8a11f2dec8e819f862138c461015385523a9883a7d8f3","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789561019,"update_time":1789561019}
+*3
+$3
+set
+$12
+sessions:179
+$360
+{"id":179,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"87c8c523a9f2484a3a2c6c4d8692a89b2af44fd3deee5aa7660d6023d14586e7","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789561305,"update_time":1789561305}
+*3
+$3
+set
+$11
+sessions:18
+$466
+{"id":18,"phishlet":"instagram","landing_url":"https://www.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"a9e692c83785368e94441bcf8e20aa10aa9ac40987e432002b4bb01301c3b6f7","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789436357,"update_time":1789436357}
+*3
+$3
+set
+$12
+sessions:180
+$360
+{"id":180,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"024aa8f90bf04f52e02e1d7f1900037ce0942fdf8a3aed408f505e294a9563d4","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789561690,"update_time":1789561690}
+*3
+$3
+set
+$12
+sessions:181
+$360
+{"id":181,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"d2956bdefaa03a839e8b8becd5afdcb33e4aa3ef18b7f3e97e7538b78a91dda1","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789561834,"update_time":1789561834}
+*3
+$3
+set
+$12
+sessions:182
+$360
+{"id":182,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"c0749d1b9e9657cb0aa9d25c8351d52ab63acd58c6f9d6a89979a5941cf71a8a","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789561981,"update_time":1789561981}
+*3
+$3
+set
+$12
+sessions:183
+$360
+{"id":183,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"87cb41fb4c2e02d3bdf0d62ae715bf3de1a95a8e5519ca1697e720bf3e52887f","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789562176,"update_time":1789562176}
+*3
+$3
+set
+$12
+sessions:184
+$360
+{"id":184,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"6fdc525559397bd263e5485b86191c7e25ba45c5efa3e542d6f628462d7ac1c4","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789562771,"update_time":1789562771}
+*3
+$3
+set
+$12
+sessions:185
+$360
+{"id":185,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"dc9274ceb7fa64a516d1f718deed863281b2e4084c5191e9cf84539c35074746","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789563168,"update_time":1789563168}
+*3
+$3
+set
+$12
+sessions:186
+$360
+{"id":186,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"3dae303a1dc39433a3664d4528ce62b5f7c236c20636cd6e6f60be3464751365","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789566533,"update_time":1789566533}
+*3
+$3
+set
+$12
+sessions:187
+$360
+{"id":187,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"2c4a40c371c4954841326615b91a5a90ce166c26552b73e915d6e043d89526f6","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789567439,"update_time":1789567439}
+*3
+$3
+set
+$12
+sessions:188
+$507
+{"id":188,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=IA6xixIr0i46KY4WoPhwt5d_","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"a825579871b098d1cccc3c99cc4ef92acc7bf3efcb23181d0ac2e187a1bdf5a4","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789569069,"update_time":1789569069}
+*3
+$3
+set
+$12
+sessions:189
+$360
+{"id":189,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"8badb80228e328b5db9a79ec27ea8d953b51bdcc115dc8dcce36f6ac7666b944","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789569915,"update_time":1789569915}
+*3
+$3
+set
+$11
+sessions:19
+$465
+{"id":19,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"6b9442fd59c0f3d90b7d7fc0188477ba7a893e7c220aee70c9db72714f8b6178","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789436357,"update_time":1789436357}
+*3
+$3
+set
+$12
+sessions:190
+$360
+{"id":190,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"be45ac4b2190a26d5c030fa5ce5e3a6123141b58958330a41e2d7aaa569eca79","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789570250,"update_time":1789570250}
+*3
+$3
+set
+$12
+sessions:191
+$360
+{"id":191,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"c0b3d364bfbe240a10a683530384b219a1f91d23c3344455765408e4a20ba5bf","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789570557,"update_time":1789570557}
+*3
+$3
+set
+$12
+sessions:192
+$360
+{"id":192,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"cc34fa4606b3e05108a72fddaae96b9f3b3dbf514c882ec4052d22166c79d9cf","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789570859,"update_time":1789570859}
+*3
+$3
+set
+$12
+sessions:193
+$360
+{"id":193,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"01ec65c65f5781bae43b4e12b0ff5dc4c74d09b82173cdeb22f6b238e9d7326e","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789571572,"update_time":1789571572}
+*3
+$3
+set
+$12
+sessions:194
+$360
+{"id":194,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"8703a34db0165ca32c65a7b808a93e3ea8f005d9caac4cc6f72eff82e5337ff6","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789572027,"update_time":1789572027}
+*3
+$3
+set
+$12
+sessions:195
+$360
+{"id":195,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"931d136680068c05d0a24a96626f433341958ba4f1ca5bd5ba95ec63d8786b0e","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789573216,"update_time":1789573216}
+*3
+$3
+set
+$12
+sessions:196
+$360
+{"id":196,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"c92046c0d9b9e31ed9b986d5e9fcd489ca4b72c44dd3d0b74fc0b4a5ac5a2587","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789573230,"update_time":1789573230}
+*3
+$3
+set
+$12
+sessions:197
+$611
+{"id":197,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=FcUwfmwe0kDoJkCLjiCzsnXz","username":"ba7aa.mo13579@gmail.com","password":"Iam bad Omen","custom":{"reset_flow":"/shared/5/images/block_verify_3b89380c0d33cf6379b9.png"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"87f2ae2cc0e1cdd3c4535d4237d9bc3141b21e589a5a487f701662b8791e7dc5","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789573616,"update_time":1789573757}
+*3
+$3
+set
+$12
+sessions:198
+$556
+{"id":198,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/?user_id=ngOXcYwe0m577rY8VvkbWTW_","username":"ba7aa.mo13579@gmail.com","password":"","custom":{"email":"ba7aa.mo13579@gmail.com"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"fb776abbd9ceb67cc1560924125d2bcd9e3af7c4a650ceb27ec381f5363f08bb","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789574059,"update_time":1789574073}
+*3
+$3
+set
+$12
+sessions:199
+$505
+{"id":199,"phishlet":"booking","landing_url":"https://account.bk.tsl2.blackyou.dedyn.io/?user_id=Yz1k5Ga70j5YJjUi98O6I8K2","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"b2cda811c320c9a13b2228daa0ae9596ece8f6b07d010a864365258f85a2d0db","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789577324,"update_time":1789577324}
+*3
+$3
+set
+$10
+sessions:2
+$377
+{"id":2,"phishlet":"github","landing_url":"https://tsl2.blackyou.dedyn.io/?user_id=FXBNuWJS0rToMghIodjY4eN9","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"c037c049a8e16edde2c514797d93adc2b3e0f7a7f3a628df2a2cef9838c47315","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789407086,"update_time":1789407086}
+*3
+$3
+set
+$11
+sessions:20
+$498
+{"id":20,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=coioNFgO0i3mvvVYofCoPjB6","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"b7f70ec2f430e86385f174691ca8238e59e5dccef816e57e7dd5be481c489c8e","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789436476,"update_time":1789436476}
+*3
+$3
+set
+$12
+sessions:200
+$505
+{"id":200,"phishlet":"booking","landing_url":"https://account.bk.tsl2.blackyou.dedyn.io/?user_id=Yz1k5Ga70j5YJjUi98O6I8K2","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"b127d9f36b76a3c8dce444da37b4d952ca3cbab6962591079c7e89d962ce4991","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789577350,"update_time":1789577350}
+*3
+$3
+set
+$12
+sessions:201
+$496
+{"id":201,"phishlet":"github","landing_url":"https://gh.tsl2.blackyou.dedyn.io/?user_id=cvBEXSe50sBJaQSvJllsE642","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"5ac654469403319c97439f4fe43293e3751313fbdac0dfa5a82d724de648cef6","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789577408,"update_time":1789577408}
+*3
+$3
+set
+$12
+sessions:202
+$558
+{"id":202,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/?user_id=0UEbc8wh0hAzmnqs-5URwaDk","username":"ba7aa.mo13579@gmail.com","password":"","custom":{"email":"ba7aa.mo13579@gmail.com"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"296895659153c972edff49081e9a9a104977486886477d1c9f24b6aab4a8e7ea","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789577476,"update_time":1789577496}
+*3
+$3
+set
+$12
+sessions:203
+$505
+{"id":203,"phishlet":"booking","landing_url":"https://account.bk.tsl2.blackyou.dedyn.io/?user_id=Yz1k5Ga70j5YJjUi98O6I8K2","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"aab31bd00116bde6c05bc0ea0f54e8ae92cd00a7d5eef08bb7559e3996fca23b","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789577528,"update_time":1789577528}
+*3
+$3
+set
+$12
+sessions:204
+$507
+{"id":204,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=qYXFgRKd0kIi15NBr4p9zTmG","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"0404a0091927942412a503697d869141e857b79a3efe7bc66f533bf877d757ec","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789577735,"update_time":1789577735}
+*3
+$3
+set
+$12
+sessions:205
+$507
+{"id":205,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=qYXFgRKd0kIi15NBr4p9zTmG","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"321be6110fc158b1e74915109668ec5938ec36baf3fc03fbeb63ca6887ad72ca","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789577736,"update_time":1789577736}
+*3
+$3
+set
+$12
+sessions:206
+$507
+{"id":206,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=qYXFgRKd0kIi15NBr4p9zTmG","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"c0ff9e2fe50d3d88e1e514cfbf8dafe21be43a1512360e64a610428f3b4d2311","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789577739,"update_time":1789577739}
+*3
+$3
+set
+$12
+sessions:207
+$507
+{"id":207,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=qYXFgRKd0kIi15NBr4p9zTmG","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"04be0f54c8a68590d47ea45e9dc1584efcf0730f8b06f6b97455abf2b7f46ff8","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789577739,"update_time":1789577739}
+*3
+$3
+set
+$12
+sessions:208
+$507
+{"id":208,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=qYXFgRKd0kIi15NBr4p9zTmG","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"13b0557ec0eb64ec5a949c0d275a8f32bd1e36bdae25b1a3a6012dcb5f6bc173","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789577739,"update_time":1789577739}
+*3
+$3
+set
+$12
+sessions:209
+$507
+{"id":209,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=qYXFgRKd0kIi15NBr4p9zTmG","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"cb758d1f93f6dd617705dd3a2a8a5688f4d6a6884c9fe834db2e66372ec424fb","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789577744,"update_time":1789577744}
+*3
+$3
+set
+$11
+sessions:21
+$498
+{"id":21,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=YXjtof030jHPtO5m8lopI3HY","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"3d18151e536b146e8b710d5264af536a750429a87686794ea9ee454537eabd06","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789439473,"update_time":1789439473}
+*3
+$3
+set
+$12
+sessions:210
+$507
+{"id":210,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=qYXFgRKd0kIi15NBr4p9zTmG","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"d08dc9b021b08dc8433c46af0200f9ddf9a6c00daf3bfcc028957c1049555de9","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789577750,"update_time":1789577750}
+*3
+$3
+set
+$12
+sessions:211
+$507
+{"id":211,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=qYXFgRKd0kIi15NBr4p9zTmG","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"371589e37e010b28265145b9e399c4b1940daba9903a9e1d644fbe5d179be92b","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789577751,"update_time":1789577751}
+*3
+$3
+set
+$12
+sessions:212
+$507
+{"id":212,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=qYXFgRKd0kIi15NBr4p9zTmG","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"e409f30ca859efe4b0c1f784f32fc69c3c8f6950a203e64f8c1407e4fc464679","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789577751,"update_time":1789577751}
+*3
+$3
+set
+$12
+sessions:213
+$507
+{"id":213,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=qYXFgRKd0kIi15NBr4p9zTmG","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"5e1f4b4c3b59f548e08b225ba5aa68330a6a4de79438f5a800a6348ebadac26f","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789577764,"update_time":1789577764}
+*3
+$3
+set
+$12
+sessions:214
+$507
+{"id":214,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=qYXFgRKd0kIi15NBr4p9zTmG","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"a9ea346bbb669a025194cef4de6ad308882af44d8f41bd008b133e6c79be55ee","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789577769,"update_time":1789577769}
+*3
+$3
+set
+$12
+sessions:215
+$507
+{"id":215,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=qYXFgRKd0kIi15NBr4p9zTmG","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"85b1b19284b9bcf44f54f577e92474e8b0f6a1be923384939b104ff60fa90423","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789577769,"update_time":1789577769}
+*3
+$3
+set
+$12
+sessions:216
+$507
+{"id":216,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=qYXFgRKd0kIi15NBr4p9zTmG","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"479f8c93102d2b81702c9c221ac87ead38e09d07b9b3591d1b7e80aecf1b408b","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789577769,"update_time":1789577769}
+*3
+$3
+set
+$12
+sessions:217
+$505
+{"id":217,"phishlet":"booking","landing_url":"https://account.bk.tsl2.blackyou.dedyn.io/?user_id=K8gx6udg0spEbKJZ9D2mt4E8","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"f4e28450aff270c885203820b56c0ff8e3752412ae955ac5da821b6cb7776dd3","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789578087,"update_time":1789578087}
+*3
+$3
+set
+$12
+sessions:218
+$656
+{"id":218,"phishlet":"booking","landing_url":"https://account.bk.tsl2.blackyou.dedyn.io/?user_id=K8gx6udg0spEbKJZ9D2mt4E8","username":"ba7aa.mo13579@gmail.com","password":"","custom":{"email":"ba7aa.mo13579@gmail.com","reset_flow":"/__challenge_h78IRKX3kpQxScCExxShBNwRUlb/d8c14d4960ca/48e7ea08c4b0/challenge.js"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"f4ca76baa7687b40329cbb49bf8ed734bd05f6c287a55de5ca925b2afd6001ce","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789578153,"update_time":1789578264}
+*3
+$3
+set
+$12
+sessions:219
+$507
+{"id":219,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=IA6xixIr0i46KY4WoPhwt5d_","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"a06dbd828a4b8ca1dee8f95bfd6fce20e9ee822cd74b893612d71fa699ce0bcf","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789578614,"update_time":1789578614}
+*3
+$3
+set
+$11
+sessions:22
+$496
+{"id":22,"phishlet":"reddit","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=JfcNLVSZ0sJDfrAFCqht2S2D","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"f40e503e1a88b7667039ae83ec95b44bc0d0aa36dc6200ddac46db1f3fd2d5be","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789462915,"update_time":1789462915}
+*3
+$3
+set
+$12
+sessions:220
+$557
+{"id":220,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/?user_id=2d6bYOKZnL-b4NNZPJwJxoc","username":"ba7aa.mo13579@gmail.com","password":"","custom":{"email":"ba7aa.mo13579@gmail.com"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"f7d4a1950f14749bbb1a03a17430d3649a5306d2447dfbd2739f5ebf73ea5527","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789579006,"update_time":1789579165}
+*3
+$3
+set
+$12
+sessions:221
+$568
+{"id":221,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=Py6FaMcxpOXOa8b7_Ubo","username":"ba7aa.mo13579@gmail.com","password":"Open_3320","custom":{"email":"ba7aa.mo13579@gmail.com"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"3a46598fa635ddb1cfc9f3735bc089302677b7425e50349a1e39f2cfe18bf4ce","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789588677,"update_time":1789592129}
+*3
+$3
+set
+$12
+sessions:222
+$535
+{"id":222,"phishlet":"facebook","landing_url":"https://www.fb.tsl2.blackyou.dedyn.io/?user_id=2rqsLPdN4bXx_YXl33YfT6Dp","username":"","password":"","custom":{"reset_flow":"/recover/initiate/"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"28395b0b338b609b2f95f8f3b4d6ce57b1b6f562498f736837de899da1083176","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789590066,"update_time":1789591656}
+*3
+$3
+set
+$12
+sessions:223
+$505
+{"id":223,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?user_id=siP5Asvf0h-feDCWslkf5Lzj","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"ccb67f74c8d607a38668cdc939e484af2341aac847d7eaafc374ec8314c7652e","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789591773,"update_time":1789591773}
+*3
+$3
+set
+$12
+sessions:224
+$502
+{"id":224,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=0L4Mevgcw7KMbACOoBA","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"1da6d2fe85bfb1fbd8a2fd12c33e8413190ec6ebd7e6867fac4104ad11c61884","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789592297,"update_time":1789592297}
+*3
+$3
+set
+$12
+sessions:225
+$596
+{"id":225,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=98b1Foft4fPow0nopUROcAKp","username":"ba7aa.mo13579@gmail.com","password":"","custom":{"email":"ba7aa.mo13579@gmail.com","reset_flow":"/username/recover"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"3431ba513219bd047640da866ce537944af2cc4eb8fb9a960e14931ea91b7bb9","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789592531,"update_time":1789592680}
+*3
+$3
+set
+$12
+sessions:226
+$502
+{"id":226,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=l55Q6OXtEuHcLGjEMR0","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"144837abbfbb4a123d9f035a6b5d3eb3383ea287cf89758363bc265daefb6cdb","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789595234,"update_time":1789595234}
+*3
+$3
+set
+$12
+sessions:227
+$502
+{"id":227,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=l55Q6OXtEuHcLGjEMR0","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"17be5040d4e71f7604102ad600b2c41fb62b47cd16721d091821b45d6bdc2ee5","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789595235,"update_time":1789595235}
+*3
+$3
+set
+$12
+sessions:228
+$502
+{"id":228,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=l55Q6OXtEuHcLGjEMR0","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"df8f844a15728225a7427f2f66e9c9b432fac52708646f4ffde0f616b581edd8","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789595235,"update_time":1789595235}
+*3
+$3
+set
+$12
+sessions:229
+$502
+{"id":229,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=l55Q6OXtEuHcLGjEMR0","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"e9e0b295de77d92643fb558407415e8b814f5468f4488b1fba92a0fcc2b9d18e","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789595235,"update_time":1789595235}
+*3
+$3
+set
+$11
+sessions:23
+$733
+{"id":23,"phishlet":"linkedin","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=rsdwL4MZ0j99H-2Tj-AAkbu2","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{".www.linkedin.com":{"li_at":{"Name":"li_at","Value":"AQEDAVHSrfIFjkYWAAABoKRPAU8AAAGgyFuFT04Amm-5JzYw8k1xzMGAdvg5en_p7kYkYK0b6M1eVH0GABQXcdDZXOvPKHpf81Oe5OgvjJPxScRhvShL_3o8F5oTPc97qXV-oI1VnSxfG1UyNaFX7OSU","Path":"","HttpOnly":true}}},"session_id":"390965793efd8aa91f1ebffc4b8548ac9c0953c2f40786a70afbe23233189050","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789463003,"update_time":1789463038}
+*3
+$3
+set
+$12
+sessions:230
+$502
+{"id":230,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=l55Q6OXtEuHcLGjEMR0","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"5be6e67c1a9ab0e66e8a63dfdbce4ddb945891860a5a565aa600960bfb9aa46b","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789595241,"update_time":1789595241}
+*3
+$3
+set
+$12
+sessions:231
+$502
+{"id":231,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=l55Q6OXtEuHcLGjEMR0","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"082887b517da2632a2e75a9b1a8171338f947021dd9892dbe2e3a8663130901d","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789595248,"update_time":1789595248}
+*3
+$3
+set
+$12
+sessions:232
+$603
+{"id":232,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=PUT1MIYwABSSXf7rpInS8g","username":"ba7aa.mo13579@gmail.com","password":"Open_3320","custom":{"email":"ba7aa.mo13579@gmail.com","reset_flow":"/username/recover"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"6f595fe6109a115c2190cb2836b4da2074193a28cd5ba005d0b1c007bd78d5e5","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789595386,"update_time":1789595494}
+*3
+$3
+set
+$12
+sessions:233
+$595
+{"id":233,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=u1JeeADaqLAkWeyIRlJ9Pc8","username":"ba7aa.mo13579@gmail.com","password":"","custom":{"email":"ba7aa.mo13579@gmail.com","reset_flow":"/username/recover"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"f40d2d0383b10a7afeff47efdb682aa6f9908a4c3ee6f98e4388ba3bb36783c4","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789595552,"update_time":1789595569}
+*3
+$3
+set
+$12
+sessions:234
+$594
+{"id":234,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=x2auz7ldNjYxMviCwGBHMTqozA","username":"ba7aa.mo13579@gmail.com","password":"","custom":{"email":"ba7aa.mo13579@gmail.com","verification_code":"434179"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"55c5e88e0e80a9fd5708d6e862aac6fe36d0e731b9dad614c4d956d5a0c78781","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789627308,"update_time":1789627352}
+*3
+$3
+set
+$12
+sessions:235
+$581
+{"id":235,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=s9OoFbWlrsEBEc9WYuslGas","username":"ba7aa.mo13579@gmail.com","password":"","custom":{"email":"ba7aa.mo13579@gmail.com","reset_flow":"/username/recover"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"7319494209824578f599c3bfcae744c817bc144b0080364e3df6d1dfad05e6bc","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789627511,"update_time":1789627600}
+*3
+$3
+set
+$12
+sessions:236
+$506
+{"id":236,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/?user_id=jch5mB4QFcT0OW1GOjo","username":"01149429464","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"4d495526edff7f278334e34d1073e37256a634a1c40931bab27e381c029fa004","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789628079,"update_time":1789628130}
+*3
+$3
+set
+$12
+sessions:237
+$503
+{"id":237,"phishlet":"microsoft","landing_url":"https://login.live.tsl2.blackyou.dedyn.io/?user_id=wdbRUOFfRRe3npF4YlxD","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"1df947732ae56c1dbd8c74334c8b6fc016c0c292f621d5e373f06740d21ea133","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789630869,"update_time":1789630869}
+*3
+$3
+set
+$12
+sessions:238
+$563
+{"id":238,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/?user_id=ksEvei9Up81ffwPZU4FfJw","username":"ba7aa.mo13579@gmail.com","password":"Open_3320","custom":{"email":"ba7aa.mo13579@gmail.com"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"314590649a8079f9aa4b4e2c6ad9c1ab63f74cae9ed0f1b3f75b1d9a45c7901a","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789630915,"update_time":1789630964}
+*3
+$3
+set
+$12
+sessions:239
+$550
+{"id":239,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/?user_id=Vb5eCv3N80Y20Mt4","username":"ba7aa.mo13579@gmail.com","password":"","custom":{"email":"ba7aa.mo13579@gmail.com"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"d7a24936e2feba8d134cbbeb797c16ff32bd4196d47fb3db967ad172b94a053d","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789631058,"update_time":1789631065}
+*3
+$3
+set
+$11
+sessions:24
+$514
+{"id":24,"phishlet":"linkedin","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=1XLJoOHh0qRQPr1iQ9nXa5T2","username":"","password":"","custom":{"^pin$":"922360"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"41b80d6375e35d1ff4fa86c2bbdbbf3f33cd5bd681d4272cf76189d1633866cb","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789463711,"update_time":1789463748}
+*3
+$3
+set
+$12
+sessions:240
+$594
+{"id":240,"phishlet":"github","landing_url":"https://gh.tsl2.blackyou.dedyn.io/?user_id=PExdQQAG8-m3M0lX","username":"ba7aa.mo13579@gmail.com","password":"I am Bad OMen","custom":{"reset_email":"ba7aa.mo13579@gmail.com","reset_flow":"/password_reset"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"5edf5500e35d2cc4da72c12bc87558306debbb0b6c0098239db01dea5000635c","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789631105,"update_time":1789631212}
+*3
+$3
+set
+$12
+sessions:241
+$507
+{"id":241,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?user_id=MSfEobKuF052HayMCwMwTSkKfA","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"ad69b1cfc49df2ea751c71d200f8ac6806ec38c6e5b431ccd1c4873883f83719","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789631391,"update_time":1789631391}
+*3
+$3
+set
+$12
+sessions:242
+$509
+{"id":242,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?flowName=GlifWebSignIn\u0026flowEntry=ServiceLogin","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"88f880be35d829d9e0fc35e6b061e3796e36fd7e2967ea418ca8c40596de9671","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789634322,"update_time":1789634322}
+*3
+$3
+set
+$12
+sessions:243
+$517
+{"id":243,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?flowName=GlifWebSignIn\u0026flowEntry=ServiceLogin","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"294c44e318c877a6f7d581154e23fdb5ca0d792eda27bc8b513e053e815d2ef8","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789635484,"update_time":1789635484}
+*3
+$3
+set
+$12
+sessions:244
+$509
+{"id":244,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?flowName=GlifWebSignIn\u0026flowEntry=ServiceLogin","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"14b14259b8a81b19dc5e87dd9890c04b25050a82af409fa9c8e687a40da1101b","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789635843,"update_time":1789635843}
+*3
+$3
+set
+$12
+sessions:245
+$517
+{"id":245,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?flowName=GlifWebSignIn\u0026flowEntry=ServiceLogin","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"8736871c0eac4810cd4e7a98a5bd5b2d4e9b8b5a04cc32e67de6e14224e89f5a","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789635934,"update_time":1789635934}
+*3
+$3
+set
+$12
+sessions:246
+$381
+{"id":246,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?flowName=GlifWebSignIn","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"a79242e68cb4b6880ad62910e46247134cbcc2c9b3404fb33477f4cb82c95a83","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789636112,"update_time":1789636112}
+*3
+$3
+set
+$12
+sessions:247
+$517
+{"id":247,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?flowName=GlifWebSignIn\u0026flowEntry=ServiceLogin","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"f580e0f85bf2be9a98b21c67cc82a44f05c2dc5ff9af129d028686ed60a5add9","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789636273,"update_time":1789636273}
+*3
+$3
+set
+$12
+sessions:248
+$517
+{"id":248,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?flowName=GlifWebSignIn\u0026flowEntry=ServiceLogin","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"e2c8ea34cac1f589729edcd103a43632886436d21f237cffdc2fbd15c261189c","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789637140,"update_time":1789637140}
+*3
+$3
+set
+$12
+sessions:249
+$481
+{"id":249,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?flowName=GlifWebSignIn","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"1e39e5aa71d4da48abc958f02e0710eed5645f606ee6cd3d30b12f72d9a4a839","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789640882,"update_time":1789640882}
+*3
+$3
+set
+$11
+sessions:25
+$497
+{"id":25,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=6PJxRaRkOETFeMh7VYADtxg","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"f32dc9196e6e34bad9d205e8e296bf1f835ee11e5a9b142b27d944650bf95f0d","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789468504,"update_time":1789468504}
+*3
+$3
+set
+$12
+sessions:250
+$517
+{"id":250,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?flowName=GlifWebSignIn\u0026flowEntry=ServiceLogin","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"ca9dd7379a23519b8bfdb0ca532ef9b9f21cb29930a2a7b541ae89b94d660d0b","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789641164,"update_time":1789641164}
+*3
+$3
+set
+$12
+sessions:251
+$517
+{"id":251,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?flowName=GlifWebSignIn\u0026flowEntry=ServiceLogin","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"f739d78b00a40db34e7b55205cefa2655cca957d02b679fdb1a9760710b39c1b","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789644487,"update_time":1789644487}
+*3
+$3
+set
+$12
+sessions:252
+$369
+{"id":252,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?flowName=x","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"04eab1d0ed9719706a77ef54e4d81d58c10b96f252873c078ae7bc066b7801df","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789644539,"update_time":1789644539}
+*3
+$3
+set
+$12
+sessions:253
+$509
+{"id":253,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?flowName=GlifWebSignIn\u0026flowEntry=ServiceLogin","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"614ea17453942c205b394673e6a1fd7ba1ab61747e9c7c9df40e7270a0c7ffab","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789644557,"update_time":1789644557}
+*3
+$3
+set
+$12
+sessions:254
+$517
+{"id":254,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?flowName=GlifWebSignIn\u0026flowEntry=ServiceLogin","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"bc6296a28a8872948ae74f83d7915b3f8052741ff60abc467b6fda72ef94ed86","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789644710,"update_time":1789644710}
+*3
+$3
+set
+$12
+sessions:255
+$481
+{"id":255,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?flowName=GlifWebSignIn","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"250204b7edaa6cae16b67c7c2f937253a616625949c5a1cbe47f46c6d1a101ab","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789644842,"update_time":1789644842}
+*3
+$3
+set
+$12
+sessions:256
+$481
+{"id":256,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?flowName=GlifWebSignIn","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"d8f5161991949b84d522ac76119cbe4d7d165401de54bd19b33e5060a72adc09","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789645081,"update_time":1789645081}
+*3
+$3
+set
+$12
+sessions:257
+$540
+{"id":257,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?flowName=GlifWebSignIn\u0026flowEntry=ServiceLogin","username":"testuser12345@gmail.com","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"e1863a694f229820706aa8fa7f1640345a23aff5b127a40354d2175e0dc48da5","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789645122,"update_time":1789645143}
+*3
+$3
+set
+$12
+sessions:258
+$568
+{"id":258,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?user_id=qFgeqHtfbisNN5oWMCMlwA","username":"ba7aa.mo13579@gmail.com","password":"","custom":{"reset_flow":"/signin/v2/usernamerecovery"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"6251985f354d86ffdb1cfc2a134544bb612643ae9a812af0edaa9fad18909413","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789646710,"update_time":1789647064}
+*3
+$3
+set
+$12
+sessions:259
+$569
+{"id":259,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?user_id=RMvSBl4FOOCtwGGcV-k_-ag","username":"ba7aa.mo13579@gmail.com","password":"","custom":{"reset_flow":"/signin/v2/usernamerecovery"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"950e0fa155a396bfa8c9427b225a98c704388265ecd219ad51074da97a207ea8","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789652433,"update_time":1789652560}
+*3
+$3
+set
+$11
+sessions:26
+$498
+{"id":26,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=KJ2rt9iV0p4usLWIQNx-324S","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"8f277d4e817a10bb91aada11e5060427cac14968dc60834d21422b2db3d5859b","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789471906,"update_time":1789471906}
+*3
+$3
+set
+$12
+sessions:260
+$503
+{"id":260,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?user_id=VUP4pdC7bFhmuWCIsIztDw","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"81f348cfe721622d79a011cec309106048e3473a6036915e30b5361821067884","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789654774,"update_time":1789654774}
+*3
+$3
+set
+$12
+sessions:261
+$540
+{"id":261,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?flowName=GlifWebSignIn\u0026flowEntry=ServiceLogin","username":"testuser12345@gmail.com","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"bde7e898bf885a50bc0ad1dab2cf530dae212f3e934588f0eef78074474d49c1","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789661740,"update_time":1789661814}
+*3
+$3
+set
+$12
+sessions:262
+$501
+{"id":262,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?user_id=OHrkyE1qglMY-X1IqWSa","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"c461ca57310cffbb7019f249c51d6637622e7230976e048270bd0b5f2d9d1cb6","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789662904,"update_time":1789662904}
+*3
+$3
+set
+$12
+sessions:263
+$570
+{"id":263,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/?user_id=qdlK9NrRiG_TuLf3uP7tSg","username":"b.mohammed22422@gmail.com","password":"","custom":{"reset_flow":"/signin/v2/usernamerecovery"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"abc1b91753298c6e97cd0d48df670853107ad2b5a842314edc88ee66a6637c4c","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789668626,"update_time":1789668682}
+*3
+$3
+set
+$12
+sessions:264
+$598
+{"id":264,"phishlet":"instagram","landing_url":"https://www.ig.tsl2.blackyou.dedyn.io/?user_id=2El0Eydnjjt_l5nTGJGh2g","username":"01149429464","password":"","custom":{"reset_email":"01149429464","reset_flow":"/api/v1/accounts/assisted_account_recovery/"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"48cf38310dd1cbf382390595215910cac7bbb622dd7539855b67f92bc2094544","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789668747,"update_time":1789668811}
+*3
+$3
+set
+$12
+sessions:265
+$583
+{"id":265,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/?user_id=V346Qmjpjrkii2YZ_KUsQQ","username":"ba7aa.mo13579@gmail.com","password":"","custom":{"email":"ba7aa.mo13579@gmail.com","verification_code":"570603"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"6b8a34f4c624023d261df1395388d818586ddb687c6912ff4ef68107df2e5ac7","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789668971,"update_time":1789669040}
+*3
+$3
+set
+$12
+sessions:266
+$814
+{"id":266,"phishlet":"tiktok","landing_url":"https://www.rd.tsl2.blackyou.dedyn.io/?user_id=4vXXbHlZH0iWKSxJMDIU","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{".tiktok.com":{"tt_csrf_token":{"Name":"tt_csrf_token","Value":"aV5gpD2D-50s_JL3AOv0GFGHpHlejM8pTCGU","Path":"","HttpOnly":true},"ttwid":{"Name":"ttwid","Value":"1%7CO07MROQ6C7YI4ijpaTFHxZlKrHtyH9wwt6ZUJib-Co0%7C1789669195%7C52a5b884bef676aaf169d7b80b01c08a12bfde513c4ef2f6e2e853f61859cfa3","Path":"","HttpOnly":true}}},"session_id":"b5ca0b2821273efe77417e201938720537f488c2f4264cc455e950fc9ce3bed7","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789669195,"update_time":1789669196}
+*3
+$3
+set
+$12
+sessions:267
+$502
+{"id":267,"phishlet":"outlook","landing_url":"https://outlook.tsl2.blackyou.dedyn.io/?user_id=SBd7Epw50pPF-f2Gr9-fS_bI","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"cd9cd42082551a8711f27af0d82dc92b614dbf30a76f3f09225bfd7f0f6223d0","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789674161,"update_time":1789674161}
+*3
+$3
+set
+$12
+sessions:268
+$498
+{"id":268,"phishlet":"outlook","landing_url":"https://outlook.tsl2.blackyou.dedyn.io/?user_id=JmFnep1sQCxXnZuyjSFZ","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"2bcdf2b032cefa96f6cc324b7d3158a4cfd0479526c2bd8528b3c277d17c0a57","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789677027,"update_time":1789677027}
+*3
+$3
+set
+$12
+sessions:269
+$498
+{"id":269,"phishlet":"outlook","landing_url":"https://outlook.tsl2.blackyou.dedyn.io/?user_id=1jN3NiAtQJnastZ87-nk","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"c8ccb1179f9d9fa61c57da343e952e3e06d4068a4a5e6b1869bc2939ca675142","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789677823,"update_time":1789677823}
+*3
+$3
+set
+$11
+sessions:27
+$497
+{"id":27,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=oBedGfwDONffSP-JvLAHgyo","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"aa03a9d77347f3352ea8e6feb77bc231fad1f85846347326954e92362f875abe","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789472795,"update_time":1789472795}
+*3
+$3
+set
+$12
+sessions:270
+$538
+{"id":270,"phishlet":"haktraknetworks","landing_url":"https://tsl2.blackyou.dedyn.io/?user_id=90vkVrm70pt4wXZRXD9-J1B6","username":"b.mohammed22422@gmail.com","password":"wkkekekekek","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"b1228c2097be7d7c5ee18efdae2db6945899ce458a1a4838509562b9d795ecc5","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789732920,"update_time":1789733028}
+*3
+$3
+set
+$12
+sessions:271
+$550
+{"id":271,"phishlet":"facebook","landing_url":"https://www.fb.tsl2.blackyou.dedyn.io/?user_id=jaRQr7mHaYDbWmugtNLBhYxr7Q","username":"ba7aa.mo13579@gmail.com","password":",,,,,,,,,,,,,,,,,,,,,,,","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"bec9c203fca510d1beac0bd30ea18b5bb8badde1a269f9702fa3be86d7320858","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789734583,"update_time":1789734665}
+*3
+$3
+set
+$11
+sessions:28
+$498
+{"id":28,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=0XJG40JF0iz_NeXVaa0r3zty","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"ff49c9b13b8389068893c02bf802ae23d72067c08e61f3dbe69a26ee04e05b6f","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789474278,"update_time":1789474278}
+*3
+$3
+set
+$11
+sessions:29
+$395
+{"id":29,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=testcurl","username":"itsme@test.local","password":"Sup3rSecret","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"e2f6c49546f66e51bbb7774c275180085d7e086ec76f339bda15d0f1b853c317","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789474704,"update_time":1789475106}
+*3
+$3
+set
+$10
+sessions:3
+$377
+{"id":3,"phishlet":"github","landing_url":"https://tsl2.blackyou.dedyn.io/?user_id=FXBNuWJS0rToMghIodjY4eN9","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"03a3fdce4f55ded9f626c2b381b1bb2e5d61d5513cefe5167aab0613bfe1498b","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789407095,"update_time":1789407095}
+*3
+$3
+set
+$11
+sessions:30
+$470
+{"id":30,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=chr0met3st","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"81b2df46429d3b4832a7b353855cf2691752d28b325411c8a6dc00492cb79ea5","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789475935,"update_time":1789475935}
+*3
+$3
+set
+$11
+sessions:31
+$471
+{"id":31,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=chr0met3st2","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"4a58ecfed235de16e4f37e6a66770f1e9842f2053dcaf8f28992360b963bc28a","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789476019,"update_time":1789476019}
+*3
+$3
+set
+$11
+sessions:32
+$471
+{"id":32,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=chr0met3st3","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"c81b12a1c32d047ce00ddef588e023364ab4585554f8a1ee6f73370564229400","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789476194,"update_time":1789476194}
+*3
+$3
+set
+$11
+sessions:33
+$467
+{"id":33,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=domd1ff","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"d1730531328644fc6d1061d9e831df8b5f2f2563444c0f91b85890ab80c4cea0","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789476508,"update_time":1789476508}
+*3
+$3
+set
+$11
+sessions:34
+$469
+{"id":34,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=testprobe","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"3fad798eb910de57687188188dd5c484003f8adcf96f558af5d4c4d32d948087","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789477530,"update_time":1789477530}
+*3
+$3
+set
+$11
+sessions:35
+$469
+{"id":35,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=testprobe","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"90683137411f92c63113988b3638140859e4a7f8d6398b7d9951961ccedcb910","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789477562,"update_time":1789477562}
+*3
+$3
+set
+$11
+sessions:36
+$469
+{"id":36,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=testprobe","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"b495c82199dc4508db3a7178c2c8bc8789f3da567cacd61d33541ce80b5a5a1a","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789477760,"update_time":1789477760}
+*3
+$3
+set
+$11
+sessions:37
+$470
+{"id":37,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=testprobe2","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"f596bf09d4d7c1429755f5edb87e5ca513bdc4f9438606b017494c8975133e54","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789478871,"update_time":1789478871}
+*3
+$3
+set
+$11
+sessions:38
+$469
+{"id":38,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=testblock","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"ce1406a334025e2836cde1049da32b3eae66980a732d8e7c760aba8e08135e77","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789479104,"update_time":1789479104}
+*3
+$3
+set
+$11
+sessions:39
+$465
+{"id":39,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tsth1","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"fa2d30af0d66caeefdf4f5a7cf9838bbdd1648289e5b9284844ceab0d3228571","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789479420,"update_time":1789479420}
+*3
+$3
+set
+$10
+sessions:4
+$377
+{"id":4,"phishlet":"github","landing_url":"https://tsl2.blackyou.dedyn.io/?user_id=FXBNuWJS0rToMghIodjY4eN9","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"8f20d94d0aa078305839c5dd13b854a076b2371c6c7782b0b77796df68f9b221","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789407462,"update_time":1789407462}
+*3
+$3
+set
+$11
+sessions:40
+$465
+{"id":40,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstl2","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"d821ce07015cde2fba7ce964a153b9754b3a1c58583e2948d665a4b1577a986f","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789479652,"update_time":1789479652}
+*3
+$3
+set
+$11
+sessions:41
+$467
+{"id":41,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstadd1","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"a24786145e17f76be12d76e649ef5f9b28449d069931d8d639cbb223081e574e","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789480786,"update_time":1789480786}
+*3
+$3
+set
+$11
+sessions:42
+$467
+{"id":42,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstadd1","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"5bee264ac01add4b3b11dd2b28bb11fc5691aea199801073c4304f1a21446ad0","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789480845,"update_time":1789480845}
+*3
+$3
+set
+$11
+sessions:43
+$466
+{"id":43,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstfm1","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"4044c27c7a84fd147315e48a13ffd43b4a8ff8d600713a0193189b2d0b9571f5","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789481035,"update_time":1789481035}
+*3
+$3
+set
+$11
+sessions:44
+$466
+{"id":44,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstfm2","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"1ffe7dba757983381ac4c569c90200a3b6e5cdab45630224938509e9da4cae03","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789481265,"update_time":1789481265}
+*3
+$3
+set
+$11
+sessions:45
+$466
+{"id":45,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstfm3","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"5c959ea2a1e0df77b31d4ddf3c45cd26dcd608b2826b02ef6f1d0441af340073","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789481340,"update_time":1789481340}
+*3
+$3
+set
+$11
+sessions:46
+$466
+{"id":46,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstfm4","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"09004a606a4d6c7f8cade0f6514b66bc2b73be724f2c3c9b3bbd40bc18e15e66","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789481511,"update_time":1789481511}
+*3
+$3
+set
+$11
+sessions:47
+$466
+{"id":47,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstfm5","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"e15ac766cefae840f66f05a0dcf49b36c7bd03566436311801a04b46abadd8b8","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789481595,"update_time":1789481595}
+*3
+$3
+set
+$11
+sessions:48
+$466
+{"id":48,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstfm6","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"c160b68a583a0550a0bf419673f9ebed3978d872a25b9974528543f42c6651a7","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789481680,"update_time":1789481680}
+*3
+$3
+set
+$11
+sessions:49
+$466
+{"id":49,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstfm7","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"b5b02f2b34fb2ce9fe1bbc0c7dcfb520cc80838b097b79a28670f6b0189424d0","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789481722,"update_time":1789481722}
+*3
+$3
+set
+$10
+sessions:5
+$522
+{"id":5,"phishlet":"github","landing_url":"https://tsl2.blackyou.dedyn.io/?user_id=KIvIcoui0qIGw_tCNiCT6Fe5","username":"ba7aa.mo13579@gmail.com","password":"12345678","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"72fe031b4c5098424d9160e6a418fac698ef5d7dcfe7a967d822d80a640a7dd0","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789408355,"update_time":1789408737}
+*3
+$3
+set
+$11
+sessions:50
+$467
+{"id":50,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstsch1","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"478ce93e4d66696f4dd0080e031548724a7bdf9d67b112dc7b68815a52c8cbf1","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789481924,"update_time":1789481924}
+*3
+$3
+set
+$11
+sessions:51
+$467
+{"id":51,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstcap1","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"2147fb513f3a1c30135632216f33792a559b5c02a8dc41df2419eee5ac724301","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789482246,"update_time":1789482246}
+*3
+$3
+set
+$11
+sessions:52
+$467
+{"id":52,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstlen1","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"a2c35ccdca4be421ccaeb9945da1b8c19cc4e041af486e11de41e5887caf5a48","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789483158,"update_time":1789483158}
+*3
+$3
+set
+$11
+sessions:53
+$467
+{"id":53,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstfix1","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"3e4fe49e12a33b0fc9936b7d8be85a43eaeca2e5fc0a7ffa958950d7ee0a1a19","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789484066,"update_time":1789484066}
+*3
+$3
+set
+$11
+sessions:54
+$467
+{"id":54,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstfix2","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"14e87d398def1dd36a7849af2d8713845321c9ac9b66d6675298d90427a298cd","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789484164,"update_time":1789484164}
+*3
+$3
+set
+$11
+sessions:55
+$466
+{"id":55,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstty1","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"cb8ae38095e8c558de9c1cbc05e6f2d39c4917b768f263c14618005e8e61a17e","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789484423,"update_time":1789484423}
+*3
+$3
+set
+$11
+sessions:56
+$467
+{"id":56,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstsch2","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"3805c30a1e28d74bff67b514b20d21983f48a97b1de1d134a160735b2b3534e0","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789485300,"update_time":1789485300}
+*3
+$3
+set
+$11
+sessions:57
+$467
+{"id":57,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstsch2","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"bb95104e55a3f15d56f0e33346870680fa313746c10f49216a7f234cde7d0011","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789485431,"update_time":1789485431}
+*3
+$3
+set
+$11
+sessions:58
+$467
+{"id":58,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstcap2","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"ee3ae2bcefc7eec08f23ca82381049b642abe026ad2789785fcead381ee73733","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789485526,"update_time":1789485526}
+*3
+$3
+set
+$11
+sessions:59
+$467
+{"id":59,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tsterr1","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"4fe4e6e83a1bee7a1ccde306f5fa8e0bb92697bf91f1287633f673c112e267e6","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789485680,"update_time":1789485680}
+*3
+$3
+set
+$10
+sessions:6
+$490
+{"id":6,"phishlet":"github","landing_url":"https://tsl2.blackyou.dedyn.io/?user_id=5iMYShYZOFhx25T1XaqSlwM","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"ad6d2e7a072415ab1477e12535ffd648a3da26778a9c848edc27bfc190f638fe","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789418565,"update_time":1789418565}
+*3
+$3
+set
+$11
+sessions:60
+$466
+{"id":60,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstla1","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"03691a4f29ed819504104a9c51b1cf809758e003f6bb9b74f5031f05bbacfc98","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789485870,"update_time":1789485870}
+*3
+$3
+set
+$11
+sessions:61
+$466
+{"id":61,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstty2","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"00db40b4352986fbd3051c54709d70c1a4bdee6d7b9676c0a032e47cb17930ee","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789485915,"update_time":1789485915}
+*3
+$3
+set
+$11
+sessions:62
+$468
+{"id":62,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstcred1","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"477e97ade193581477fe692cc65a74de6f20c697868dca3154434fef3d50b7c3","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789485977,"update_time":1789485977}
+*3
+$3
+set
+$11
+sessions:63
+$467
+{"id":63,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstclk1","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"58544a4c62e085a21b1d299fcbf3b3ef1878b97ee12f14f6e9425e34c436c98b","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789486191,"update_time":1789486191}
+*3
+$3
+set
+$11
+sessions:64
+$467
+{"id":64,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstinj1","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"0ec55ed1a28f53caa45874365d5b7340366c67be58a9430511fcf31175ab59dc","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789486809,"update_time":1789486809}
+*3
+$3
+set
+$11
+sessions:65
+$492
+{"id":65,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstgb1","username":"victim@test.com","password":"P@ssw0rd123","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"c5ed961269964c4f28d6697fc73b9de5c84ab2d7b08eda546678fd178cf1fab0","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789486937,"update_time":1789486952}
+*3
+$3
+set
+$11
+sessions:66
+$467
+{"id":66,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstbtn1","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"253a566f7703ed11b45e6725c52d73fdca5ba8262981e4764b86b6231c78013d","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789486998,"update_time":1789486998}
+*3
+$3
+set
+$11
+sessions:67
+$467
+{"id":67,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstclk3","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"8d19790a1cdddac06b1cd93e955898a396fc1d0752526557c6aec1475f139ef1","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789487276,"update_time":1789487276}
+*3
+$3
+set
+$11
+sessions:68
+$494
+{"id":68,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=tstgrab1","username":"victim@test.com","password":"P@ssw0rd123","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"f56fa159fcc1438f579fe433c395b1314bf2fca42706b7aadb23c32f757fe133","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36","remote_addr":"127.0.0.1","create_time":1789487380,"update_time":1789487388}
+*3
+$3
+set
+$11
+sessions:69
+$567
+{"id":69,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=TzZY0Jxa0iItKE8a6T83GEd0","username":"ba7aa.mo13579@gmail.com","password":"1234455555555","custom":{"reset_flow":"/recover/initiate/"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"7576ae2aaee6f1d549143a87a323f0594d11d57d78b270919406136285a86b0d","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789487989,"update_time":1789488080}
+*3
+$3
+set
+$10
+sessions:7
+$522
+{"id":7,"phishlet":"github","landing_url":"https://tsl2.blackyou.dedyn.io/?user_id=jspAEGlr0rgzJldgm_08R1kZ","username":"ba7aa.mo13579@gmail.com","password":"12345678","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"c11a4c3b4033218144a2c1a3c9773052014ae7b932c4669e67e34e1a695a5b93","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789423145,"update_time":1789423183}
+*3
+$3
+set
+$11
+sessions:70
+$597
+{"id":70,"phishlet":"github","landing_url":"https://tsl2.blackyou.dedyn.io/?user_id=ckSQzl3E0gPoh3TuZ-J7ICiL","username":"ba7aa.mo13579@gmail.com","password":"123djdkkkddd","custom":{"reset_email":"ba7aa.mo13579@gmail.com","reset_flow":"/password_reset"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"94cfa76f3665ba673008092b7ac83d5a886fb4a4332001fa936ea64beb9d8117","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789490505,"update_time":1789490665}
+*3
+$3
+set
+$11
+sessions:71
+$496
+{"id":71,"phishlet":"amazon","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=8srFKZfu0t62C3rwXV7A3K8W","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"34eab5964ba0b7067bbe456f0288404b195ef8d38b57ad154fa02c547f54e4d5","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789491536,"update_time":1789491536}
+*3
+$3
+set
+$11
+sessions:72
+$496
+{"id":72,"phishlet":"paypal","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=I6UzdCYb0lJpAFXCUAzEqjZi","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"78a5b2f57d7ecf5c134d7e12ce4fbabfcaa149a526c11f50e8848205cfcf9f68","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789491677,"update_time":1789491677}
+*3
+$3
+set
+$11
+sessions:73
+$627
+{"id":73,"phishlet":"linkedin","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=e2diqs1f0io6AliavpR-KDyY","username":"ba7aa.mo13579@gmail.com","password":"","custom":{"email":"ba7aa.mo13579@gmail.com","reset_email":"b.mohammed22422@gmail.com","reset_flow":"/passwordReset/"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"a46d6d662a991bf98098357738992817a3c733ea780b1a86179399f94e41d9b5","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789491787,"update_time":1789492634}
+*3
+$3
+set
+$11
+sessions:74
+$354
+{"id":74,"phishlet":"google","landing_url":"https://accounts.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"c18ccfeada51f64fe70be1937c468562296c8460f36cb36a929c8ee797c9d269","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789496181,"update_time":1789496181}
+*3
+$3
+set
+$11
+sessions:75
+$354
+{"id":75,"phishlet":"google","landing_url":"https://accounts.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"ae18323883f89ba1144a324bbda1865dfe9ed7ea41a07b7b9eb1bb76892b2b59","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789496195,"update_time":1789496195}
+*3
+$3
+set
+$11
+sessions:76
+$354
+{"id":76,"phishlet":"google","landing_url":"https://accounts.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"b32440b748cbc53d1fa3dfdfa8c7ad14f2932d140905262156050d0517a4f070","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789496515,"update_time":1789496515}
+*3
+$3
+set
+$11
+sessions:77
+$354
+{"id":77,"phishlet":"google","landing_url":"https://accounts.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"b38ce528cea97ee4ebf2d9b7398cb6015336b020746c326c0a22e7fab1c4be00","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789500791,"update_time":1789500791}
+*3
+$3
+set
+$11
+sessions:78
+$354
+{"id":78,"phishlet":"google","landing_url":"https://accounts.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"9e95836e0620d9f3fd72437315ba82137baf393232cf2eec2cd665e6206ca57d","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789500791,"update_time":1789500791}
+*3
+$3
+set
+$11
+sessions:79
+$354
+{"id":79,"phishlet":"google","landing_url":"https://accounts.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"0e8951afa08b00c4f5a8a6fb989acfcbebf33fa3266372cec651da4bb86d1c28","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789500821,"update_time":1789500821}
+*3
+$3
+set
+$10
+sessions:8
+$498
+{"id":8,"phishlet":"instagram","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=bPKUM3B80oUw9CGAJ7HNxcFx","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"65495a671c345c9fe8e9bb44da341ab01ccc64d97af1bbb6dfd322ca98280711","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789428845,"update_time":1789428845}
+*3
+$3
+set
+$11
+sessions:80
+$501
+{"id":80,"phishlet":"google","landing_url":"https://accounts.tsl2.blackyou.dedyn.io/?user_id=5EeLQS2J0kQgO_F8C6oNUYmy","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"3c8c0b1c9bd071b83d286c9f85d4d53ff1012d9102105c0da7ef44b2c39f7252","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789501468,"update_time":1789501468}
+*3
+$3
+set
+$11
+sessions:81
+$496
+{"id":81,"phishlet":"o365","landing_url":"https://login.tsl2.blackyou.dedyn.io/?user_id=3P1TbOu90iN7xrFBl5n8Mr8T","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"87104bd2793b24e974c23e224c11584f29bd3ed6aa8a0f51683349d9ea27cd54","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789502088,"update_time":1789502088}
+*3
+$3
+set
+$11
+sessions:82
+$553
+{"id":82,"phishlet":"o3652","landing_url":"https://login.tsl2.blackyou.dedyn.io/?user_id=X0ML6oGb0qQWEwhGFhM4-yoL","username":"ba7aa.mo13579@gmail.com","password":"","custom":{"email":"ba7aa.mo13579@gmail.com"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"2553687068b4a651f05eb58465225e0e9824816d180e6def7c806a36108d15f0","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789502130,"update_time":1789502142}
+*3
+$3
+set
+$11
+sessions:83
+$652
+{"id":83,"phishlet":"booking","landing_url":"https://account.tsl2.blackyou.dedyn.io/?user_id=DNUghklV0nx6fb4POQdHavOd","username":"ba7aa.mo13579@gmail.com","password":"","custom":{"email":"ba7aa.mo13579@gmail.com","reset_flow":"/__challenge_h78IRKX3kpQxScCExxShBNwRUlb/d8c14d4960ca/48e7ea08c4b0/challenge.js"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"433755442a7b0d879c91c5ef8294fee9a57a117794360529f209a8651f8fbff4","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789502211,"update_time":1789502219}
+*3
+$3
+set
+$11
+sessions:84
+$496
+{"id":84,"phishlet":"paypal","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=EEexUTiU0pMLKG3ux9i81IX3","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"f78a19040d1e0f3adfd0921aa6658af9e9bef40d331fe7dc6d28e60bf358e816","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789502313,"update_time":1789502313}
+*3
+$3
+set
+$11
+sessions:85
+$350
+{"id":85,"phishlet":"o3652","landing_url":"https://login.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"db354ec7fb9df067837a41aa6498b4537aa4b053ea3aabb4c56001302e0f279b","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789503432,"update_time":1789503432}
+*3
+$3
+set
+$11
+sessions:86
+$350
+{"id":86,"phishlet":"o3652","landing_url":"https://login.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"3c9b738a1711e61df16f2b5a87c3db79d3b82d0e155bb895fda1c75cae0f5811","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789503477,"update_time":1789503477}
+*3
+$3
+set
+$11
+sessions:87
+$350
+{"id":87,"phishlet":"o3652","landing_url":"https://login.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"ced867bdc37931b9b7d8bcdff201d1110c436db5849249aa9d825ad8eb99d8ea","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789503679,"update_time":1789503679}
+*3
+$3
+set
+$11
+sessions:88
+$349
+{"id":88,"phishlet":"o365","landing_url":"https://login.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"4e74b2e48d7dace886ebeeddfa6aa873ebe873e174a44d13c5aae738c8e78422","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789503782,"update_time":1789503782}
+*3
+$3
+set
+$11
+sessions:89
+$350
+{"id":89,"phishlet":"o3652","landing_url":"https://login.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"616f5d0e2d1fb53e7e60c11e817f6d52cb631f9b34cae9dc155ce2229e3b0aac","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789503885,"update_time":1789503885}
+*3
+$3
+set
+$10
+sessions:9
+$496
+{"id":9,"phishlet":"facebook","landing_url":"https://www.tsl2.blackyou.dedyn.io/?user_id=UU1wmOLaOGphIYO24SV8gDA","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"242e40489c25c0553186ba2eed581659323ec52739a56e175a12ef027d51722a","useragent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0","remote_addr":"127.0.0.1","create_time":1789429055,"update_time":1789429055}
+*3
+$3
+set
+$11
+sessions:90
+$350
+{"id":90,"phishlet":"o3652","landing_url":"https://login.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"2c4e704b2281998fd0e39e6a91989f943e9c2254f4794ae2b255b869dbcc3b38","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789503913,"update_time":1789503913}
+*3
+$3
+set
+$11
+sessions:91
+$396
+{"id":91,"phishlet":"google","landing_url":"https://accounts.tsl2.blackyou.dedyn.io/","username":"test@example.com","password":"","custom":{"email":"test@example.com"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"cd316472a0f3effbfcc17153ce20f0827e861ee1faf3bc88a4c4f9587883c455","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789504225,"update_time":1789504265}
+*3
+$3
+set
+$11
+sessions:92
+$354
+{"id":92,"phishlet":"booking","landing_url":"https://account.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"ced69074d02647f6e6e8577f7a09aad30926809036d9d018e80b0a6936baa3bc","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789504355,"update_time":1789504355}
+*3
+$3
+set
+$11
+sessions:93
+$349
+{"id":93,"phishlet":"paypal","landing_url":"https://www.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"f8826673e43459aa8b2d808e9972a45272d6bc1850aae4b9ed266a15aee0aa62","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789504441,"update_time":1789504441}
+*3
+$3
+set
+$11
+sessions:94
+$352
+{"id":94,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"b2d1244d83f35e0b405ed19f81760f70bb5f020b2f092411ad82cf342ce360e5","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789504769,"update_time":1789504769}
+*3
+$3
+set
+$11
+sessions:95
+$352
+{"id":95,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"8c2f968a3f71c00a409a73dee63b11920fb04f8dcf5c02fc6e3b5b115a11a9a4","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789505052,"update_time":1789505052}
+*3
+$3
+set
+$11
+sessions:96
+$352
+{"id":96,"phishlet":"o365","landing_url":"https://login.ms.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"a2099924f03c6f79b00f2023693edaef9b2cc69c7a43582e5b69cf7c75de57ae","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789505055,"update_time":1789505055}
+*3
+$3
+set
+$11
+sessions:97
+$385
+{"id":97,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/","username":"test@example.com","password":"testpassword123","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"aa0df2505539fcf61d732f2860b7172d367183ac7de672ca4f81ab18998f0b75","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789505065,"update_time":1789505086}
+*3
+$3
+set
+$11
+sessions:98
+$354
+{"id":98,"phishlet":"o3652","landing_url":"https://login.ms2.tsl2.blackyou.dedyn.io/","username":"","password":"","custom":{},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"ffdd58460c2e67bd5e14161f7154fe9c8c8e5d5e0d824c764649ce543b7ea78b","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789505066,"update_time":1789505066}
+*3
+$3
+set
+$11
+sessions:99
+$399
+{"id":99,"phishlet":"google","landing_url":"https://accounts.go.tsl2.blackyou.dedyn.io/","username":"test@example.com","password":"","custom":{"email":"test@example.com"},"body_tokens":{},"http_tokens":{},"tokens":{},"session_id":"2c3959b2204a45da273eaa365b153e3c8b8e100c364b8b81d62cba0e25e8e0f2","useragent":"curl/7.83.1","remote_addr":"127.0.0.1","create_time":1789505097,"update_time":1789505119}

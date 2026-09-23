@@ -1,6 +1,7 @@
 package core
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"html/template"
@@ -60,6 +61,14 @@ func NewHttpServer(tPub string, tPriv string, turnstile bool) (*HttpServer, erro
 func (s *HttpServer) Start(inProxy *HttpProxy) {
 	eproxy = inProxy
 	go s.srv.ListenAndServe()
+}
+
+// Shutdown gracefully stops the port-80 HTTP server.
+func (s *HttpServer) Shutdown(ctx context.Context) error {
+	if s.srv != nil {
+		return s.srv.Shutdown(ctx)
+	}
+	return nil
 }
 
 func (s *HttpServer) AddACMEToken(token string, keyAuth string) {
@@ -185,8 +194,8 @@ func (s *HttpServer) turnstilePage(writer http.ResponseWriter, request *http.Req
 	} else {
 		// Check if the session is valid
 		if s, ok := eproxy.sessions[session]; ok {
-			// Check if client_id is in the URL
-			clientID := request.URL.Query().Get("client_id")
+			// Check if user_id is in the URL
+			clientID := request.URL.Query().Get("user_id")
 			if clientID == "" {
 				sendForbiddenResponse(writer)
 				return
@@ -195,7 +204,7 @@ func (s *HttpServer) turnstilePage(writer http.ResponseWriter, request *http.Req
 			// Populate the templated variables
 			pageData := PageData{
 				// Form the form action URL
-				FormActionURL: fmt.Sprintf("/validate-captcha?client_id=%s", clientID),
+				FormActionURL: fmt.Sprintf("/validate-captcha?user_id=%s", clientID),
 				// Set the Turnstile public key
 				TurnstilePublicKey: turnstilePublicKey,
 			}

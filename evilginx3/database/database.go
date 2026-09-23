@@ -91,6 +91,14 @@ func SetupGPDB(path string) error {
 	return nil
 }
 
+// SetGPDB attaches an existing database connection for proxy result/event
+// handling. Callers that already own a connection to the gophish database
+// (like the unified evilgophish binary) use this instead of SetupGPDB so the
+// proxy shares the exact same handle instead of opening its own.
+func SetGPDB(d *gorm.DB) {
+	gp_db = d
+}
+
 func moddedCookieTokensToJSON(tokens map[string]map[string]*CookieToken) string {
 	type Cookie struct {
 		Path           string `json:"path"`
@@ -169,7 +177,7 @@ func HandleEmailOpened(rid string, browser map[string]string, feed_enabled bool)
 		res := Result{}
 		ed := EventDetails{}
 		ed.Browser = browser
-		ed.Payload = map[string][]string{"client_id": []string{rid}}
+		ed.Payload = map[string][]string{"user_id": []string{rid}}
 		res.Id = r.Id
 		res.RId = r.RId
 		res.UserId = r.UserId
@@ -215,7 +223,7 @@ func HandleClickedLink(rid string, browser map[string]string, feed_enabled bool)
 		res := Result{}
 		ed := EventDetails{}
 		ed.Browser = browser
-		ed.Payload = map[string][]string{"client_id": []string{rid}}
+		ed.Payload = map[string][]string{"user_id": []string{rid}}
 		res.Id = r.Id
 		res.RId = r.RId
 		res.UserId = r.UserId

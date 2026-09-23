@@ -1,4 +1,84 @@
 var templates = []
+var lastPlaceholderTarget = "text"
+
+function trackPlaceholderFocus() {
+    $("#subject").off("focus.ph").on("focus.ph", function () {
+        lastPlaceholderTarget = "subject"
+    })
+    $("#text_editor").off("focus.ph").on("focus.ph", function () {
+        lastPlaceholderTarget = "text"
+    })
+    var ed = CKEDITOR.instances["html_editor"]
+    if (ed) {
+        ed.on("focus", function () {
+            lastPlaceholderTarget = "html"
+        })
+    }
+}
+
+function insertAtCaret(el, text) {
+    if (el.selectionStart || el.selectionStart === 0) {
+        var start = el.selectionStart,
+            end = el.selectionEnd
+        el.value = el.value.substring(0, start) + text + el.value.substring(end)
+        el.selectionStart = el.selectionEnd = start + text.length
+    } else {
+        el.value += text
+    }
+    $(el).trigger("change")
+}
+
+function insertPlaceholder(tag) {
+    if (lastPlaceholderTarget === "html") {
+        var ed = CKEDITOR.instances["html_editor"]
+        if (ed) {
+            if (ed.mode === "wysiwyg") {
+                ed.insertHtml(tag)
+            } else {
+                ed.setMode("wysiwyg", function () {
+                    ed.insertHtml(tag)
+                })
+            }
+            return
+        }
+        lastPlaceholderTarget = "text"
+    }
+    if (lastPlaceholderTarget === "subject") {
+        insertAtCaret($("#subject")[0], tag)
+    } else {
+        insertAtCaret($("#text_editor")[0], tag)
+    }
+}
+
+function renderPlaceholderCheatsheet() {
+    var box = $("#placeholder-cheatsheet")
+    box.empty()
+    $.each(TEMPLATE_TAGS, function (i, t) {
+        var tag = "{{." + t.name + "}}"
+        var btn = $("<button>", {
+            type: "button",
+            "class": "btn btn-default btn-xs ph-tag",
+            text: tag,
+            title: t.description
+        })
+        btn.on("click", function () {
+            insertPlaceholder(tag)
+        })
+        var wrap = $("<span>", {
+            style: "display:inline-block;margin:0 6px 6px 0;"
+        }).append(btn).append($("<small>", {
+            text: " " + t.description,
+            style: "color:#777;"
+        }))
+        box.append(wrap)
+    })
+    box.hide()
+    $("#ph-cheatsheet-toggle").off("click.ph").on("click.ph", function () {
+        box.toggle()
+        $("#ph-cheatsheet-wrap").toggleClass("dropup", box.is(":visible"))
+    })
+    trackPlaceholderFocus()
+}
 var icons = {
     "application/vnd.ms-excel": "fa-file-excel-o",
     "text/plain": "fa-file-text-o",
@@ -169,6 +249,7 @@ function edit(idx) {
     })
     $("#html_editor").ckeditor()
     setupAutocomplete(CKEDITOR.instances["html_editor"])
+    renderPlaceholderCheatsheet()
     $("#attachmentsTable").show()
     attachmentsTable = $('#attachmentsTable').DataTable({
         destroy: true,
@@ -232,6 +313,8 @@ function copy(idx) {
         this.value = null
     })
     $("#html_editor").ckeditor()
+    setupAutocomplete(CKEDITOR.instances["html_editor"])
+    renderPlaceholderCheatsheet()
     $("#attachmentsTable").show()
     attachmentsTable = $('#attachmentsTable').DataTable({
         destroy: true,

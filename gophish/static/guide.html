@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="/images/blackcat.svg" type="image/svg+xml">
+<link rel="icon" href="/images/blackcat.svg" type="image/svg+xml">
+<title>Black Cat &middot; User Guide</title>
+<style>
+  :root {
+    --bc-bg-0: #0b132b; --bc-bg-1: #1c2541;
+    --bc-surface: #16213f; --bc-border: rgba(76, 201, 240, 0.16);
+    --bc-accent: #4cc9f0; --bc-violet: #7209b7; --bc-violet-soft: #9d4edd;
+    --bc-text: #f1f5f9; --bc-muted: #94a3b8;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; color: var(--bc-text);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: radial-gradient(1200px 500px at 85% -5%, rgba(114, 9, 183, 0.28), transparent 60%),
+      radial-gradient(1000px 480px at 10% 0%, rgba(76, 201, 240, 0.14), transparent 55%),
+      linear-gradient(160deg, var(--bc-bg-0) 0%, var(--bc-bg-1) 100%);
+    background-attachment: fixed; min-height: 100vh;
+  }
+  a { color: var(--bc-accent); text-decoration: none; }
+  a:hover { color: #8fdcf7; }
+  .bc-brandbar {
+    position: sticky; top: 0; z-index: 50;
+    background: linear-gradient(90deg, #070d20 0%, #141d3a 55%, #1c0f33 100%);
+    border-bottom: 1px solid var(--bc-border);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+  }
+  .bc-brandbar-inner {
+    max-width: 1180px; margin: 0 auto; padding: 10px 24px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .bc-cat-logo {
+    width: 34px; height: 34px; border-radius: 50%; background: #05070f;
+    border: 1px solid rgba(76, 201, 240, 0.45);
+    box-shadow: 0 0 12px rgba(76, 201, 240, 0.55); padding: 2px;
+  }
+  .bc-brand-name { font-weight: 800; font-size: 18px; }
+  .bc-brand-name strong {
+    background: linear-gradient(90deg, var(--bc-accent), var(--bc-violet-soft));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .bc-brand-sub { color: var(--bc-muted); font-size: 13px; }
+  .bc-back {
+    margin-left: auto; color: var(--bc-muted); font-size: 13px; font-weight: 700;
+    border: 1px solid var(--bc-border); padding: 8px 14px; border-radius: 12px;
+    white-space: nowrap;
+  }
+  .bc-back:hover { color: #fff; border-color: var(--bc-accent); box-shadow: 0 0 12px rgba(76, 201, 240, 0.55); }
+  .bc-layout { max-width: 1180px; margin: 0 auto; padding: 28px 24px 72px; display: flex; gap: 24px; align-items: flex-start; }
+  .bc-side {
+    flex: 0 0 240px; position: sticky; top: 76px;
+    background: linear-gradient(180deg, var(--bc-surface) 0%, #121b36 100%);
+    border: 1px solid var(--bc-border); border-radius: 16px; padding: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    max-height: calc(100vh - 100px); overflow-y: auto;
+  }
+  .bc-side a {
+    display: block; color: var(--bc-muted); font-size: 13.5px; font-weight: 600;
+    padding: 8px 12px; border-radius: 12px; border: 1px solid transparent;
+  }
+  .bc-side a:hover { color: #fff; background: rgba(76, 201, 240, 0.1); }
+  .bc-side a.active {
+    color: #06121f; background: linear-gradient(90deg, var(--bc-accent), #7bdff5);
+    box-shadow: 0 0 12px rgba(76, 201, 240, 0.55);
+  }
+  .bc-content { flex: 1 1 auto; min-width: 0; }
+  .bc-hero {
+    background: linear-gradient(180deg, rgba(28, 37, 65, 0.96), rgba(11, 19, 43, 0.98));
+    border: 1px solid rgba(76, 201, 240, 0.28); border-radius: 16px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.6), 0 0 14px rgba(114, 9, 183, 0.65);
+    padding: 30px 30px 26px; margin-bottom: 22px; position: relative; overflow: hidden;
+  }
+  .bc-hero::before {
+    content: ""; position: absolute; inset: 0 0 auto 0; height: 3px;
+    background: linear-gradient(90deg, var(--bc-accent), var(--bc-violet), var(--bc-accent));
+  }
+  .bc-hero h1 { margin: 0 0 6px; font-size: 30px; }
+  .bc-hero h1 span {
+    background: linear-gradient(90deg, #fff, var(--bc-accent));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .bc-hero p { margin: 0; color: var(--bc-muted); font-size: 15px; }
+  section.bc-card {
+    background: linear-gradient(180deg, var(--bc-surface) 0%, #121b36 100%);
+    border: 1px solid var(--bc-border); border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    padding: 22px 24px; margin-bottom: 18px; scroll-margin-top: 76px;
+  }
+  section.bc-card h2 { margin: 0 0 10px; font-size: 20px; color: var(--bc-accent); }
+  section.bc-card h3 { margin: 18px 0 6px; font-size: 16px; color: #fff; }
+  section.bc-card p, section.bc-card li { color: #c6cfe0; font-size: 14.5px; line-height: 1.65; }
+  section.bc-card ol, section.bc-card ul { padding-left: 20px; margin: 8px 0; }
+  section.bc-card li { margin-bottom: 6px; }
+  section.bc-card b, section.bc-card strong { color: #fff; }
+  code {
+    background: rgba(76, 201, 240, 0.12); color: #aee7ff;
+    padding: 1px 7px; border-radius: 8px; font-size: 13px;
+    font-family: Consolas, Menlo, monospace;
+  }
+  pre {
+    background: #0f1419; border: 1px solid rgba(76, 201, 240, 0.25);
+    border-radius: 12px; padding: 14px 16px; overflow-x: auto;
+    color: #c9d1d9; font-size: 13px; line-height: 1.6;
+  }
+  .bc-tip {
+    border-radius: 12px; padding: 10px 14px; margin: 12px 0 4px; font-size: 14px;
+    background: rgba(76, 201, 240, 0.1); border: 1px solid rgba(76, 201, 240, 0.35); color: #d9f4ff;
+  }
+  .bc-warn {
+    border-radius: 12px; padding: 10px 14px; margin: 12px 0 4px; font-size: 14px;
+    background: rgba(243, 156, 18, 0.12); border: 1px solid rgba(243, 156, 18, 0.4); color: #ffe3ae;
+  }
+  table.bc-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
+  table.bc-table th {
+    text-align: left; color: var(--bc-accent); font-size: 12px; text-transform: uppercase;
+    letter-spacing: 0.04em; padding: 8px 10px; border-bottom: 2px solid rgba(76, 201, 240, 0.35);
+  }
+  table.bc-table td { padding: 8px 10px; border-bottom: 1px solid rgba(148, 163, 184, 0.14); color: var(--bc-text); }
+  @media (max-width: 860px) {
+    .bc-layout { flex-direction: column; }
+    .bc-side {
+      position: fixed; top: 0; left: 0; bottom: 0; z-index: 100;
+      width: min(300px, 85vw); margin: 0; border-radius: 0 16px 16px 0;
+      max-height: none; transform: translateX(-105%);
+      transition: transform 0.25s ease;
+    }
+    body.side-open .bc-side { transform: none; }
+    body.side-open .bc-backdrop {
+      display: block; position: fixed; inset: 0; z-index: 90;
+      background: rgba(3, 6, 16, 0.6);
+    }
+    body.side-open { overflow: hidden; }
+  }
+  .bc-menu-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; flex: 0 0 auto;
+    border-radius: 12px; border: 1px solid var(--bc-border);
+    background: rgba(76, 201, 240, 0.08); color: var(--bc-text); cursor: pointer;
+  }
+  .bc-menu-btn:hover { border-color: var(--bc-accent); box-shadow: 0 0 12px rgba(76, 201, 240, 0.55); }
+  .bc-menu-btn svg { width: 18px; height: 18px; }
+  body.side-collapsed .bc-side { display: none; }
+  .bc-backdrop { display: none; }
+</style>
+</head>
+<body>
+<header class="bc-brandbar">
+  <div class="bc-brandbar-inner">
+    <button class="bc-menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="true">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="2" y1="4.5" x2="18" y2="4.5"/><line x1="2" y1="10" x2="18" y2="10"/><line x1="2" y1="15.5" x2="18" y2="15.5"/></svg>
+    </button>
+    <img class="bc-cat-logo" src="/images/blackcat.svg" alt="Black Cat logo">
+    <span class="bc-brand-name"><strong>Black Cat</strong></span>
+    <span class="bc-brand-sub">User Guide</span>
+    <a class="bc-back" href="/">&larr; Back to Dashboard</a>
+  </div>
+</header>
+<div class="bc-backdrop" id="sideBackdrop"></div>
+<div class="bc-layout">
+  <nav class="bc-side" id="guideNav">
+    <a href="#introduction" class="active">Introduction</a>
+    <a href="#getting-started">Getting Started</a>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#email-campaigns">Email Campaigns</a>
+    <a href="#sms-campaigns">SMS Campaigns</a>
+    <a href="#templates-profiles">Templates &amp; Profiles</a>
+    <a href="#infrastructure">Infrastructure</a>
+    <a href="#phishlets">Phishlets</a>
+    <a href="#domain-ssl">Domain &amp; SSL</a>
+    <a href="#sessions">Sessions (Loot)</a>
+    <a href="#lures">Lures &amp; URLs</a>
+    <a href="#tips">Tips &amp; Troubleshooting</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <div class="bc-content">
+    <div class="bc-hero">
+      <h1><span>Black Cat</span> User Guide</h1>
+      <p>The single-tool manual for your phishing operations: mailer, tracker and adversary-in-the-middle proxy in one dark dashboard.</p>
+    </div>
+
+    <section class="bc-card" id="introduction">
+      <h2>Introduction</h2>
+      <p><b>Black Cat</b> unifies two tools into one GUI: a <b>mailer &amp; tracker</b> (campaigns, templates, groups, sending profiles) and an <b>adversary-in-the-middle proxy</b> (the Infrastructure section) that relays logins to the real sites while capturing credentials and session tokens &mdash; including through 2FA/MFA flows.</p>
+      <p>The combination workflow is simple:</p>
+      <ol>
+        <li>Prepare the <b>Infrastructure</b> (domain, certificates, phishlets, lures).</li>
+        <li>Build the <b>campaign</b> (template + sending profile + group) with the lure URL as the landing page.</li>
+        <li>Launch, track opens/clicks on the <b>Dashboard</b>, and collect credentials and tokens from <b>Sessions</b>.</li>
+      </ol>
+    </section>
+
+    <section class="bc-card" id="getting-started">
+      <h2>Getting Started</h2>
+      <ol>
+        <li>Start the server from the <code>gophish</code> folder:<br><code>..\evilgophish.exe serve -config config.json</code></li>
+        <li>Open the admin GUI at <code>https://127.0.0.1:3333</code> and sign in (default <code>admin</code> / <code>gophish</code> &mdash; change it under <b>System &gt; Account Settings</b>).</li>
+      </ol>
+      <table class="bc-table">
+        <tr><th>Port</th><th>Service</th><th>Notes</th></tr>
+        <tr><td><code>3333</code></td><td>Admin GUI (this tool)</td><td>HTTPS, local access is fine</td></tr>
+        <tr><td><code>443</code></td><td>Phishing proxy</td><td>Must be reachable by targets; run as Administrator</td></tr>
+        <tr><td><code>53</code></td><td>Embedded DNS</td><td>Answers your phishing hostnames</td></tr>
+      </table>
+      <div class="bc-warn">Only use this tool in authorized penetration tests or red-team engagements with explicit written permission.</div>
+    </section>
+
+    <section class="bc-card" id="dashboard">
+      <h2>Dashboard</h2>
+      <p>The landing page after login. It shows aggregate charts (sent, opened, clicked, submitted data, captured sessions, reported) plus a <b>Recent Campaigns</b> table with per-campaign status. Use <b>View All</b> to jump to the full campaign list.</p>
+    </section>
+
+    <section class="bc-card" id="email-campaigns">
+      <h2>Email Campaigns</h2>
+      <p><b>Campaigns &gt; Email Campaign</b> lists active and archived campaigns. <b>New Email Campaign</b> asks for:</p>
+      <ul>
+        <li><b>Name</b> &mdash; internal label for the engagement.</li>
+        <li><b>Email Template</b> &mdash; the lure mail. Put the generated lure URL in as the landing page.</li>
+        <li><b>evilginx URL</b> &mdash; the full lure URL targets open (must be reachable by them).</li>
+        <li><b>QR Code Size</b> &mdash; optional; leave blank for normal links, or set e.g. <code>256</code> to embed QR images via the <code>{{.QR}}</code> template variable.</li>
+        <li><b>Launch Date / Send By</b> &mdash; schedule the send window.</li>
+        <li><b>Sending Profile &amp; Groups</b> &mdash; who sends it and who receives it.</li>
+      </ul>
+      <div class="bc-tip">Use <b>Send Test Email</b> from the campaign dialog to verify deliverability before launch.</div>
+    </section>
+
+    <section class="bc-card" id="sms-campaigns">
+      <h2>SMS Campaigns</h2>
+      <p><b>Campaigns &gt; SMS Campaign</b> sends text campaigns through Twilio:</p>
+      <ol>
+        <li>Create the message under <b>Assets &gt; Email/SMS Templates</b> using <b>Text only</b> (no tracking link inside the SMS body; leave envelope sender and subject blank).</li>
+        <li>Configure the sender under <b>Assets &gt; SMS Sending Profiles</b> with your Twilio number, Account SID and Auth Token.</li>
+        <li>Import the group CSV keeping the standard column names, with target phone numbers in the <b>Email</b> column in an accepted Twilio format.</li>
+        <li>Launch with the lure URL as the landing page, exactly like an email campaign.</li>
+      </ol>
+    </section>
+
+    <section class="bc-card" id="templates-profiles">
+      <h2>Templates &amp; Sending Profiles</h2>
+      <p><b>Assets</b> holds the reusable building blocks: mail/SMS templates, email sending profiles (SMTP) and SMS sending profiles (Twilio). Anything you create here is selectable when launching a campaign. Keep templates realistic, branded to the pretext, and always test-render them before launch.</p>
+    </section>
+
+    <section class="bc-card" id="infrastructure">
+      <h2>Infrastructure</h2>
+      <p>The <b>Infrastructure</b> menu is the proxy control center &mdash; the same login, no separate tool. Recommended order:</p>
+      <ol>
+        <li><b>Overview</b> &mdash; engine status at a glance (domain, IPs, ports, counts).</li>
+        <li><b>Domain &amp; SSL</b> &mdash; base domain, external IP, certificates.</li>
+        <li><b>Phishlets</b> &mdash; hostnames on, phishlets enabled.</li>
+        <li><b>Lures</b> &mdash; lure paths created, phishing URLs generated.</li>
+        <li><b>Sessions</b> &mdash; captured loot reviewed.</li>
+      </ol>
+    </section>
+
+    <section class="bc-card" id="phishlets">
+      <h2>Phishlets</h2>
+      <p>Each phishlet impersonates one site. Give it a <b>hostname</b> (a subdomain of your base domain), <b>Save</b>, then <b>Enable</b>. The <b>State</b> badge shows what is live. The landing URL column shows where victims land.</p>
+      <h3>New Phishlet (auto-generate)</h3>
+      <p>Enter a <b>Target domain</b> and hit <b>Discover &amp; generate</b>: the tool inspects the site's login page and drafts a starting phishlet scaffold for review. Always verify hosts, cookies and credential keys before use.</p>
+    </section>
+
+    <section class="bc-card" id="domain-ssl">
+      <h2>Domain &amp; SSL</h2>
+      <ol>
+        <li>Set the <b>Base domain</b> (DNS must point at this server) and the <b>External IP</b>, then <b>Save settings</b>.</li>
+        <li>Press <b>Sync certificates now</b>. Issuance can take up to a minute &mdash; watch the server log.</li>
+        <li>The table shows live per-hostname status: <b>serving / not serving</b> and <b>valid / missing</b> with expiry.</li>
+      </ol>
+      <div class="bc-tip">A hostname showing <b>missing</b> usually means DNS is not reaching this server yet, or an ACME rate limit &mdash; check the server log after a sync.</div>
+    </section>
+
+    <section class="bc-card" id="sessions">
+      <h2>Sessions (Loot)</h2>
+      <p>Every victim that completes a login creates a session row: phishlet, network address, captured credentials, custom fields (e.g. password-reset flows), token counts and timestamps. Expand <b>full JSON</b> for the complete capture including cookies usable for session replay.</p>
+      <p>Captures are also written to the shared database, so they surface as <b>Captured Session</b> events in the campaign results &mdash; match them by time and landing URL.</p>
+    </section>
+
+    <section class="bc-card" id="lures">
+      <h2>Lures &amp; Phishing URLs</h2>
+      <p>A <b>lure</b> binds a phishlet to a path (and optionally its own hostname and redirect URL). Create one per campaign link, then use <b>get URL</b> with the recipient's <code>rid</code> to build their personal phishing link.</p>
+      <p>The <code>rid</code> is encrypted into the URL, so clicks and captures tie back to the right result row in the campaign. Optional <b>extra parameters</b> accept whitespace-separated <code>key=value</code> pairs merged into the payload.</p>
+      <pre>https://login.example.com/Ab3x9Q21?rid=ENCRYPTED_PAYLOAD</pre>
+    </section>
+
+    <section class="bc-card" id="tips">
+      <h2>Tips &amp; Troubleshooting</h2>
+      <ul>
+        <li><b>Test like a victim:</b> use one recipient and an incognito window. The proxy pins a session cookie per browser &mdash; re-testing many links in one browser confuses tracking.</li>
+        <li><b>"404 page not found" on proxy links:</b> the proxy engine is not running. Restart the server and check the log for startup errors.</li>
+        <li><b>Certificate stuck on missing:</b> verify DNS, the external IP setting, and port 443 reachability, then sync again.</li>
+        <li><b>Ports 443/53 busy:</b> run as Administrator and stop conflicting services (IIS, Skype, other DNS).</li>
+        <li><b>Config paths:</b> the proxy directories in <code>config.json</code> must exist on disk, otherwise startup fails trying to create them.</li>
+      </ul>
+    </section>
+
+    <section class="bc-card" id="faq">
+      <h2>FAQ</h2>
+      <h3>Where do phishing links point &mdash; GoPhish or the proxy?</h3>
+      <p>Always the proxy lure URL. GoPhish sends the mail and tracks opens/clicks; landing pages live on the proxy. The GoPhish phishing server on port 8080 is not used.</p>
+      <h3>How do captures link back to recipients?</h3>
+      <p>Through the encrypted <code>rid</code> in each personal URL. Keep it in the link when you paste it into the template.</p>
+      <h3>Can I re-test a link myself?</h3>
+      <p>Yes, once per fresh incognito session. Clear state between tests or you will pollute the victim's result row.</p>
+    </section>
+  </div>
+</div>
+<script>
+(function () {
+    var body = document.body;
+    var btn = document.getElementById('menuBtn');
+    var backdrop = document.getElementById('sideBackdrop');
+    var nav = document.querySelector('.bc-side');
+    var mq = window.matchMedia ? window.matchMedia('(max-width: 860px)') : { matches: false };
+    function isMobile() { return mq.matches; }
+    function setOpen(open) {
+        if (isMobile()) {
+            if (open) body.classList.add('side-open');
+            else body.classList.remove('side-open');
+        } else {
+            if (open) body.classList.remove('side-collapsed');
+            else body.classList.add('side-collapsed');
+            try { localStorage.setItem('bc-guide-side', open ? 'open' : 'closed'); } catch (e) {}
+        }
+        if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    function isOpen() {
+        return isMobile() ? body.classList.contains('side-open') : !body.classList.contains('side-collapsed');
+    }
+    if (btn) btn.addEventListener('click', function () { setOpen(!isOpen()); });
+    if (backdrop) backdrop.addEventListener('click', function () { setOpen(false); });
+    document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') setOpen(false); });
+    try {
+        if (!isMobile() && localStorage.getItem('bc-guide-side') === 'closed') body.classList.add('side-collapsed');
+    } catch (e) {}
+    var links = nav ? nav.querySelectorAll('a[href^="#"]') : [];
+    function activate(hash) {
+        for (var i = 0; i < links.length; i++) {
+            if (links[i].getAttribute('href') === hash) links[i].classList.add('active');
+            else links[i].classList.remove('active');
+        }
+    }
+    for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener('click', function () {
+            activate(this.getAttribute('href'));
+            if (isMobile()) setOpen(false);
+        });
+    }
+    if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function (entries) {
+            for (var j = 0; j < entries.length; j++) {
+                if (entries[j].isIntersecting) activate('#' + entries[j].target.id);
+            }
+        }, { rootMargin: '-30% 0px -60% 0px' });
+        var secs = document.querySelectorAll('section.bc-card[id]');
+        for (var k = 0; k < secs.length; k++) obs.observe(secs[k]);
+    }
+    activate(window.location.hash || (links[0] && links[0].getAttribute('href')));
+})();
+</script>
+</body>
+</html>

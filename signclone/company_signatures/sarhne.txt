@@ -1,0 +1,11 @@
+Account Index: #3
+Sender: Sarhne <no-reply@sarhne.com>
+Clean Brand Name: sarhne
+Full Domain: sarhne.com
+========================================
+
+صارحني
+Moaz
+لقد تلقيناً طلباً منك من أجل تأكيد البريد الإلكتروني، الرجاء النقر على الرابط في الأسفل
+https://www.sarhne.com/verify.html?token=3c000bc3ad60d7850a57cbcd6504be25
+إذا لم تكن أنت من طلب تأكيد البريد، يمكنك تجاهل هذا البريد.

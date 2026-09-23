@@ -1,0 +1,12 @@
+Account Index: #1
+Sender: Careers <system@successfactors.eu>
+Clean Brand Name: successfactors
+Full Domain: successfactors.eu
+========================================
+
+One-Time Password for Candidate Account Verification
+Hello Moaz Ramadan
+Your passcode for account verification is 420930
+Enter this passcode on the Create Account Career Opportunities page to verify your account.
+This passcode is valid for 10 minutes
+[[MICROSITE_LOGO]]
